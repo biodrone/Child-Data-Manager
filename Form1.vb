@@ -14,6 +14,7 @@ Public Class Form1
         userpasssave = ""
         'Now the colour is blue!
         'Second blue change
+        'Now back to the blue colours
     End Sub
 
     Public Sub cmdAddUser_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAddUser.Click
