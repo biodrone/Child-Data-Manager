@@ -12,7 +12,7 @@ Public Class Form1
 
     Public Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         userpasssave = ""
-
+        'watch me change the form load bit!
     End Sub
 
     Public Sub cmdAddUser_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAddUser.Click
