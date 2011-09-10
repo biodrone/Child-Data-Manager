@@ -13,6 +13,7 @@ Public Class Form1
     Public Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         userpasssave = ""
         'Now the colour is blue!
+        'Second blue change
     End Sub
 
     Public Sub cmdAddUser_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAddUser.Click
