@@ -105,7 +105,7 @@ Public Class ChildDataEntry
             If My.Computer.FileSystem.DirectoryExists("C:\Childrens Centre\Child Data\" + "Child" + ChildID + "\" + MonthDir) = True Then
                 MsgCount = MsgBox("Child's Data for This Month Already Exists. Overwrite?", MsgBoxStyle.YesNoCancel)
                 If MsgCount = 6 Then 'if yes, delete the dir then create it again
-                    My.Computer.FileSystem.DeleteDirectory("C:\Childrens Centre\Child Data\" + "Child" + ChildID + "\" + MonthDir, FileIO.DeleteDirectoryOption.DeleteAllContents, FileIO.RecycleOption.DeletePermanently)
+                    My.Computer.FileSystem.DeleteDirectory("C:\Childrens Centre\Child Data\" + "Child" + ChildID + "\" + MonthDir, FileIO.DeleteDirectoryOption.DeleteAllContents)
                     My.Computer.FileSystem.CreateDirectory("C:\Childrens Centre\Child Data\" + "Child" + ChildID + "\" + MonthDir)
                 Else
                     InitDataEntry()
@@ -115,7 +115,7 @@ Public Class ChildDataEntry
                 My.Computer.FileSystem.CreateDirectory("C:\Childrens Centre\Child Data\" + "Child" + ChildID + "\" + MonthDir)
             End If
         End If
-        My.Computer.FileSystem.CreateDirectory("C:\Childrens Centre\Child Data\" + "Child" + ChildID + "\" + MonthDir)
+        'My.Computer.FileSystem.CreateDirectory("C:\Childrens Centre\Child Data\" + "Child" + ChildID + "\" + MonthDir)
         stream = File.Create("C:\Childrens Centre\Child Data\" + "Child" + ChildID + "\" + MonthDir + "\Progress.txt")
         stream.Close()
         'My.Computer.FileSystem.CopyFile("C:\Childrens Centre\Child Data\Progress.txt", "C:\Childrens Centre\Child Data\" + "Child" + ChildID + "\" + MonthDir + "\Progress.txt")
