@@ -33,6 +33,9 @@ Public Class Form1
     Public Sub cmdAddUser_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAddUser.Click
         UsernameBox = ""
         PasswordBox = ""
+        UsernameBox = InputBox("Username?", , " ")
+        PasswordBox = InputBox("Password?", , " ")
+
         HashMatch = False
         HashMatch = MD5_Dec()
 
@@ -102,12 +105,22 @@ Public Class Form1
         PasswordBox = ""
 
         UsernameBox = InputBox("Username?", , " ")
+        'Validate entered username
         While UsernameBox = " "
             UsernameBox = InputBox("Username?", , " ")
         End While
         If UsernameBox = "" Then
             Exit Sub
         End If
+        'validate entered password
+        PasswordBox = InputBox("Password?", , " ")
+        While PasswordBox = " "
+            PasswordBox = InputBox("Password?", , " ")
+        End While
+        If PasswordBox = "" Then
+            Exit Sub
+        End If
+
         If My.Computer.FileSystem.DirectoryExists("C:\Childrens Centre\Users\" + UsernameBox) Then
             HashMatch = MD5_Dec()
             If HashMatch = True Then
@@ -150,8 +163,8 @@ Public Class Form1
     End Function
     Public Function MD5_Dec() As String
         Dim OldHash As String, TempPassVeri As String, NewHash As String, UserFoldPath As String
-        UsernameBox = InputBox("Username?")
-        PasswordBox = InputBox("Password?")
+        'UsernameBox = InputBox("Username?")
+        'PasswordBox = InputBox("Password?")
         UserFoldPath = "C:\Childrens Centre\Users\" + UsernameBox
         OldHash = My.Computer.FileSystem.ReadAllText(UserFoldPath + "\EncryptedPassword.txt")
         TempPassVeri = My.Computer.FileSystem.GetTempFileName()
