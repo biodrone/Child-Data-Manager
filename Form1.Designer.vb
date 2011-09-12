@@ -26,7 +26,7 @@ Partial Class Form1
         Me.cmdAddUser = New System.Windows.Forms.Button()
         Me.cmdLogIn = New System.Windows.Forms.Button()
         Me.ResetEnsPass = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.cmdFirstUser = New System.Windows.Forms.Button()
         Me.cmdExit = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
@@ -65,17 +65,19 @@ Partial Class Form1
         Me.ResetEnsPass.Text = "Reset EncPassword"
         Me.ResetEnsPass.UseVisualStyleBackColor = True
         '
-        'Button1
+        'cmdFirstUser
         '
-        Me.Button1.Location = New System.Drawing.Point(33, 107)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 43)
-        Me.Button1.TabIndex = 9
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.cmdFirstUser.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdFirstUser.Location = New System.Drawing.Point(12, 9)
+        Me.cmdFirstUser.Name = "cmdFirstUser"
+        Me.cmdFirstUser.Size = New System.Drawing.Size(326, 141)
+        Me.cmdFirstUser.TabIndex = 9
+        Me.cmdFirstUser.Text = "Create Your First User!"
+        Me.cmdFirstUser.UseVisualStyleBackColor = True
         '
         'cmdExit
         '
+        Me.cmdExit.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdExit.Location = New System.Drawing.Point(178, 107)
         Me.cmdExit.Name = "cmdExit"
         Me.cmdExit.Size = New System.Drawing.Size(160, 43)
@@ -90,8 +92,8 @@ Partial Class Form1
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.cmdExit
         Me.ClientSize = New System.Drawing.Size(354, 166)
+        Me.Controls.Add(Me.cmdFirstUser)
         Me.Controls.Add(Me.cmdExit)
-        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.cmdLogIn)
         Me.Controls.Add(Me.cmdAddUser)
         Me.Controls.Add(Me.lbl1)
@@ -106,7 +108,7 @@ Partial Class Form1
     Friend WithEvents cmdAddUser As System.Windows.Forms.Button
     Friend WithEvents cmdLogIn As System.Windows.Forms.Button
     Friend WithEvents ResetEnsPass As System.Windows.Forms.Button
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents cmdFirstUser As System.Windows.Forms.Button
     Friend WithEvents cmdExit As System.Windows.Forms.Button
 
 End Class

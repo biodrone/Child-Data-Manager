@@ -42,8 +42,8 @@
         Try
             lblLoadMonth.Text = comLoadMonth.SelectedItem.ToString
             ChildDataEntry.LoadChildData()
-        Catch NullError As NullReferenceException
-            MsgBox("Please Select A Month", MsgBoxStyle.Information)
+        Catch ex As NullReferenceException
+            MsgBox("Please Select A Month" & vbCrLf & ex.Message, MsgBoxStyle.Information)
             comLoadMonth.DroppedDown = True
         End Try
     End Sub

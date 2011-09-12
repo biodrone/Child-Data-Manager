@@ -11,8 +11,23 @@ Public Class Form1
     Dim UserFail As Boolean = True, HashMatch As Boolean
 
     Public Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Dim ChildCentLoc As String = "C:\Childrens Centre", UsersLoc As String = ChildCentLoc + "\Users"
+        Dim AdminUser As String = UsersLoc + "\admin"
+        AcceptButton = cmdLogIn
         userpasssave = ""
 
+        If My.Computer.FileSystem.DirectoryExists(AdminUser) = False Then
+            My.Computer.FileSystem.CreateDirectory("C:\Childrens Centre\Users\admin")
+            cmdLogIn.Visible = False
+            cmdExit.Visible = False
+            cmdAddUser.Visible = False
+            cmdFirstUser.Visible = True
+        Else
+            cmdLogIn.Visible = True
+            cmdExit.Visible = True
+            cmdAddUser.Visible = True
+            cmdFirstUser.Visible = False
+        End If
     End Sub
 
     Public Sub cmdAddUser_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAddUser.Click
@@ -34,11 +49,11 @@ Public Class Form1
 
         UsernameBox = UserPassForm.txtUser.Text
         PasswordBox = UserPassForm.txtPass.Text
-        UserFoldPath = "C:\Users\" + UsernameBox
-        PassFilePath = "C:\Users\" + UsernameBox + "\EncryptedPassword.txt"
+        UserFoldPath = "C:\Childrens Centre\Users\" + UsernameBox
+        PassFilePath = "C:\Childrens Centre\Users\" + UsernameBox + "\EncryptedPassword.txt"
 
-        If My.Computer.FileSystem.DirectoryExists(UserFoldPath) = True Then
-            MsgBox("This User Already Exists", MsgBoxStyle.Information)
+        If My.Computer.FileSystem.DirectoryExists(UserFoldPath) = False Then
+
             If My.Computer.FileSystem.FileExists(PassFilePath) = True Then
                 MsgCount = MsgBox("Overwrite Password?", MsgBoxStyle.YesNo, ) 'checks if the user wants to overwrite their password
                 If MsgCount = 6 Then
@@ -62,7 +77,10 @@ Public Class Form1
                     MsgBox("Sorry, Passwords Do Not Match!", MsgBoxStyle.Exclamation)
                 End If
             End If
+        Else
+            MsgBox("This User Already Exists", MsgBoxStyle.Information)
         End If
+
 
         MsgCount = MsgBox("Create Another User?", MsgBoxStyle.YesNoCancel)
         If MsgCount = 7 Then
@@ -72,6 +90,10 @@ Public Class Form1
         ElseIf MsgCount = 2 Then
             Me.Show()
         End If
+        cmdLogIn.Visible = True
+        cmdExit.Visible = True
+        cmdAddUser.Visible = True
+        cmdFirstUser.Visible = False
     End Sub
 
     Public Sub cmdLogIn_Click() Handles cmdLogIn.Click
@@ -86,7 +108,7 @@ Public Class Form1
         If UsernameBox = "" Then
             Exit Sub
         End If
-        If My.Computer.FileSystem.DirectoryExists("C:/Users/" + UsernameBox) Then
+        If My.Computer.FileSystem.DirectoryExists("C:\Childrens Centre\Users\" + UsernameBox) Then
             HashMatch = MD5_Dec()
             If HashMatch = True Then
                 MsgBox("Congratulations! You Have Logged In!", MsgBoxStyle.Information)
@@ -128,8 +150,9 @@ Public Class Form1
     End Function
     Public Function MD5_Dec() As String
         Dim OldHash As String, TempPassVeri As String, NewHash As String, UserFoldPath As String
+        UsernameBox = InputBox("Username?")
         PasswordBox = InputBox("Password?")
-        UserFoldPath = "C:\Users\" + UsernameBox
+        UserFoldPath = "C:\Childrens Centre\Users\" + UsernameBox
         OldHash = My.Computer.FileSystem.ReadAllText(UserFoldPath + "\EncryptedPassword.txt")
         TempPassVeri = My.Computer.FileSystem.GetTempFileName()
         My.Computer.FileSystem.WriteAllText(TempPassVeri, PasswordBox, False)
@@ -143,7 +166,7 @@ Public Class Form1
 
     End Function
 
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+    Private Sub CreateFirstUser(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdFirstUser.Click
         UserPassForm.Show()
     End Sub
 
