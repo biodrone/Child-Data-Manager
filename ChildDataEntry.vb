@@ -29,7 +29,7 @@ Public Class ChildDataEntry
         Dim MsgCount As Integer
         Dim FailCheck As Boolean
 
-        'initialise all txtbxs and lbl colours
+        'initialise all textboxes and label colours
         lblChildID.ForeColor = Color.Black
         lblDate.ForeColor = Color.Black
         Label1.ForeColor = Color.Black
@@ -97,32 +97,6 @@ Public Class ChildDataEntry
 
         'Convert the raw date into a month
         MonthConvInt2Str(DateDir, MonthDir)
-        'Select Case DateDir
-        '    Case 1
-        '        MonthDir = "January"
-        '    Case 2
-        '        MonthDir = "February"
-        '    Case 3
-        '        MonthDir = "March"
-        '    Case 4
-        '        MonthDir = "April"
-        '    Case 5
-        '        MonthDir = "May"
-        '    Case 6
-        '        MonthDir = "June"
-        '    Case 7
-        '        MonthDir = "July"
-        '    Case 8
-        '        MonthDir = "August"
-        '    Case 9
-        '        MonthDir = "September"
-        '    Case 10
-        '        MonthDir = "October"
-        '    Case 11
-        '        MonthDir = "November"
-        '    Case 12
-        '        MonthDir = "December"
-        'End Select
 
         'check if the child id already exists. If not, create the directory
         If My.Computer.FileSystem.DirectoryExists("C:\Childrens Centre\Child Data\" + "Child" + ChildID) = False Then
@@ -207,45 +181,6 @@ Public Class ChildDataEntry
             End If
             LineCount = LineCount + 1
         End While
-
-        'start loading the vars necessary for the Loaded Data labels
-        'isolate the month section of the d.o.b
-        'LoadDOB = LoadDOB.Remove(0, 3)
-        'LoadDOB = LoadDOB.Remove(2, 5)
-        ''remove the leading 0, if there is one
-        'If LoadDOB.StartsWith("0") = True Then
-        '    LoadDOB = DateDir.Remove(0, 1)
-        'End If
-
-        'use a new var for the month string
-        'Dim LoadDOBMonth As String
-        'MonthConvInt2Str(LoadDOB, LoadDOBMonth)
-        'Select Case LoadDOB
-        '    Case 1
-        '        LoadDOBMonth = "January"
-        '    Case 2
-        '        LoadDOBMonth = "February"
-        '    Case 3
-        '        LoadDOBMonth = "March"
-        '    Case 4
-        '        LoadDOBMonth = "April"
-        '    Case 5
-        '        LoadDOBMonth = "May"
-        '    Case 6
-        '        LoadDOBMonth = "June"
-        '    Case 7
-        '        LoadDOBMonth = "July"
-        '    Case 8
-        '        LoadDOBMonth = "August"
-        '    Case 9
-        '        LoadDOBMonth = "September"
-        '    Case 10
-        '        LoadDOBMonth = "October"
-        '    Case 11
-        '        LoadDOBMonth = "November"
-        '    Case 12
-        '        LoadDOBMonth = "December"
-        'End Select
 
         'set all of the Loaded Data txtbxs to visible = true and put in the leading text
         lblLoadedHeading.Visible = True

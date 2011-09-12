@@ -1,13 +1,5 @@
 ﻿Public Class LoadMonthCombo
     Dim LoadID As String
-    'Dim n As Integer = 1
-
-    'Private Sub comLoadMonth_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles comLoadMonth.Click
-    '    While My.Computer.FileSystem.GetDirectories("C:\Childrens Centre\Child Data\" + "Child" + LoadID + "\").Item(n) <> ""
-    '        comLoadMonth.Items.Add(My.Computer.FileSystem.GetDirectories("C:\Childrens Centre\Child Data\" + "Child" + LoadID + "\").Item(n))
-    '        n = n + 1
-    '    End While
-    'End Sub
 
     Private Sub LoadMonthCombo_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Dim curFold As String
