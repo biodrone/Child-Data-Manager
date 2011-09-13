@@ -39,16 +39,18 @@ Public Class NewChildDataEntry
                 FailCheck = False
             End If
             'check sex
-            If Sex <> "M" Or "F" Then
-                MsgBox("Please Enter a Valid Sex; M or F", MsgBoxStyle.Information)
-                lblSex.ForeColor = Color.Red
-                FailCheck = False
+            If Sex <> "M" Then
+                If Sex <> "F" Then
+                    MsgBox("Please Enter a Valid Sex; M or F", MsgBoxStyle.Information)
+                    lblSex.ForeColor = Color.Red
+                    FailCheck = False
+                ElseIf Sex.Length = 0 Then
+                    MsgBox("Please Enter a Sex", MsgBoxStyle.Information)
+                    lblSex.ForeColor = Color.Red
+                    FailCheck = False
+                End If
             End If
-            If Sex.Length = 0 Then
-                MsgBox("Please Enter a Sex", MsgBoxStyle.Information)
-                lblSex.ForeColor = Color.Red
-                FailCheck = False
-            End If
+            
             'check DOB
             If DOB.Contains("  /") Then
                 MsgBox("Please Enter a D.o.B", MsgBoxStyle.Information)
@@ -91,7 +93,7 @@ Public Class NewChildDataEntry
             
         End If
         'My.Computer.FileSystem.CreateDirectory("C:\Childrens Centre\Child Data\" + "Child" + ChildID + "\" + MonthDir)
-        stream = File.Create("C:\Childrens Centre\Child Data\Child" + ChildID + "\" + MonthDir + "\Progress.txt")
+        'stream = File.Create("C:\Childrens Centre\Child Data\Child" + ChildID + "\" + MonthDir + "\Progress.txt")
         stream = File.Create("C:\Childrens Centre\Child Data\Child" + ChildID + "\Info.txt")
         stream.Close()
         'write all of the info to the info.txt file
@@ -100,9 +102,11 @@ Public Class NewChildDataEntry
         InitDataEntry()
         MsgCount = MsgBox("Do You Wish To Add Data For This Child?", MsgBoxStyle.OkCancel, "Add Data?")
         If MsgCount = 1 Then
+            lblChIdCarryForward.Text = ChildID
             OldChildDataEntry.Show()
         Else
-            MainForm.show()
+            lblChIdCarryForward.Text = ""
+            MainForm.Show()
             Me.Close()
         End If
     End Sub

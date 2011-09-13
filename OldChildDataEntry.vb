@@ -12,7 +12,12 @@ Public Class OldChildDataEntry
         lblLoadedHeading.Visible = False
         lblLoadedProgressBox.Visible = False
         lblLoadedUpdateDate.Visible = False
-        ChildID = InputBox("What Is The Child's ID?", "ID?")
+        If NewChildDataEntry.lblChIdCarryForward.Text.Length <> 1 Then
+            ChildID = InputBox("What Is The Child's ID?", "ID?")
+        Else
+            ChildID = NewChildDataEntry.lblChIdCarryForward.Text
+        End If
+
     End Sub
 
     Private Sub mskDate_MaskInputRejected(ByVal sender As Object, ByVal e As MaskInputRejectedEventArgs) Handles mskDate.MaskInputRejected
@@ -69,9 +74,9 @@ Public Class OldChildDataEntry
         End If
     End Sub
 
-    Function DateStripper(ByVal DateDir)
+    Function DateStripper(ByRef DateDir)
         'strip the date so that only the month remains
-        DateDir = DateDir.Text.Remove(0, 3)
+        DateDir = DateDir.Remove(0, 3)
         DateDir = DateDir.Remove(2, 5)
         'strip the leading 0, if there is one
         If DateDir.StartsWith("0") = True Then
@@ -125,7 +130,7 @@ Public Class OldChildDataEntry
     End Function
 
     Private Sub InitDataFields()
-
+        mskDate.Text = ""
     End Sub
     Private Sub cmdLogout_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdLogout.Click
         Me.Close()
@@ -163,7 +168,7 @@ Public Class OldChildDataEntry
         End If
     End Sub
 
-    Private Sub ReadProgressTxt(ByVal LoadID)
+    Private Sub ReadProgressTxt(ByRef LoadID)
         Dim fileReader As StreamReader
         Dim LineCount As Integer
 

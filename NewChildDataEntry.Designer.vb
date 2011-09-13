@@ -44,6 +44,7 @@ Partial Class NewChildDataEntry
         Me.lblSex = New System.Windows.Forms.Label()
         Me.txtSex = New System.Windows.Forms.TextBox()
         Me.cmdGraph = New System.Windows.Forms.Button()
+        Me.lblChIdCarryForward = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'lblChildID
@@ -226,11 +227,22 @@ Partial Class NewChildDataEntry
         Me.cmdGraph.Text = "Graph"
         Me.cmdGraph.UseVisualStyleBackColor = True
         '
+        'lblChIdCarryForward
+        '
+        Me.lblChIdCarryForward.AutoSize = True
+        Me.lblChIdCarryForward.Location = New System.Drawing.Point(67, 137)
+        Me.lblChIdCarryForward.Name = "lblChIdCarryForward"
+        Me.lblChIdCarryForward.Size = New System.Drawing.Size(91, 13)
+        Me.lblChIdCarryForward.TabIndex = 28
+        Me.lblChIdCarryForward.Text = "ChIdCarryForward"
+        Me.lblChIdCarryForward.Visible = False
+        '
         'NewChildDataEntry
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(594, 232)
+        Me.Controls.Add(Me.lblChIdCarryForward)
         Me.Controls.Add(Me.cmdGraph)
         Me.Controls.Add(Me.txtSex)
         Me.Controls.Add(Me.lblSex)
@@ -278,4 +290,5 @@ Partial Class NewChildDataEntry
     Friend WithEvents lblSex As System.Windows.Forms.Label
     Friend WithEvents txtSex As System.Windows.Forms.TextBox
     Friend WithEvents cmdGraph As System.Windows.Forms.Button
+    Friend WithEvents lblChIdCarryForward As System.Windows.Forms.Label
 End Class
