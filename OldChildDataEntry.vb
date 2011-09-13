@@ -1,4 +1,5 @@
 ﻿Public Class OldChildDataEntry
+    Dim StrMonth As String, DateDir As String
     Private Sub OldChildDataEntry_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Me.Load
         Me.ToolTip1.IsBalloon = False
         Me.mskDate.Mask = "00/00/0000"
@@ -15,7 +16,6 @@
         GBProgress.Controls.Add(radTarget)
     End Sub
     Function DateStripper()
-        Dim DateDir As String
         'strip the date so that only the month remains
         DateDir = mskDate.Text.Remove(0, 3)
         DateDir = DateDir.Remove(2, 5)
@@ -35,33 +35,35 @@
                 My.Computer.FileSystem.WriteAllText("C:\Childrens Centre\Child Data\" + "Child" + ChildID + "\" + MonthDir + "\Progress.txt", "T" + vbCrLf + SexCheck + vbCrLf + DOB + vbCrLf + RawDate, False)
         End Select
     End Function
-    Function MonthConvInt2Str(ByRef SelCase As String, ByRef VarForStr As String)
+    Function MonthConvInt2Str(ByRef SelCase As String, ByRef StrMonth As String)
+        'take the variable representing the month as a number and return it as a string (StrMonth)
         Select Case SelCase
             Case 1
-                VarForStr = "January"
+                StrMonth = "January"
             Case 2
-                VarForStr = "February"
+                StrMonth = "February"
             Case 3
-                VarForStr = "March"
+                StrMonth = "March"
             Case 4
-                VarForStr = "April"
+                StrMonth = "April"
             Case 5
-                VarForStr = "May"
+                StrMonth = "May"
             Case 6
-                VarForStr = "June"
+                StrMonth = "June"
             Case 7
-                VarForStr = "July"
+                StrMonth = "July"
             Case 8
-                VarForStr = "August"
+                StrMonth = "August"
             Case 9
-                VarForStr = "September"
+                StrMonth = "September"
             Case 10
-                VarForStr = "October"
+                StrMonth = "October"
             Case 11
-                VarForStr = "November"
+                StrMonth = "November"
             Case 12
-                VarForStr = "December"
+                StrMonth = "December"
         End Select
+        Return StrMonth
     End Function
 
 End Class

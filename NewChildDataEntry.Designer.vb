@@ -66,7 +66,7 @@ Partial Class NewChildDataEntry
         '
         'cmdNext
         '
-        Me.cmdNext.Location = New System.Drawing.Point(298, 385)
+        Me.cmdNext.Location = New System.Drawing.Point(298, 179)
         Me.cmdNext.Name = "cmdNext"
         Me.cmdNext.Size = New System.Drawing.Size(137, 40)
         Me.cmdNext.TabIndex = 10
@@ -75,7 +75,7 @@ Partial Class NewChildDataEntry
         '
         'cmdLoad
         '
-        Me.cmdLoad.Location = New System.Drawing.Point(155, 385)
+        Me.cmdLoad.Location = New System.Drawing.Point(155, 179)
         Me.cmdLoad.Name = "cmdLoad"
         Me.cmdLoad.Size = New System.Drawing.Size(137, 40)
         Me.cmdLoad.TabIndex = 11
@@ -118,7 +118,7 @@ Partial Class NewChildDataEntry
         '
         'cmdLogout
         '
-        Me.cmdLogout.Location = New System.Drawing.Point(441, 385)
+        Me.cmdLogout.Location = New System.Drawing.Point(441, 179)
         Me.cmdLogout.Name = "cmdLogout"
         Me.cmdLogout.Size = New System.Drawing.Size(137, 40)
         Me.cmdLogout.TabIndex = 16
@@ -219,7 +219,7 @@ Partial Class NewChildDataEntry
         '
         'cmdGraph
         '
-        Me.cmdGraph.Location = New System.Drawing.Point(12, 385)
+        Me.cmdGraph.Location = New System.Drawing.Point(12, 179)
         Me.cmdGraph.Name = "cmdGraph"
         Me.cmdGraph.Size = New System.Drawing.Size(137, 40)
         Me.cmdGraph.TabIndex = 27
@@ -230,7 +230,7 @@ Partial Class NewChildDataEntry
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(594, 437)
+        Me.ClientSize = New System.Drawing.Size(594, 232)
         Me.Controls.Add(Me.cmdGraph)
         Me.Controls.Add(Me.txtSex)
         Me.Controls.Add(Me.lblSex)

@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 Imports System.Security.Cryptography
 Public Class NewChildDataEntry
-    Dim ChildID As String, MonthDir As String, DateDir As String, RawDate As String, StrMonth As String
+    Dim ChildID As String, MonthDir As String, DateDir As String, RawDOB As String, StrMonth As String
     Dim stream As FileStream
 
     Private Sub NewChildDataEntry_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -16,53 +16,57 @@ Public Class NewChildDataEntry
     End Sub
 
     Private Sub cmdNext_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdNext.Click
-        Dim DOB As String, IDCheck As String, SexCheck As String
+        Dim DOB As String, ID As String, Sex As String
         Dim MsgCount As Integer
         Dim FailCheck As Boolean
 
-        'initialise all textboxes and label colours
+        'initialise label colours
         lblChildID.ForeColor = Color.Black
         Label1.ForeColor = Color.Black
         lblSex.ForeColor = Color.Black
-        IDCheck = mskChildID.Text
-        SexCheck = txtSex.Text
-        DOB = mskdob.Text
 
-        'check to see if any of the fields in the form are blank
+        'presence check on all form fields
         FailCheck = True
+        'load variables for presence check
+        ID = mskChildID.Text
+        Sex = txtSex.Text
+        DOB = mskdob.Text
         While FailCheck = True
-            If IDCheck.Length = 0 Then
+            'check ID
+            If ID.Length = 0 Then
                 MsgBox("Please Enter a Child ID", MsgBoxStyle.Information)
                 lblChildID.ForeColor = Color.Red
                 FailCheck = False
             End If
-            If SexCheck <> "M" Then
-                If SexCheck <> "F" Then
-                    MsgBox("Please Enter a Valid Sex; M or F", MsgBoxStyle.Information)
-                    lblSex.ForeColor = Color.Red
-                    FailCheck = False
-                End If
+            'check sex
+            If Sex <> "M" Or "F" Then
+                MsgBox("Please Enter a Valid Sex; M or F", MsgBoxStyle.Information)
+                lblSex.ForeColor = Color.Red
+                FailCheck = False
             End If
-            If SexCheck.Length = 0 Then
+            If Sex.Length = 0 Then
                 MsgBox("Please Enter a Sex", MsgBoxStyle.Information)
                 lblSex.ForeColor = Color.Red
                 FailCheck = False
             End If
+            'check DOB
             If DOB.Contains("  /") Then
                 MsgBox("Please Enter a D.o.B", MsgBoxStyle.Information)
                 Label1.ForeColor = Color.Red
                 FailCheck = False
             End If
-
+            'if anything failed, exit
             If FailCheck = False Then
                 Exit Sub
             Else
+                'kill the while loop
                 FailCheck = False
             End If
         End While
-
-        MonthDir = ""
+        'initialise vars
+        StrMonth = ""
         ChildID = ""
+        RawDOB = mskdob.Text
         ChildID = mskChildID.Text
 
         'strip the date so that only the month remains
@@ -73,15 +77,15 @@ Public Class NewChildDataEntry
             DateDir = DateDir.Remove(0, 1)
         End If
         'Convert the raw date into a month
-        MonthConvInt2Str(DateDir, MonthDir)
+        MonthConvInt2Str(DateDir, StrMonth)
 
-        'check if the child id already exists. If not, create the directory
+        'check if the child id dir already exists. If not, create it
         If My.Computer.FileSystem.DirectoryExists("C:\Childrens Centre\Child Data\Child" + ChildID) = False Then
             My.Computer.FileSystem.CreateDirectory("C:\Childrens Centre\Child Data\Child" + ChildID)
         Else 'if it exists, check if the month exists. If so, confirm overwrite
             If My.Computer.FileSystem.DirectoryExists("C:\Childrens Centre\Child Data\Child" + ChildID + "\" + StrMonth) = True Then
                 MsgCount = MsgBox("Child's Data for This Month Already Exists. Overwrite?", MsgBoxStyle.YesNoCancel)
-                If MsgCount = 6 Then 'if yes, delete the dir then create it again
+                If MsgCount = 6 Then 'if yes, delete the dir then create it
                     My.Computer.FileSystem.DeleteDirectory("C:\Childrens Centre\Child Data\Child" + ChildID + "\" + StrMonth, FileIO.DeleteDirectoryOption.DeleteAllContents)
                     My.Computer.FileSystem.CreateDirectory("C:\Childrens Centre\Child Data\Child" + ChildID + "\" + StrMonth)
                 Else
@@ -96,15 +100,16 @@ Public Class NewChildDataEntry
         stream = File.Create("C:\Childrens Centre\Child Data\Child" + ChildID + "\" + MonthDir + "\Progress.txt")
         stream = File.Create("C:\Childrens Centre\Child Data\Child" + ChildID + "\Info.txt")
         stream.Close()
-
+        'write all of the info to the info.txt file
+        My.Computer.FileSystem.WriteAllText("C:\Childrens Centre\Child Data\Child" + ChildID + "\Info.txt", ChildID + vbCrLf + Sex + vbCrLf + RawDOB, False)
+        'initialise all fields
         InitDataEntry()
     End Sub
     Private Sub InitDataEntry()
-        'initialise txtbxs and radbuttons
+        'initialise textboxes and radio buttons
         mskChildID.Text = ""
         mskdob.Text = ""
         txtSex.Text = ""
-
         'initialise lbl colours
         lblChildID.ForeColor = Color.Black
         Label1.ForeColor = Color.Black
