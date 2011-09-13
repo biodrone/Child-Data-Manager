@@ -41,7 +41,7 @@
     Private Sub cmdDone_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdDone.Click
         Try
             lblLoadMonth.Text = comLoadMonth.SelectedItem.ToString
-            ChildDataEntry.LoadChildData()
+            NewChildDataEntry.LoadChildData()
         Catch ex As NullReferenceException
             MsgBox("Please Select A Month" & vbCrLf & ex.Message, MsgBoxStyle.Information)
             comLoadMonth.DroppedDown = True

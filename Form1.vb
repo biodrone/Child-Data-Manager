@@ -126,7 +126,7 @@ Public Class Form1
             If HashMatch = True Then
                 MsgBox("Congratulations! You Have Logged In!", MsgBoxStyle.Information)
                 Me.Hide()
-                ChildDataEntry.Show()
+                NewChildDataEntry.Show()
             Else
                 MsgCount = MsgBox("Sorry, Could Not Log You In!", MsgBoxStyle.RetryCancel)
                 If MsgCount = 4 Then
