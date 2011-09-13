@@ -104,6 +104,13 @@ Public Class NewChildDataEntry
         My.Computer.FileSystem.WriteAllText("C:\Childrens Centre\Child Data\Child" + ChildID + "\Info.txt", ChildID + vbCrLf + Sex + vbCrLf + RawDOB, False)
         'initialise all fields
         InitDataEntry()
+        MsgCount = MsgBox("Do You Wish To Add Data For This Child?", MsgBoxStyle.OkCancel, "Add Data?")
+        If MsgCount = 1 Then
+            OldChildDataEntry.Show()
+        Else
+            MainForm.Show()
+            Me.Close()
+        End If
     End Sub
     Private Sub InitDataEntry()
         'initialise textboxes and radio buttons
