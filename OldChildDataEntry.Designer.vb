@@ -30,6 +30,14 @@ Partial Class OldChildDataEntry
         Me.lblDate = New System.Windows.Forms.Label()
         Me.mskDate = New System.Windows.Forms.MaskedTextBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.cmdGraph = New System.Windows.Forms.Button()
+        Me.cmdLogout = New System.Windows.Forms.Button()
+        Me.cmdNext = New System.Windows.Forms.Button()
+        Me.cmdLoad = New System.Windows.Forms.Button()
+        Me.lblLoadedProgressBox = New System.Windows.Forms.Label()
+        Me.lblLoadedUpdateDate = New System.Windows.Forms.Label()
+        Me.lblLoadedHeading = New System.Windows.Forms.Label()
+        Me.lblLoadedChildID = New System.Windows.Forms.Label()
         Me.GBProgress.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -38,9 +46,9 @@ Partial Class OldChildDataEntry
         Me.GBProgress.Controls.Add(Me.radAhead)
         Me.GBProgress.Controls.Add(Me.radDelay)
         Me.GBProgress.Controls.Add(Me.radTarget)
-        Me.GBProgress.Location = New System.Drawing.Point(31, 166)
+        Me.GBProgress.Location = New System.Drawing.Point(12, 62)
         Me.GBProgress.Name = "GBProgress"
-        Me.GBProgress.Size = New System.Drawing.Size(153, 93)
+        Me.GBProgress.Size = New System.Drawing.Size(195, 93)
         Me.GBProgress.TabIndex = 10
         Me.GBProgress.TabStop = False
         Me.GBProgress.Text = "Progress"
@@ -48,7 +56,7 @@ Partial Class OldChildDataEntry
         'radAhead
         '
         Me.radAhead.AutoSize = True
-        Me.radAhead.Location = New System.Drawing.Point(18, 65)
+        Me.radAhead.Location = New System.Drawing.Point(10, 68)
         Me.radAhead.Name = "radAhead"
         Me.radAhead.Size = New System.Drawing.Size(104, 17)
         Me.radAhead.TabIndex = 7
@@ -59,7 +67,7 @@ Partial Class OldChildDataEntry
         'radDelay
         '
         Me.radDelay.AutoSize = True
-        Me.radDelay.Location = New System.Drawing.Point(18, 19)
+        Me.radDelay.Location = New System.Drawing.Point(10, 22)
         Me.radDelay.Name = "radDelay"
         Me.radDelay.Size = New System.Drawing.Size(101, 17)
         Me.radDelay.TabIndex = 5
@@ -70,7 +78,7 @@ Partial Class OldChildDataEntry
         'radTarget
         '
         Me.radTarget.AutoSize = True
-        Me.radTarget.Location = New System.Drawing.Point(18, 42)
+        Me.radTarget.Location = New System.Drawing.Point(10, 45)
         Me.radTarget.Name = "radTarget"
         Me.radTarget.Size = New System.Drawing.Size(73, 17)
         Me.radTarget.TabIndex = 6
@@ -81,7 +89,7 @@ Partial Class OldChildDataEntry
         'lblDate
         '
         Me.lblDate.AutoSize = True
-        Me.lblDate.Location = New System.Drawing.Point(26, 86)
+        Me.lblDate.Location = New System.Drawing.Point(9, 37)
         Me.lblDate.Name = "lblDate"
         Me.lblDate.Size = New System.Drawing.Size(86, 13)
         Me.lblDate.TabIndex = 12
@@ -90,18 +98,101 @@ Partial Class OldChildDataEntry
         'mskDate
         '
         Me.mskDate.BeepOnError = True
-        Me.mskDate.Location = New System.Drawing.Point(124, 83)
+        Me.mskDate.Location = New System.Drawing.Point(107, 34)
         Me.mskDate.Mask = "00/00/0000"
         Me.mskDate.Name = "mskDate"
         Me.mskDate.Size = New System.Drawing.Size(100, 20)
         Me.mskDate.TabIndex = 11
         Me.mskDate.ValidatingType = GetType(Date)
         '
+        'cmdGraph
+        '
+        Me.cmdGraph.Location = New System.Drawing.Point(5, 320)
+        Me.cmdGraph.Name = "cmdGraph"
+        Me.cmdGraph.Size = New System.Drawing.Size(137, 40)
+        Me.cmdGraph.TabIndex = 30
+        Me.cmdGraph.Text = "Graph"
+        Me.cmdGraph.UseVisualStyleBackColor = True
+        '
+        'cmdLogout
+        '
+        Me.cmdLogout.Location = New System.Drawing.Point(503, 320)
+        Me.cmdLogout.Name = "cmdLogout"
+        Me.cmdLogout.Size = New System.Drawing.Size(137, 40)
+        Me.cmdLogout.TabIndex = 29
+        Me.cmdLogout.Text = "Logout"
+        Me.cmdLogout.UseVisualStyleBackColor = True
+        '
+        'cmdNext
+        '
+        Me.cmdNext.Location = New System.Drawing.Point(171, 320)
+        Me.cmdNext.Name = "cmdNext"
+        Me.cmdNext.Size = New System.Drawing.Size(137, 40)
+        Me.cmdNext.TabIndex = 28
+        Me.cmdNext.Text = "Next"
+        Me.cmdNext.UseVisualStyleBackColor = True
+        '
+        'cmdLoad
+        '
+        Me.cmdLoad.Location = New System.Drawing.Point(337, 320)
+        Me.cmdLoad.Name = "cmdLoad"
+        Me.cmdLoad.Size = New System.Drawing.Size(137, 40)
+        Me.cmdLoad.TabIndex = 31
+        Me.cmdLoad.Text = "Load"
+        Me.cmdLoad.UseVisualStyleBackColor = True
+        '
+        'lblLoadedProgressBox
+        '
+        Me.lblLoadedProgressBox.AutoSize = True
+        Me.lblLoadedProgressBox.Location = New System.Drawing.Point(324, 84)
+        Me.lblLoadedProgressBox.Name = "lblLoadedProgressBox"
+        Me.lblLoadedProgressBox.Size = New System.Drawing.Size(48, 13)
+        Me.lblLoadedProgressBox.TabIndex = 36
+        Me.lblLoadedProgressBox.Text = "Progress"
+        Me.lblLoadedProgressBox.Visible = False
+        '
+        'lblLoadedUpdateDate
+        '
+        Me.lblLoadedUpdateDate.AutoSize = True
+        Me.lblLoadedUpdateDate.Location = New System.Drawing.Point(324, 37)
+        Me.lblLoadedUpdateDate.Name = "lblLoadedUpdateDate"
+        Me.lblLoadedUpdateDate.Size = New System.Drawing.Size(80, 13)
+        Me.lblLoadedUpdateDate.TabIndex = 34
+        Me.lblLoadedUpdateDate.Text = "Date of Update"
+        Me.lblLoadedUpdateDate.Visible = False
+        '
+        'lblLoadedHeading
+        '
+        Me.lblLoadedHeading.AutoSize = True
+        Me.lblLoadedHeading.Location = New System.Drawing.Point(324, 12)
+        Me.lblLoadedHeading.Name = "lblLoadedHeading"
+        Me.lblLoadedHeading.Size = New System.Drawing.Size(69, 13)
+        Me.lblLoadedHeading.TabIndex = 32
+        Me.lblLoadedHeading.Text = "Loaded Data"
+        Me.lblLoadedHeading.Visible = False
+        '
+        'lblLoadedChildID
+        '
+        Me.lblLoadedChildID.AutoSize = True
+        Me.lblLoadedChildID.Location = New System.Drawing.Point(324, 62)
+        Me.lblLoadedChildID.Name = "lblLoadedChildID"
+        Me.lblLoadedChildID.Size = New System.Drawing.Size(41, 13)
+        Me.lblLoadedChildID.TabIndex = 37
+        Me.lblLoadedChildID.Text = "ChildID"
+        '
         'OldChildDataEntry
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(438, 372)
+        Me.ClientSize = New System.Drawing.Size(653, 372)
+        Me.Controls.Add(Me.lblLoadedChildID)
+        Me.Controls.Add(Me.lblLoadedProgressBox)
+        Me.Controls.Add(Me.lblLoadedUpdateDate)
+        Me.Controls.Add(Me.lblLoadedHeading)
+        Me.Controls.Add(Me.cmdLoad)
+        Me.Controls.Add(Me.cmdGraph)
+        Me.Controls.Add(Me.cmdLogout)
+        Me.Controls.Add(Me.cmdNext)
         Me.Controls.Add(Me.lblDate)
         Me.Controls.Add(Me.mskDate)
         Me.Controls.Add(Me.GBProgress)
@@ -120,4 +211,12 @@ Partial Class OldChildDataEntry
     Friend WithEvents lblDate As System.Windows.Forms.Label
     Friend WithEvents mskDate As System.Windows.Forms.MaskedTextBox
     Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
+    Friend WithEvents cmdGraph As System.Windows.Forms.Button
+    Friend WithEvents cmdLogout As System.Windows.Forms.Button
+    Friend WithEvents cmdNext As System.Windows.Forms.Button
+    Friend WithEvents cmdLoad As System.Windows.Forms.Button
+    Friend WithEvents lblLoadedProgressBox As System.Windows.Forms.Label
+    Friend WithEvents lblLoadedUpdateDate As System.Windows.Forms.Label
+    Friend WithEvents lblLoadedHeading As System.Windows.Forms.Label
+    Friend WithEvents lblLoadedChildID As System.Windows.Forms.Label
 End Class

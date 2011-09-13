@@ -3,7 +3,7 @@
     Dim DBProgress As New DataTable
     Private Sub DGraph_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Dim intProg As Integer, intMonth As Integer
-        ChildID = InputBox("What Child do You Wish to View?", "Child Select")
+        ChildID = InputBox("What Child Do You Wish To View?", "Child Select")
         Dim ChildDir As String = "C:\Childrens Centre\Child Data\Child" + ChildID
         crtChildX.Text = "Child " + ChildID
         DBProgress.Clear()

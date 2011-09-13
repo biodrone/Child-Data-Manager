@@ -82,19 +82,13 @@ Public Class NewChildDataEntry
         'check if the child id dir already exists. If not, create it
         If My.Computer.FileSystem.DirectoryExists("C:\Childrens Centre\Child Data\Child" + ChildID) = False Then
             My.Computer.FileSystem.CreateDirectory("C:\Childrens Centre\Child Data\Child" + ChildID)
-        Else 'if it exists, check if the month exists. If so, confirm overwrite
-            If My.Computer.FileSystem.DirectoryExists("C:\Childrens Centre\Child Data\Child" + ChildID + "\" + StrMonth) = True Then
-                MsgCount = MsgBox("Child's Data for This Month Already Exists. Overwrite?", MsgBoxStyle.YesNoCancel)
-                If MsgCount = 6 Then 'if yes, delete the dir then create it
-                    My.Computer.FileSystem.DeleteDirectory("C:\Childrens Centre\Child Data\Child" + ChildID + "\" + StrMonth, FileIO.DeleteDirectoryOption.DeleteAllContents)
-                    My.Computer.FileSystem.CreateDirectory("C:\Childrens Centre\Child Data\Child" + ChildID + "\" + StrMonth)
-                Else
-                    InitDataEntry()
-                    Exit Sub
-                End If
-            Else
-                My.Computer.FileSystem.CreateDirectory("C:\Childrens Centre\Child Data\" + "Child" + ChildID + "\" + MonthDir)
+        Else 'if it exists, confirm overwrite
+            MsgCount = MsgBox("This Child Already Exists. Overwrite?", MsgBoxStyle.YesNoCancel)
+            If MsgCount = 6 Then 'yes
+                My.Computer.FileSystem.DeleteDirectory("C:\Childrens Centre\Child Data\Child" + ChildID, FileIO.DeleteDirectoryOption.DeleteAllContents)
+                My.Computer.FileSystem.CreateDirectory("C:\Childrens Centre\Child Data\Child" + ChildID)
             End If
+            
         End If
         'My.Computer.FileSystem.CreateDirectory("C:\Childrens Centre\Child Data\" + "Child" + ChildID + "\" + MonthDir)
         stream = File.Create("C:\Childrens Centre\Child Data\Child" + ChildID + "\" + MonthDir + "\Progress.txt")
@@ -108,10 +102,11 @@ Public Class NewChildDataEntry
         If MsgCount = 1 Then
             OldChildDataEntry.Show()
         Else
-            MainForm.Show()
+            MainForm.show()
             Me.Close()
         End If
     End Sub
+
     Private Sub InitDataEntry()
         'initialise textboxes and radio buttons
         mskChildID.Text = ""
@@ -122,39 +117,19 @@ Public Class NewChildDataEntry
         Label1.ForeColor = Color.Black
         lblSex.ForeColor = Color.Black
     End Sub
+
     Private Sub cmdLoad_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdLoad.Click
-        LoadMonthCombo.Show()
+        LoadChildData()
     End Sub
 
     Public Sub LoadChildData()
-        Dim fileReader As System.IO.StreamReader, LoadID As String, LoadUpdMonth As String, LoadRad As String, LoadDOB As String
-        Dim LoadSex As String
-        Dim LineCount As Integer
-        LoadUpdMonth = ""
-        LoadID = ""
-        LoadID = LoadMonthCombo.lblChildIDHide.Text
-        LoadUpdMonth = LoadMonthCombo.lblLoadMonth.Text
-        'MsgBox(LoadMonth)
+        Dim LoadID As String, LoadDOB As String, LoadSex As String
 
-        'point the streamreader to the right file
-        fileReader =
-            My.Computer.FileSystem.OpenTextFileReader("C:\Childrens Centre\Child Data\" + "Child" + LoadID + "\" + LoadUpdMonth + "\Progress.txt")
-        'initialise the line counter
-        LineCount = 1
-        'While the streamreader isn't at the end of the file, the variable = the line, changed by the counter
-        While fileReader.EndOfStream = False
-            If LineCount = 1 Then
-                LoadRad = fileReader.ReadLine()
-            ElseIf LineCount = 2 Then
-                LoadSex = fileReader.ReadLine()
-            ElseIf LineCount = 3 Then
-                LoadDOB = fileReader.ReadLine()
-            Else
-                LoadUpdMonth = fileReader.ReadLine()
-            End If
-            LineCount = LineCount + 1
-        End While
-
+        LoadID = InputBox("What Is The ID Of The Child You Would Like To See?", "ID?")
+        LoadSex = ""
+        LoadDOB = ""
+        'load all data
+        ReadInfoTxt(LoadID, LoadSex, LoadDOB)
         'set all of the Loaded Data txtbxs to visible = true and put in the leading text
         lblLoadedHeading.Visible = True
         lblLoadedChildID.Text = "This Data is for Child: " + LoadID
@@ -163,33 +138,28 @@ Public Class NewChildDataEntry
         lblLoadedSex.Visible = True
         lblDOB.Text = "The Child's D.o.B is: " + LoadDOB
         lblDOB.Visible = True
-        lblLoadedUpdateDate.Text = "The Date of This Update Was: " + LoadUpdMonth
-        lblLoadedUpdateDate.Visible = True
-        'find out which rad button should be checked, then check it
-        If LoadRad = "A" Then
-            lblLoadedProgressBox.Text = "AHEAD OF TARGET"
-            lblLoadedProgressBox.Visible = True
-            lblLoadedProgressBox.ForeColor = Color.Green
-        ElseIf LoadRad = "D" Then
-            lblLoadedProgressBox.Text = "AT RISK OF DELAY"
-            lblLoadedProgressBox.Visible = True
-            lblLoadedProgressBox.ForeColor = Color.Red
-        ElseIf LoadRad = "T" Then
-            lblLoadedProgressBox.Text = "ON TARGET"
-            lblLoadedProgressBox.Visible = True
-            lblLoadedProgressBox.ForeColor = Color.Yellow
-        End If
-
-        LoadMonthCombo.Close()
     End Sub
 
-    Private Sub cmdLogout_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdLogout.Click
-        Me.Close()
-        Form1.Show()
-    End Sub
+    Private Sub ReadInfoTxt(ByRef LoadID, ByRef LoadSex, ByRef LoadDOB)
+        Dim fileReader As System.IO.StreamReader
+        Dim LineCount As Integer
 
-    Private Sub cmdGraph_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGraph.Click
-        DGraph.Show()
+        'point the streamreader to the right file
+        fileReader =
+            My.Computer.FileSystem.OpenTextFileReader("C:\Childrens Centre\Child Data\" + "Child" + LoadID + "\Info.txt")
+        'initialise the line counter
+        LineCount = 1
+        'While the streamreader isn't at the end of the file, the variable = the line, changed by the counter
+        While fileReader.EndOfStream = False
+            If LineCount = 1 Then
+                LoadID = fileReader.ReadLine()
+            ElseIf LineCount = 2 Then
+                LoadSex = fileReader.ReadLine()
+            ElseIf LineCount = 3 Then
+                LoadDOB = fileReader.ReadLine()
+            End If
+            LineCount = LineCount + 1
+        End While
     End Sub
 
     Function MonthConvInt2Str(ByRef SelCase As String, ByRef StrMonth As String)
@@ -221,4 +191,15 @@ Public Class NewChildDataEntry
         End Select
         Return StrMonth
     End Function
+
+    Private Sub cmdLogout_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdLogout.Click
+        Me.Close()
+        Form1.Show()
+    End Sub
+
+    Private Sub cmdGraph_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGraph.Click
+        DGraph.Show()
+    End Sub
+
+    
 End Class
