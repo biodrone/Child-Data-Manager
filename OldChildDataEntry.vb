@@ -134,7 +134,7 @@ Public Class OldChildDataEntry
     End Sub
     Private Sub cmdLogout_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdLogout.Click
         Me.Close()
-        Form1.Show()
+        MainForm.Show()
     End Sub
 
     Private Sub cmdGraph_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGraph.Click
