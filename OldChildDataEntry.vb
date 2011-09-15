@@ -60,7 +60,7 @@ Public Class OldChildDataEntry
         stream = File.Create("C:\Childrens Centre\Child Data\" + "Child" + ChildID + "\" + StrMonth + "\Progress.txt")
         stream.Close()
         'write to the file
-        My.Computer.FileSystem.WriteAllText("C:\Childrens Centre\Child Data\" + "Child" + ChildID + "\" + StrMonth + "\Progress.txt", RawDate + vbCrLf + RadChecked, False)
+        My.Computer.FileSystem.WriteAllText("C:\Childrens Centre\Child Data\" + "Child" + ChildID + "\" + StrMonth + "\Progress.txt", RadChecked + vbCrLf + RawDate, False)
         MsgCount = MsgBox("Add More Data?", MsgBoxStyle.YesNo)
         If MsgCount = 6 Then
             MsgCount = MsgBox("Same Child ID?", MsgBoxStyle.YesNo)

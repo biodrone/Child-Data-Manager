@@ -50,7 +50,6 @@
                 Case "December"
                     intMonth = 12
             End Select
-            'crtChildX.Series(0).Points.AddXY(intProg, intMonth)
             DBProgress.Rows.Add(intProg, intMonth)
         Next
 

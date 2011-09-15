@@ -18,4 +18,8 @@
         NewChildDataEntry.Show()
         Me.Close()
     End Sub
+
+    Private Sub cmdGraph_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGraph.Click
+        DGraph.Show()
+    End Sub
 End Class
