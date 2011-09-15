@@ -50,7 +50,7 @@ Public Class NewChildDataEntry
                     FailCheck = False
                 End If
             End If
-            
+
             'check DOB
             If DOB.Contains("  /") Then
                 MsgBox("Please Enter a D.o.B", MsgBoxStyle.Information)

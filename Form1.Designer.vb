@@ -28,6 +28,10 @@ Partial Class Form1
         Me.ResetEnsPass = New System.Windows.Forms.Button()
         Me.cmdFirstUser = New System.Windows.Forms.Button()
         Me.cmdExit = New System.Windows.Forms.Button()
+        Me.txtUser = New System.Windows.Forms.TextBox()
+        Me.txtPass = New System.Windows.Forms.TextBox()
+        Me.lblUser = New System.Windows.Forms.Label()
+        Me.lblPass = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'lbl1
@@ -68,7 +72,7 @@ Partial Class Form1
         'cmdFirstUser
         '
         Me.cmdFirstUser.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdFirstUser.Location = New System.Drawing.Point(12, 9)
+        Me.cmdFirstUser.Location = New System.Drawing.Point(306, 13)
         Me.cmdFirstUser.Name = "cmdFirstUser"
         Me.cmdFirstUser.Size = New System.Drawing.Size(326, 141)
         Me.cmdFirstUser.TabIndex = 9
@@ -85,6 +89,38 @@ Partial Class Form1
         Me.cmdExit.Text = "Exit"
         Me.cmdExit.UseVisualStyleBackColor = True
         '
+        'txtUser
+        '
+        Me.txtUser.Location = New System.Drawing.Point(71, 58)
+        Me.txtUser.Name = "txtUser"
+        Me.txtUser.Size = New System.Drawing.Size(100, 20)
+        Me.txtUser.TabIndex = 11
+        '
+        'txtPass
+        '
+        Me.txtPass.Location = New System.Drawing.Point(72, 84)
+        Me.txtPass.Name = "txtPass"
+        Me.txtPass.Size = New System.Drawing.Size(100, 20)
+        Me.txtPass.TabIndex = 12
+        '
+        'lblUser
+        '
+        Me.lblUser.AutoSize = True
+        Me.lblUser.Location = New System.Drawing.Point(10, 61)
+        Me.lblUser.Name = "lblUser"
+        Me.lblUser.Size = New System.Drawing.Size(58, 13)
+        Me.lblUser.TabIndex = 13
+        Me.lblUser.Text = "Username:"
+        '
+        'lblPass
+        '
+        Me.lblPass.AutoSize = True
+        Me.lblPass.Location = New System.Drawing.Point(10, 87)
+        Me.lblPass.Name = "lblPass"
+        Me.lblPass.Size = New System.Drawing.Size(56, 13)
+        Me.lblPass.TabIndex = 14
+        Me.lblPass.Text = "Password:"
+        '
         'Form1
         '
         Me.AcceptButton = Me.cmdLogIn
@@ -92,6 +128,10 @@ Partial Class Form1
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.cmdExit
         Me.ClientSize = New System.Drawing.Size(354, 166)
+        Me.Controls.Add(Me.lblPass)
+        Me.Controls.Add(Me.lblUser)
+        Me.Controls.Add(Me.txtPass)
+        Me.Controls.Add(Me.txtUser)
         Me.Controls.Add(Me.cmdFirstUser)
         Me.Controls.Add(Me.cmdExit)
         Me.Controls.Add(Me.cmdLogIn)
@@ -110,5 +150,9 @@ Partial Class Form1
     Friend WithEvents ResetEnsPass As System.Windows.Forms.Button
     Friend WithEvents cmdFirstUser As System.Windows.Forms.Button
     Friend WithEvents cmdExit As System.Windows.Forms.Button
+    Friend WithEvents txtUser As System.Windows.Forms.TextBox
+    Friend WithEvents txtPass As System.Windows.Forms.TextBox
+    Friend WithEvents lblUser As System.Windows.Forms.Label
+    Friend WithEvents lblPass As System.Windows.Forms.Label
 
 End Class

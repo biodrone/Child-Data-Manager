@@ -60,7 +60,6 @@ Partial Class NewChildDataEntry
         '
         Me.mskChildID.BeepOnError = True
         Me.mskChildID.Location = New System.Drawing.Point(113, 34)
-        Me.mskChildID.Mask = "0"
         Me.mskChildID.Name = "mskChildID"
         Me.mskChildID.Size = New System.Drawing.Size(100, 20)
         Me.mskChildID.TabIndex = 2
