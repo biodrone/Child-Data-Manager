@@ -69,6 +69,7 @@ Partial Class UserPassForm
         '
         Me.txtPass.Location = New System.Drawing.Point(144, 63)
         Me.txtPass.Name = "txtPass"
+        Me.txtPass.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtPass.Size = New System.Drawing.Size(100, 20)
         Me.txtPass.TabIndex = 12
         '
@@ -76,6 +77,7 @@ Partial Class UserPassForm
         '
         Me.txtPassVeri.Location = New System.Drawing.Point(144, 90)
         Me.txtPassVeri.Name = "txtPassVeri"
+        Me.txtPassVeri.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtPassVeri.Size = New System.Drawing.Size(100, 20)
         Me.txtPassVeri.TabIndex = 13
         '
