@@ -15,7 +15,8 @@ Public Class Form1
         Dim AdminUser As String = UsersLoc + "\admin"
         AcceptButton = cmdLogIn
         userpasssave = ""
-
+        txtPass.Text = ""
+        txtPass.Text = ""
         If My.Computer.FileSystem.DirectoryExists(AdminUser) = False Then
             My.Computer.FileSystem.CreateDirectory("C:\Childrens Centre\Users\admin")
             cmdLogIn.Visible = False
@@ -133,6 +134,8 @@ Public Class Form1
             MsgBox("Sorry, User Does Not Exist")
             cmdLogIn_Click()
         End If
+        txtPass.Text = ""
+        txtUser.Text = ""
     End Sub
 
     Public Function ReadPassFile(ByVal FileName As String) As String
