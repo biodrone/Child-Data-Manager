@@ -72,7 +72,7 @@ Partial Class Form1
         'cmdFirstUser
         '
         Me.cmdFirstUser.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdFirstUser.Location = New System.Drawing.Point(306, 13)
+        Me.cmdFirstUser.Location = New System.Drawing.Point(13, 8)
         Me.cmdFirstUser.Name = "cmdFirstUser"
         Me.cmdFirstUser.Size = New System.Drawing.Size(326, 141)
         Me.cmdFirstUser.TabIndex = 9
@@ -100,6 +100,7 @@ Partial Class Form1
         '
         Me.txtPass.Location = New System.Drawing.Point(72, 84)
         Me.txtPass.Name = "txtPass"
+        Me.txtPass.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtPass.Size = New System.Drawing.Size(100, 20)
         Me.txtPass.TabIndex = 12
         '
@@ -128,11 +129,11 @@ Partial Class Form1
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.cmdExit
         Me.ClientSize = New System.Drawing.Size(354, 166)
+        Me.Controls.Add(Me.cmdFirstUser)
         Me.Controls.Add(Me.lblPass)
         Me.Controls.Add(Me.lblUser)
         Me.Controls.Add(Me.txtPass)
         Me.Controls.Add(Me.txtUser)
-        Me.Controls.Add(Me.cmdFirstUser)
         Me.Controls.Add(Me.cmdExit)
         Me.Controls.Add(Me.cmdLogIn)
         Me.Controls.Add(Me.cmdAddUser)

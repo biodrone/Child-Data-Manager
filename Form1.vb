@@ -104,20 +104,16 @@ Public Class Form1
         UsernameBox = ""
         PasswordBox = ""
 
-        UsernameBox = InputBox("Username?", , " ")
-        'Validate entered username
-        While UsernameBox = " "
-            UsernameBox = InputBox("Username?", , " ")
-        End While
+        UsernameBox = txtUser.Text
+        'make sure that a username has been entered
         If UsernameBox = "" Then
+            MsgBox("Please Enter A Username", MsgBoxStyle.Critical)
             Exit Sub
         End If
-        'validate entered password
-        PasswordBox = InputBox("Password?", , " ")
-        While PasswordBox = " "
-            PasswordBox = InputBox("Password?", , " ")
-        End While
+        'make sure that a password has been entered
+        PasswordBox = txtPass.Text
         If PasswordBox = "" Then
+            MsgBox("Please Enter A Password", MsgBoxStyle.Critical)
             Exit Sub
         End If
 
