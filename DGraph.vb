@@ -74,6 +74,8 @@
     End Sub
 
     Private Sub cmdPrint_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdPrint.Click
+        Dim crtChildX As New Object
+
         PrintForm1.Print()
     End Sub
 End Class

@@ -23,28 +23,29 @@ Partial Class DGraph
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(DGraph))
         Me.crtChildX = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.PrintForm1 = New Microsoft.VisualBasic.PowerPacks.Printing.PrintForm(Me.components)
         Me.cmdPrint = New System.Windows.Forms.Button()
+        Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         CType(Me.crtChildX, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'crtChildX
         '
-        ChartArea1.Name = "ChartArea1"
-        Me.crtChildX.ChartAreas.Add(ChartArea1)
-        Legend1.Name = "Legend1"
-        Me.crtChildX.Legends.Add(Legend1)
+        ChartArea2.Name = "ChartArea1"
+        Me.crtChildX.ChartAreas.Add(ChartArea2)
+        Legend2.Name = "Legend1"
+        Me.crtChildX.Legends.Add(Legend2)
         Me.crtChildX.Location = New System.Drawing.Point(12, 12)
         Me.crtChildX.Name = "crtChildX"
-        Series1.ChartArea = "ChartArea1"
-        Series1.Legend = "Legend1"
-        Series1.Name = "Series1"
-        Me.crtChildX.Series.Add(Series1)
+        Series2.ChartArea = "ChartArea1"
+        Series2.Legend = "Legend1"
+        Series2.Name = "Series1"
+        Me.crtChildX.Series.Add(Series2)
         Me.crtChildX.Size = New System.Drawing.Size(516, 340)
         Me.crtChildX.TabIndex = 0
         Me.crtChildX.Text = "Child Data Chart"
@@ -66,6 +67,10 @@ Partial Class DGraph
         Me.cmdPrint.Text = "Print This Graph"
         Me.cmdPrint.UseVisualStyleBackColor = True
         '
+        'PrintDialog1
+        '
+        Me.PrintDialog1.UseEXDialog = True
+        '
         'DGraph
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -82,4 +87,5 @@ Partial Class DGraph
     Friend WithEvents crtChildX As System.Windows.Forms.DataVisualization.Charting.Chart
     Friend WithEvents PrintForm1 As Microsoft.VisualBasic.PowerPacks.Printing.PrintForm
     Friend WithEvents cmdPrint As System.Windows.Forms.Button
+    Friend WithEvents PrintDialog1 As System.Windows.Forms.PrintDialog
 End Class
