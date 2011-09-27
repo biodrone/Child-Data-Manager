@@ -19,6 +19,7 @@ Public Class OldChildDataEntry
         Else
             ChildID = NewChildDataEntry.lblChIdCarryForward.Text
         End If
+        AcceptButton = cmdNext
     End Sub
 
     Private Sub mskDate_MaskInputRejected(ByVal sender As Object, ByVal e As MaskInputRejectedEventArgs) Handles mskDate.MaskInputRejected

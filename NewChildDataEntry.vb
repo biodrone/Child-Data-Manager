@@ -8,6 +8,7 @@ Public Class NewChildDataEntry
         Me.ToolTip1.IsBalloon = False
         Me.mskdob.Mask = "00/00/0000"
         lblLoadedHeading.Hide()
+        AcceptButton = cmdNext
     End Sub
 
     Private Sub mskDate_MaskInputRejected(ByVal sender As Object, ByVal e As MaskInputRejectedEventArgs) Handles mskdob.MaskInputRejected
