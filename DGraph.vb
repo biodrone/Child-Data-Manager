@@ -76,6 +76,7 @@
     Private Sub cmdPrint_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdPrint.Click
         'Dim crtChildXPrint As New Object
         'Dim ChildDir As String = "C:\Childrens Centre\Child Data\Child" + ChildID
+
         crtChildX.Printing.Print(True)
 
         'crtChildXPrint = crtChildX
@@ -88,7 +89,7 @@
 
     End Sub
 
-    Private Sub PrintDocument1_PrintPage(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs) Handles PrintDocument1.PrintPage
+    Private Sub PrintDocument1_PrintPage(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs)
         'Dim ChildDir As String = "C:\Childrens Centre\Child Data\Child" + ChildID
 
         crtChildX.Printing.Print(True)
