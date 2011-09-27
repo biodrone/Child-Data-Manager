@@ -22,7 +22,7 @@ Public Class OldChildDataEntry
     End Sub
 
     Private Sub mskDate_MaskInputRejected(ByVal sender As Object, ByVal e As MaskInputRejectedEventArgs) Handles mskDate.MaskInputRejected
-        'set the tooptip to notify if the text is rejectde by the mask
+        'set the tooptip to notify if the text is rejected by the mask
         ToolTip1.ToolTipTitle = "Invalid Input"
         ToolTip1.Show("Sorry, Only Numbers 0-9 Are Allowed In Dates", mskDate, 500)
     End Sub
