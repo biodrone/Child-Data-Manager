@@ -31,14 +31,16 @@ Public Class Form1
     End Sub
 
     Public Sub cmdAddUser_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAddUser.Click
+        'initialise text boxes
         UsernameBox = ""
         PasswordBox = ""
+        'check to see if the user is registered before they can add a new user
         UsernameBox = InputBox("Username?", , " ")
         PasswordBox = InputBox("Password?", , " ")
-
+        'inisialise HashMatch and decrypt the password
         HashMatch = False
         HashMatch = MD5_Dec()
-
+        'if validation succeeds, show the userpassform, if not then msgbox
         If HashMatch = True Then
             UserPassForm.Show()
         Else
@@ -49,16 +51,16 @@ Public Class Form1
     Public Sub AddUser()
         Dim MsgCount As Integer
         Dim PassFilePath As String, PasshashEnc As String, UserFoldPath As String
-
+        'set all variables
         UsernameBox = UserPassForm.txtUser.Text
         PasswordBox = UserPassForm.txtPass.Text
         UserFoldPath = "C:\Childrens Centre\Users\" + UsernameBox
         PassFilePath = "C:\Childrens Centre\Users\" + UsernameBox + "\EncryptedPassword.txt"
-
+        'check dir's and confirm overwrites
         If My.Computer.FileSystem.DirectoryExists(UserFoldPath) = False Then
-
             If My.Computer.FileSystem.FileExists(PassFilePath) = True Then
-                MsgCount = MsgBox("Overwrite Password?", MsgBoxStyle.YesNo, ) 'checks if the user wants to overwrite their password
+                'checks if the user wants to overwrite their password
+                MsgCount = MsgBox("Overwrite Password?", MsgBoxStyle.YesNo, "Overwrite?")
                 If MsgCount = 6 Then
                     Kill(PassFilePath)
                     If UserPassForm.txtPass.Text = UserPassForm.txtPassVeri.Text Then
@@ -83,8 +85,7 @@ Public Class Form1
         Else
             MsgBox("This User Already Exists", MsgBoxStyle.Information)
         End If
-
-
+        'easy way to create another user
         MsgCount = MsgBox("Create Another User?", MsgBoxStyle.YesNoCancel)
         If MsgCount = 7 Then
             Me.Show()
@@ -93,6 +94,7 @@ Public Class Form1
         ElseIf MsgCount = 2 Then
             Me.Show()
         End If
+        'reset visibilities
         cmdLogIn.Visible = True
         cmdExit.Visible = True
         cmdAddUser.Visible = True
@@ -101,9 +103,9 @@ Public Class Form1
 
     Public Sub cmdLogIn_Click() Handles cmdLogIn.Click
         Dim MsgCount As Integer
+        'initialise and set vars
         UsernameBox = ""
         PasswordBox = ""
-
         UsernameBox = txtUser.Text
         'make sure that a username has been entered
         If UsernameBox = "" Then
@@ -116,7 +118,7 @@ Public Class Form1
             MsgBox("Please Enter A Password", MsgBoxStyle.Critical)
             Exit Sub
         End If
-
+        'checks if user already exists and then decrypt
         If My.Computer.FileSystem.DirectoryExists("C:\Childrens Centre\Users\" + UsernameBox) Then
             HashMatch = MD5_Dec()
             If HashMatch = True Then
@@ -133,6 +135,7 @@ Public Class Form1
             MsgBox("Sorry, User Does Not Exist")
             cmdLogIn_Click()
         End If
+        're-initialise
         txtPass.Text = ""
         txtUser.Text = ""
     End Sub
@@ -142,7 +145,8 @@ Public Class Form1
         StoredHash = File.Open(FileName, FileMode.Open, FileAccess.Read)
         Return StoredHash.ToString
     End Function
-    Public Function MD5_Enc(ByVal FileName As String) As String
+
+    Public Function MD5_Enc(ByVal FileName As String) As String 'MD5 hasher
         Dim md5 As New MD5CryptoServiceProvider
         Dim passpath As FileStream
         Dim hash() As Byte
@@ -159,12 +163,12 @@ Public Class Form1
         End Try
 
     End Function
-    Public Function MD5_Dec() As String
+
+    Public Function MD5_Dec() As String 'decrypts MD5 hashes and checks them against the stored passwords
         Dim OldHash As String, TempPassVeri As String, NewHash As String, UserFoldPath As String
-        'UsernameBox = InputBox("Username?")
-        'PasswordBox = InputBox("Password?")
         UserFoldPath = "C:\Childrens Centre\Users\" + UsernameBox
         OldHash = My.Computer.FileSystem.ReadAllText(UserFoldPath + "\EncryptedPassword.txt")
+        'create a temp file to store the users entered password to match it against the ine already on file
         TempPassVeri = My.Computer.FileSystem.GetTempFileName()
         My.Computer.FileSystem.WriteAllText(TempPassVeri, PasswordBox, False)
         NewHash = MD5_Enc(TempPassVeri)
@@ -174,7 +178,6 @@ Public Class Form1
         Else
             Return False
         End If
-
     End Function
 
     Private Sub CreateFirstUser(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdFirstUser.Click

@@ -26,7 +26,6 @@ Public Class NewChildDataEntry
         lblChildID.ForeColor = Color.Black
         Label1.ForeColor = Color.Black
         lblSex.ForeColor = Color.Black
-
         'presence check on all form fields
         FailCheck = True
         'load variables for presence check
@@ -52,7 +51,6 @@ Public Class NewChildDataEntry
                     FailCheck = False
                 End If
             End If
-
             'check DOB
             If DOB.Contains("  /") Then
                 MsgBox("Please Enter a D.o.B", MsgBoxStyle.Information)
@@ -72,7 +70,6 @@ Public Class NewChildDataEntry
         ChildID = ""
         RawDOB = mskdob.Text
         ChildID = mskChildID.Text
-
         'strip the date so that only the month remains
         DateDir = mskdob.Text.Remove(0, 3)
         DateDir = DateDir.Remove(2, 5)
@@ -82,7 +79,6 @@ Public Class NewChildDataEntry
         End If
         'Convert the raw date into a month
         MonthConvInt2Str(DateDir, StrMonth)
-
         'check if the child id dir already exists. If not, create it
         If My.Computer.FileSystem.DirectoryExists("C:\Childrens Centre\Child Data\Child" + ChildID) = False Then
             My.Computer.FileSystem.CreateDirectory("C:\Childrens Centre\Child Data\Child" + ChildID)
@@ -92,7 +88,6 @@ Public Class NewChildDataEntry
                 My.Computer.FileSystem.DeleteDirectory("C:\Childrens Centre\Child Data\Child" + ChildID, FileIO.DeleteDirectoryOption.DeleteAllContents)
                 My.Computer.FileSystem.CreateDirectory("C:\Childrens Centre\Child Data\Child" + ChildID)
             End If
-            
         End If
         'My.Computer.FileSystem.CreateDirectory("C:\Childrens Centre\Child Data\" + "Child" + ChildID + "\" + MonthDir)
         'stream = File.Create("C:\Childrens Centre\Child Data\Child" + ChildID + "\" + MonthDir + "\Progress.txt")
