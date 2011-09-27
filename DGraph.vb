@@ -74,8 +74,25 @@
     End Sub
 
     Private Sub cmdPrint_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdPrint.Click
-        Dim crtChildX As New Object
+        'Dim crtChildXPrint As New Object
+        'Dim ChildDir As String = "C:\Childrens Centre\Child Data\Child" + ChildID
+        crtChildX.Printing.Print(True)
 
-        PrintForm1.Print()
+        'crtChildXPrint = crtChildX
+        'Dim writetempfile As New System.IO.StreamWriter(ChildDir + "\TempPrintFile.jpg")
+        'writetempfile.Write(crtChildXPrint)
+        'writetempfile.Close()
+        'If PrintDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
+        '    PrintDocument1.Print()
+        'End If
+
+    End Sub
+
+    Private Sub PrintDocument1_PrintPage(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs) Handles PrintDocument1.PrintPage
+        'Dim ChildDir As String = "C:\Childrens Centre\Child Data\Child" + ChildID
+
+        crtChildX.Printing.Print(True)
+
+        'PrintDocument1.DocumentName = ChildDir + "\TempPrintFile.rtf"
     End Sub
 End Class
