@@ -29,6 +29,7 @@ Partial Class DGraph
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(DGraph))
         Me.crtChildX = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.PrintForm1 = New Microsoft.VisualBasic.PowerPacks.Printing.PrintForm(Me.components)
+        Me.cmdPrint = New System.Windows.Forms.Button()
         CType(Me.crtChildX, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -54,13 +55,23 @@ Partial Class DGraph
         Me.PrintForm1.Form = Me
         Me.PrintForm1.PrintAction = System.Drawing.Printing.PrintAction.PrintToPreview
         Me.PrintForm1.PrinterSettings = CType(resources.GetObject("PrintForm1.PrinterSettings"), System.Drawing.Printing.PrinterSettings)
-        Me.PrintForm1.PrintFileName = "PrnGraph"
+        Me.PrintForm1.PrintFileName = "PrintGraph"
+        '
+        'cmdPrint
+        '
+        Me.cmdPrint.Location = New System.Drawing.Point(435, 389)
+        Me.cmdPrint.Name = "cmdPrint"
+        Me.cmdPrint.Size = New System.Drawing.Size(93, 38)
+        Me.cmdPrint.TabIndex = 1
+        Me.cmdPrint.Text = "Print This Graph"
+        Me.cmdPrint.UseVisualStyleBackColor = True
         '
         'DGraph
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(540, 364)
+        Me.ClientSize = New System.Drawing.Size(540, 439)
+        Me.Controls.Add(Me.cmdPrint)
         Me.Controls.Add(Me.crtChildX)
         Me.Name = "DGraph"
         Me.Text = "DGraph"
@@ -70,4 +81,5 @@ Partial Class DGraph
     End Sub
     Friend WithEvents crtChildX As System.Windows.Forms.DataVisualization.Charting.Chart
     Friend WithEvents PrintForm1 As Microsoft.VisualBasic.PowerPacks.Printing.PrintForm
+    Friend WithEvents cmdPrint As System.Windows.Forms.Button
 End Class

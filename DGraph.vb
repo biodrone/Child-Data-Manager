@@ -72,4 +72,8 @@
             .LegendText = "Child 1 Progress"
         End With
     End Sub
+
+    Private Sub cmdPrint_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdPrint.Click
+        PrintForm1.Print()
+    End Sub
 End Class
