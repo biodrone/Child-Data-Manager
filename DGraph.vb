@@ -75,6 +75,5 @@
 
     Private Sub cmdPrint_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdPrint.Click
         crtChildX.Printing.Print(True)
-
     End Sub
 End Class
