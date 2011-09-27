@@ -4,6 +4,7 @@ Public Class OldChildDataEntry
     Dim StrMonth As String, DateDir As String, RadChecked As String, ChildID As String, LoadRad As String, LoadDate As String
 
     Private Sub OldChildDataEntry_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Me.Load
+        'initialise variables
         Me.ToolTip1.IsBalloon = False
         Me.mskDate.Mask = "00/00/0000"
         mskDate.ValidatingType = GetType(System.DateTime)
@@ -12,20 +13,22 @@ Public Class OldChildDataEntry
         lblLoadedHeading.Visible = False
         lblLoadedProgressBox.Visible = False
         lblLoadedUpdateDate.Visible = False
+        'check if the user already added a user and chose to add data for them
         If NewChildDataEntry.lblChIdCarryForward.Text.Length <> 1 Then
             ChildID = InputBox("What Is The Child's ID?", "ID?")
         Else
             ChildID = NewChildDataEntry.lblChIdCarryForward.Text
         End If
-
     End Sub
 
     Private Sub mskDate_MaskInputRejected(ByVal sender As Object, ByVal e As MaskInputRejectedEventArgs) Handles mskDate.MaskInputRejected
+        'set the tooptip to notify if the text is rejectde by the mask
         ToolTip1.ToolTipTitle = "Invalid Input"
         ToolTip1.Show("Sorry, Only Numbers 0-9 Are Allowed In Dates", mskDate, 500)
     End Sub
 
     Public Sub RadioGroupController()
+        'add radio buttons to the controller
         GBProgress.Controls.Add(radDelay)
         GBProgress.Controls.Add(radAhead)
         GBProgress.Controls.Add(radTarget)
