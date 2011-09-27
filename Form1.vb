@@ -2,7 +2,6 @@
 Imports System.Security.Cryptography
 
 Public Class Form1
-    Dim arr1(0 To 5, 0 To 5) As Integer, i As Integer, j As Integer
     Dim arrsave As String, UsernameBox As String, PasswordBox As String, userpasssave As String
     Dim filereader As String, userpassreset As String, strUser As String, strPass As String, currentN As String
     Dim n As Integer, l As Integer, intusers As Integer, passhash As Integer, Attempts As Integer = 0
