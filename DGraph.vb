@@ -10,11 +10,11 @@
         DBProgress.Columns.Add("Progress", GetType(Integer))
         DBProgress.Columns.Add("Month", GetType(Integer))
         Dim Months = From FolderChID In System.IO.Directory.EnumerateDirectories(ChildDir)
-        Dim test As String
-
+        'begin adding data into the DBProgress data table
         For Each FolderChID In Months
+            'set the filereader to the right place
             Dim fileReader = My.Computer.FileSystem.OpenTextFileReader(FolderChID.ToString + "\Progress.txt")
-            test = FolderChID.Substring(FolderChID.LastIndexOf("/") + 1)
+            'determine the progress level of the child
             Select Case fileReader.ReadLine()
                 Case "A"
                     intProg = 3
@@ -23,7 +23,7 @@
                 Case "T"
                     intProg = 2
             End Select
-            
+            'enumerate through folders and change the month into an integer
             Select Case FolderChID.Substring(FolderChID.LastIndexOf("\") + 1)
                 Case "January"
                     intMonth = 1
@@ -52,7 +52,7 @@
             End Select
             DBProgress.Rows.Add(intProg, intMonth)
         Next
-
+        'set axis properties
         With crtChildX.ChartAreas(0)
             .AxisX.Minimum = 0
             .AxisX.Maximum = 13
@@ -62,7 +62,7 @@
             .AxisX.Title = "Month (As Numeral)"
             .AxisY.Title = "Progress"
         End With
-
+        'do the data binding and set other peoperties
         With crtChildX.Series(0)
             .Points.DataBind(DBProgress.CreateDataReader, "Month", "Progress", Nothing)
             .ChartType = DataVisualization.Charting.SeriesChartType.StackedColumn
@@ -74,6 +74,7 @@
     End Sub
 
     Private Sub cmdPrint_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdPrint.Click
+        'print the chart
         crtChildX.Printing.Print(True)
     End Sub
 End Class
