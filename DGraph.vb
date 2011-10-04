@@ -1,4 +1,6 @@
-﻿Public Class DGraph
+﻿Imports System.Drawing.Printing
+
+Public Class DGraph
     Dim ChildID As String
     Dim DBProgress As New DataTable
     Private Sub DGraph_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -69,12 +71,14 @@
             .BorderWidth = 1
             .Color = Color.Red
             .BorderColor = Color.Red
-            .LegendText = "Child 1 Progress"
+            .LegendText = "Child " + ChildID + " Progress"
+
         End With
     End Sub
 
     Private Sub cmdPrint_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdPrint.Click
         'print the chart
+        
         crtChildX.Printing.Print(True)
     End Sub
 End Class
