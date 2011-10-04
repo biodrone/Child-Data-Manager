@@ -22,27 +22,28 @@ Partial Class DGraph
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend3 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.crtChildX = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.cmdPrint = New System.Windows.Forms.Button()
         Me.lblTestPrint = New System.Windows.Forms.Label()
+        Me.pd1 = New System.Drawing.Printing.PrintDocument()
         CType(Me.crtChildX, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'crtChildX
         '
-        ChartArea3.Name = "ChartArea1"
-        Me.crtChildX.ChartAreas.Add(ChartArea3)
-        Legend3.Name = "Legend1"
-        Me.crtChildX.Legends.Add(Legend3)
+        ChartArea1.Name = "ChartArea1"
+        Me.crtChildX.ChartAreas.Add(ChartArea1)
+        Legend1.Name = "Legend1"
+        Me.crtChildX.Legends.Add(Legend1)
         Me.crtChildX.Location = New System.Drawing.Point(12, 12)
         Me.crtChildX.Name = "crtChildX"
-        Series3.ChartArea = "ChartArea1"
-        Series3.Legend = "Legend1"
-        Series3.Name = "Series1"
-        Me.crtChildX.Series.Add(Series3)
+        Series1.ChartArea = "ChartArea1"
+        Series1.Legend = "Legend1"
+        Series1.Name = "Series1"
+        Me.crtChildX.Series.Add(Series1)
         Me.crtChildX.Size = New System.Drawing.Size(516, 340)
         Me.crtChildX.TabIndex = 0
         Me.crtChildX.Text = "Child Data Chart"
@@ -69,6 +70,10 @@ Partial Class DGraph
         Me.lblTestPrint.TabIndex = 2
         Me.lblTestPrint.Text = "TEST"
         '
+        'pd1
+        '
+        Me.pd1.DocumentName = "pdoc"
+        '
         'DGraph
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -87,4 +92,5 @@ Partial Class DGraph
     Friend WithEvents crtChildX As System.Windows.Forms.DataVisualization.Charting.Chart
     Friend WithEvents cmdPrint As System.Windows.Forms.Button
     Friend WithEvents lblTestPrint As System.Windows.Forms.Label
+    Friend WithEvents pd1 As System.Drawing.Printing.PrintDocument
 End Class
