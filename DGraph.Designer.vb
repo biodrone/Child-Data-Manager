@@ -22,9 +22,9 @@ Partial Class DGraph
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.crtChildX = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.cmdPrint = New System.Windows.Forms.Button()
         Me.pd1 = New System.Drawing.Printing.PrintDocument()
@@ -36,16 +36,16 @@ Partial Class DGraph
         '
         'crtChildX
         '
-        ChartArea1.Name = "ChartArea1"
-        Me.crtChildX.ChartAreas.Add(ChartArea1)
-        Legend1.Name = "Legend1"
-        Me.crtChildX.Legends.Add(Legend1)
+        ChartArea2.Name = "ChartArea1"
+        Me.crtChildX.ChartAreas.Add(ChartArea2)
+        Legend2.Name = "Legend1"
+        Me.crtChildX.Legends.Add(Legend2)
         Me.crtChildX.Location = New System.Drawing.Point(12, 12)
         Me.crtChildX.Name = "crtChildX"
-        Series1.ChartArea = "ChartArea1"
-        Series1.Legend = "Legend1"
-        Series1.Name = "Series1"
-        Me.crtChildX.Series.Add(Series1)
+        Series2.ChartArea = "ChartArea1"
+        Series2.Legend = "Legend1"
+        Series2.Name = "Series1"
+        Me.crtChildX.Series.Add(Series2)
         Me.crtChildX.Size = New System.Drawing.Size(516, 340)
         Me.crtChildX.TabIndex = 0
         Me.crtChildX.Text = "Child Data Chart"
@@ -84,12 +84,11 @@ Partial Class DGraph
         '
         Me.lblChildIden.AutoSize = True
         Me.lblChildIden.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblChildIden.Location = New System.Drawing.Point(83, 373)
+        Me.lblChildIden.Location = New System.Drawing.Point(74, 355)
         Me.lblChildIden.Name = "lblChildIden"
         Me.lblChildIden.Size = New System.Drawing.Size(320, 33)
         Me.lblChildIden.TabIndex = 4
         Me.lblChildIden.Text = "Child Indentifier Label"
-        Me.lblChildIden.Visible = False
         '
         'DGraph
         '
