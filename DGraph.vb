@@ -3,6 +3,7 @@
 Public Class DGraph
     Dim ChildID As String
     Dim DBProgress As New DataTable
+
     Private Sub DGraph_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Dim intProg As Integer, intMonth As Integer
         ChildID = InputBox("What Child Do You Wish To View?", "Child Select")
@@ -69,17 +70,59 @@ Public Class DGraph
             .Points.DataBind(DBProgress.CreateDataReader, "Month", "Progress", Nothing)
             .ChartType = DataVisualization.Charting.SeriesChartType.StackedColumn
             .BorderWidth = 1
-            .Color = Color.Magenta
-            .BorderColor = Color.Magenta
+            .Color = Color.Blue
+            .BorderColor = Color.Black
             .LegendText = "Child " + ChildID + " Progress"
-
         End With
+        AddtocomboColour()
     End Sub
 
     Private Sub cmdPrint_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdPrint.Click
+        Dim formprinting As New PowerPacks.Printing.PrintForm
         'print the chart
         'crtChildX.Printing.PrintDocument.DocumentName = "Child " + ChildID + "'s Graph"
         'crtChildX.Printing.Print(True)
+        cmdPrint.Visible = False
+        lblColour.Visible = False
+        comboColour.Visible = False
+        lblChildIden.Visible = True
+        lblChildIden.Text = "Child " + ChildID + "'s Graph"
+        formprinting.DocumentName = "Child's Graph"
+        formprinting.Form = Me
+        formprinting.PrintAction = PrintAction.PrintToPrinter
+        formprinting.Print()
+        DGraph_Load(sender, e)
+    End Sub
 
+    Public Sub AddtocomboColour()
+        comboColour.Items.Add("Blue")
+        comboColour.Items.Add("Red")
+        comboColour.Items.Add("Green")
+        comboColour.Items.Add("Pink")
+        comboColour.Items.Add("Purple")
+        comboColour.Items.Add("Black")
+        comboColour.Items.Add("Yellow")
+        comboColour.Items.Add("Orange")
+    End Sub
+
+    Private Sub comboColour_SelectionChangeCommitted(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles comboColour.SelectionChangeCommitted
+        Select Case comboColour.SelectedItem.ToString
+            Case "Blue"
+                crtChildX.Series(0).Color = Color.Blue
+            Case "Red"
+                crtChildX.Series(0).Color = Color.Red
+            Case "Green"
+                crtChildX.Series(0).Color = Color.Green
+            Case "Pink"
+                crtChildX.Series(0).Color = Color.Pink
+            Case "Purple"
+                crtChildX.Series(0).Color = Color.Purple
+            Case "Black"
+                crtChildX.Series(0).Color = Color.Black
+            Case "Yellow"
+                crtChildX.Series(0).Color = Color.Yellow
+            Case "Orange"
+                crtChildX.Series(0).Color = Color.Orange
+        End Select
     End Sub
 End Class

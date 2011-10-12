@@ -27,8 +27,10 @@ Partial Class DGraph
         Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.crtChildX = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.cmdPrint = New System.Windows.Forms.Button()
-        Me.lblTestPrint = New System.Windows.Forms.Label()
         Me.pd1 = New System.Drawing.Printing.PrintDocument()
+        Me.comboColour = New System.Windows.Forms.ComboBox()
+        Me.lblColour = New System.Windows.Forms.Label()
+        Me.lblChildIden = New System.Windows.Forms.Label()
         CType(Me.crtChildX, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -58,28 +60,46 @@ Partial Class DGraph
         Me.cmdPrint.Text = "Print"
         Me.cmdPrint.UseVisualStyleBackColor = True
         '
-        'lblTestPrint
-        '
-        Me.lblTestPrint.AutoSize = True
-        Me.lblTestPrint.BackColor = System.Drawing.Color.Maroon
-        Me.lblTestPrint.Font = New System.Drawing.Font("Alibi", 26.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTestPrint.ForeColor = System.Drawing.Color.Chartreuse
-        Me.lblTestPrint.Location = New System.Drawing.Point(406, 97)
-        Me.lblTestPrint.Name = "lblTestPrint"
-        Me.lblTestPrint.Size = New System.Drawing.Size(92, 48)
-        Me.lblTestPrint.TabIndex = 2
-        Me.lblTestPrint.Text = "TEST"
-        '
         'pd1
         '
         Me.pd1.DocumentName = "pdoc"
+        '
+        'comboColour
+        '
+        Me.comboColour.FormattingEnabled = True
+        Me.comboColour.Location = New System.Drawing.Point(138, 406)
+        Me.comboColour.Name = "comboColour"
+        Me.comboColour.Size = New System.Drawing.Size(121, 21)
+        Me.comboColour.TabIndex = 2
+        '
+        'lblColour
+        '
+        Me.lblColour.Location = New System.Drawing.Point(13, 406)
+        Me.lblColour.Name = "lblColour"
+        Me.lblColour.Size = New System.Drawing.Size(110, 21)
+        Me.lblColour.TabIndex = 3
+        Me.lblColour.Text = "Change The Colour?"
+        '
+        'lblChildIden
+        '
+        Me.lblChildIden.AutoSize = True
+        Me.lblChildIden.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblChildIden.Location = New System.Drawing.Point(83, 373)
+        Me.lblChildIden.Name = "lblChildIden"
+        Me.lblChildIden.Size = New System.Drawing.Size(320, 33)
+        Me.lblChildIden.TabIndex = 4
+        Me.lblChildIden.Text = "Child Indentifier Label"
+        Me.lblChildIden.Visible = False
         '
         'DGraph
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(540, 439)
-        Me.Controls.Add(Me.lblTestPrint)
+        Me.Controls.Add(Me.lblChildIden)
+        Me.Controls.Add(Me.lblColour)
+        Me.Controls.Add(Me.comboColour)
         Me.Controls.Add(Me.cmdPrint)
         Me.Controls.Add(Me.crtChildX)
         Me.Name = "DGraph"
@@ -91,6 +111,8 @@ Partial Class DGraph
     End Sub
     Friend WithEvents crtChildX As System.Windows.Forms.DataVisualization.Charting.Chart
     Friend WithEvents cmdPrint As System.Windows.Forms.Button
-    Friend WithEvents lblTestPrint As System.Windows.Forms.Label
     Friend WithEvents pd1 As System.Drawing.Printing.PrintDocument
+    Friend WithEvents comboColour As System.Windows.Forms.ComboBox
+    Friend WithEvents lblColour As System.Windows.Forms.Label
+    Friend WithEvents lblChildIden As System.Windows.Forms.Label
 End Class
