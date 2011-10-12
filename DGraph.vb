@@ -75,16 +75,12 @@ Public Class DGraph
             .LegendText = "Child " + ChildID + " Progress"
         End With
         AddtocomboColour()
-        lblChildIden.Visible = False
     End Sub
 
     Private Sub cmdPrint_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdPrint.Click
         Dim formprinting As New PowerPacks.Printing.PrintForm
         cmdPrint.Visible = False
-        lblColour.Visible = False
         comboColour.Visible = False
-        lblChildIden.Visible = True
-        lblChildIden.Text = "Child " + ChildID + "'s Graph"
         formprinting.DocumentName = "Child's Graph"
         formprinting.Form = Me
         formprinting.PrintAction = PrintAction.PrintToPrinter

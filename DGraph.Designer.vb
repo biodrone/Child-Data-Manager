@@ -22,38 +22,36 @@ Partial Class DGraph
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.crtChildX = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.cmdPrint = New System.Windows.Forms.Button()
         Me.pd1 = New System.Drawing.Printing.PrintDocument()
         Me.comboColour = New System.Windows.Forms.ComboBox()
-        Me.lblColour = New System.Windows.Forms.Label()
-        Me.lblChildIden = New System.Windows.Forms.Label()
         CType(Me.crtChildX, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'crtChildX
         '
-        ChartArea2.Name = "ChartArea1"
-        Me.crtChildX.ChartAreas.Add(ChartArea2)
-        Legend2.Name = "Legend1"
-        Me.crtChildX.Legends.Add(Legend2)
+        ChartArea1.Name = "ChartArea1"
+        Me.crtChildX.ChartAreas.Add(ChartArea1)
+        Legend1.Name = "Legend1"
+        Me.crtChildX.Legends.Add(Legend1)
         Me.crtChildX.Location = New System.Drawing.Point(12, 12)
         Me.crtChildX.Name = "crtChildX"
-        Series2.ChartArea = "ChartArea1"
-        Series2.Legend = "Legend1"
-        Series2.Name = "Series1"
-        Me.crtChildX.Series.Add(Series2)
-        Me.crtChildX.Size = New System.Drawing.Size(516, 340)
+        Series1.ChartArea = "ChartArea1"
+        Series1.Legend = "Legend1"
+        Series1.Name = "Series1"
+        Me.crtChildX.Series.Add(Series1)
+        Me.crtChildX.Size = New System.Drawing.Size(725, 479)
         Me.crtChildX.TabIndex = 0
         Me.crtChildX.Text = "Child Data Chart"
         '
         'cmdPrint
         '
         Me.cmdPrint.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdPrint.Location = New System.Drawing.Point(409, 374)
+        Me.cmdPrint.Location = New System.Drawing.Point(618, 497)
         Me.cmdPrint.Name = "cmdPrint"
         Me.cmdPrint.Size = New System.Drawing.Size(119, 53)
         Me.cmdPrint.TabIndex = 1
@@ -67,37 +65,18 @@ Partial Class DGraph
         'comboColour
         '
         Me.comboColour.FormattingEnabled = True
-        Me.comboColour.Location = New System.Drawing.Point(138, 406)
+        Me.comboColour.Location = New System.Drawing.Point(256, 497)
         Me.comboColour.Name = "comboColour"
-        Me.comboColour.Size = New System.Drawing.Size(121, 21)
+        Me.comboColour.Size = New System.Drawing.Size(138, 21)
         Me.comboColour.TabIndex = 2
-        '
-        'lblColour
-        '
-        Me.lblColour.Location = New System.Drawing.Point(13, 406)
-        Me.lblColour.Name = "lblColour"
-        Me.lblColour.Size = New System.Drawing.Size(110, 21)
-        Me.lblColour.TabIndex = 3
-        Me.lblColour.Text = "Change The Colour?"
-        '
-        'lblChildIden
-        '
-        Me.lblChildIden.AutoSize = True
-        Me.lblChildIden.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblChildIden.Location = New System.Drawing.Point(74, 355)
-        Me.lblChildIden.Name = "lblChildIden"
-        Me.lblChildIden.Size = New System.Drawing.Size(320, 33)
-        Me.lblChildIden.TabIndex = 4
-        Me.lblChildIden.Text = "Child Indentifier Label"
+        Me.comboColour.Text = "Click to Change Colour"
         '
         'DGraph
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(540, 439)
-        Me.Controls.Add(Me.lblChildIden)
-        Me.Controls.Add(Me.lblColour)
+        Me.ClientSize = New System.Drawing.Size(749, 562)
         Me.Controls.Add(Me.comboColour)
         Me.Controls.Add(Me.cmdPrint)
         Me.Controls.Add(Me.crtChildX)
@@ -105,13 +84,10 @@ Partial Class DGraph
         Me.Text = "DGraph"
         CType(Me.crtChildX, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
     Friend WithEvents crtChildX As System.Windows.Forms.DataVisualization.Charting.Chart
     Friend WithEvents cmdPrint As System.Windows.Forms.Button
     Friend WithEvents pd1 As System.Drawing.Printing.PrintDocument
     Friend WithEvents comboColour As System.Windows.Forms.ComboBox
-    Friend WithEvents lblColour As System.Windows.Forms.Label
-    Friend WithEvents lblChildIden As System.Windows.Forms.Label
 End Class
