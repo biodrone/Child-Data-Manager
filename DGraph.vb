@@ -78,15 +78,8 @@ Public Class DGraph
 
     Private Sub cmdPrint_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdPrint.Click
         'print the chart
-        'ChartPrintProperties()
-        crtChildX.Printing.PrintDocument.DocumentName = "Child " + ChildID + "'s Graph"
-        'crtChildX.CreateGraphics.
-        crtChildX.Printing.Print(True)
+        'crtChildX.Printing.PrintDocument.DocumentName = "Child " + ChildID + "'s Graph"
+        'crtChildX.Printing.Print(True)
+
     End Sub
-
-    'Public Sub ChartPrintProperties()
-
-    '    pd1.DefaultPageSettings.Margins.Top = 150
-    '    pd1.Print()
-    'End Sub
 End Class
