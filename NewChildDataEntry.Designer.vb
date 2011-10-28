@@ -122,7 +122,7 @@ Partial Class NewChildDataEntry
         Me.cmdLogout.Name = "cmdLogout"
         Me.cmdLogout.Size = New System.Drawing.Size(137, 40)
         Me.cmdLogout.TabIndex = 16
-        Me.cmdLogout.Text = "Logout"
+        Me.cmdLogout.Text = "Log Out"
         Me.cmdLogout.UseVisualStyleBackColor = True
         '
         'Label1

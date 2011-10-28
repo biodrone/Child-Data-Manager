@@ -15,7 +15,6 @@ Public Class Form1
         AcceptButton = cmdLogIn
         userpasssave = ""
         txtPass.Text = ""
-        txtPass.Text = ""
         If My.Computer.FileSystem.DirectoryExists(AdminUser) = False Then
             My.Computer.FileSystem.CreateDirectory("C:\Childrens Centre\Users\admin")
             cmdLogIn.Visible = False
