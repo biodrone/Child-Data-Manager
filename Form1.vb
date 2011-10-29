@@ -127,12 +127,12 @@ Public Class Form1
             Else
                 MsgCount = MsgBox("Sorry, Could Not Log You In!", MsgBoxStyle.RetryCancel)
                 If MsgCount = 4 Then
-                    cmdLogIn_Click()
+                    Exit Sub
                 End If
             End If
         Else
             MsgBox("Sorry, User Does Not Exist")
-            cmdLogIn_Click()
+            Exit Sub
         End If
         're-initialise
         txtPass.Text = ""
