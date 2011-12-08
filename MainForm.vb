@@ -24,7 +24,7 @@ Public Class MainForm
         Dim msgcount As Integer = 0
         msgcount = MsgBox("Are you sure you want to archive? (This will store data elsewhere and require manual configuration to load this data)", MsgBoxStyle.YesNo, "Confirm Archive")
         Dim ArchFold As String = "C:\Childrens Centre\Archive\", ChildFold As String = "C:\Childrens Centre\Child Data"
-        Dim ArchYear As String = Today.Year.ToString
+        Dim ArchYear As String = Today.Year.ToString 'MAKE A YEAR FOLDER FOR EACH CHILD SO THAT YOU CAN COPY THE NEXT YEARS DATA INTO IT
         If msgcount = 6 Then
             Dim ChildData = From Child In System.IO.Directory.EnumerateDirectories(ChildFold)
             Dim i As Integer = 1
@@ -47,6 +47,7 @@ Public Class MainForm
             Catch ex As IO.IOException
                 MsgBox("A filesystem error occurred, please contact your administrator", MsgBoxStyle.Critical, "Error!")
             End Try
+            'NEXT, CREATE A BUTTON THAT DELETES EACH CHILD'S ACCOUNT AT YEARS END TO MAKE WAY FOR THE NEW ROUND OF KIDS
         End If
     End Sub
 End Class
