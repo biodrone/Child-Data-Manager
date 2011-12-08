@@ -26,6 +26,7 @@ Partial Class MainForm
         Me.cmdAddOld = New System.Windows.Forms.Button()
         Me.cmdLogout = New System.Windows.Forms.Button()
         Me.cmdGraph = New System.Windows.Forms.Button()
+        Me.cmdArchive = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'cmdAddNew
@@ -48,7 +49,7 @@ Partial Class MainForm
         '
         'cmdLogout
         '
-        Me.cmdLogout.Location = New System.Drawing.Point(360, 12)
+        Me.cmdLogout.Location = New System.Drawing.Point(476, 12)
         Me.cmdLogout.Name = "cmdLogout"
         Me.cmdLogout.Size = New System.Drawing.Size(110, 40)
         Me.cmdLogout.TabIndex = 2
@@ -64,11 +65,21 @@ Partial Class MainForm
         Me.cmdGraph.Text = "Graph"
         Me.cmdGraph.UseVisualStyleBackColor = True
         '
+        'cmdArchive
+        '
+        Me.cmdArchive.Location = New System.Drawing.Point(360, 12)
+        Me.cmdArchive.Name = "cmdArchive"
+        Me.cmdArchive.Size = New System.Drawing.Size(110, 40)
+        Me.cmdArchive.TabIndex = 29
+        Me.cmdArchive.Text = "Archive"
+        Me.cmdArchive.UseVisualStyleBackColor = True
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(485, 60)
+        Me.ClientSize = New System.Drawing.Size(600, 60)
+        Me.Controls.Add(Me.cmdArchive)
         Me.Controls.Add(Me.cmdGraph)
         Me.Controls.Add(Me.cmdLogout)
         Me.Controls.Add(Me.cmdAddOld)
@@ -82,4 +93,5 @@ Partial Class MainForm
     Friend WithEvents cmdAddOld As System.Windows.Forms.Button
     Friend WithEvents cmdLogout As System.Windows.Forms.Button
     Friend WithEvents cmdGraph As System.Windows.Forms.Button
+    Friend WithEvents cmdArchive As System.Windows.Forms.Button
 End Class

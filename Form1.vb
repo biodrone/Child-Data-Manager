@@ -125,10 +125,8 @@ Public Class Form1
                 Me.Hide()
                 MainForm.Show()
             Else
-                MsgCount = MsgBox("Sorry, Could Not Log You In!", MsgBoxStyle.RetryCancel)
-                If MsgCount = 4 Then
-                    Exit Sub
-                End If
+                MsgCount = MsgBox("Sorry, Could Not Log You In!", MsgBoxStyle.Critical)
+                Exit Sub
             End If
         Else
             MsgBox("Sorry, User Does Not Exist")
