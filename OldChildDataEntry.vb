@@ -1,7 +1,9 @@
 ﻿Imports System.IO
 Imports System.Security.Cryptography
+Imports Microsoft.VisualBasic.FileIO.FileSystem
 Public Class OldChildDataEntry
     Dim StrMonth As String, DateDir As String, RadChecked As String, ChildID As String, LoadRad As String, LoadDate As String
+    Dim ArchFold As String, ChFold As String
 
     Private Sub OldChildDataEntry_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Me.Load
         'initialise variables
@@ -9,16 +11,44 @@ Public Class OldChildDataEntry
         Me.mskDate.Mask = "00/00/0000"
         mskDate.ValidatingType = GetType(System.DateTime)
         RadioGroupController()
-        lblLoadedChildID.Visible = False
-        lblLoadedHeading.Visible = False
-        lblLoadedProgressBox.Visible = False
-        lblLoadedUpdateDate.Visible = False
+        'set visibilities
+        lblLoadedChildID.Visible = True
+        lblLoadedHeading.Visible = True
+        lblLoadedProgressBox.Visible = True
+        lblLoadedUpdateDate.Visible = True
         'check if the user already added a user and chose to add data for them
         If NewChildDataEntry.lblChIdCarryForward.Text.Length <> 1 Then
             ChildID = InputBox("What Is The Child's ID?", "ID?")
         Else
             ChildID = NewChildDataEntry.lblChIdCarryForward.Text
         End If
+        ArchFold = "C:\Childrens Centre\Archive\" + "Child" + ChildID.ToString + "\"
+        ChFold = "C:\Childrens Centre\Child Data\" + "Child" + ChildID.ToString + "\"
+        If (DirectoryExists(ChFold)) Then
+            ReadProgressTxt(ChFold)
+        Else
+            ReadProgressTxt(ArchFold)
+        End If
+
+
+        lblLoadedHeading.Visible = True
+        lblLoadedUpdateDate.Text = "On: " + LoadDate
+        lblLoadedUpdateDate.Visible = True
+        lblLoadedChildID.Text = "Child: " + ChildID + " Was:"
+        If LoadRad = "A" Then
+            lblLoadedProgressBox.Text = "AHEAD OF TARGET"
+            lblLoadedProgressBox.Visible = True
+            lblLoadedProgressBox.ForeColor = Color.DarkGreen
+        ElseIf LoadRad = "D" Then
+            lblLoadedProgressBox.Text = "AT RISK OF DELAY"
+            lblLoadedProgressBox.Visible = True
+            lblLoadedProgressBox.ForeColor = Color.Red
+        ElseIf LoadRad = "T" Then
+            lblLoadedProgressBox.Text = "ON TARGET"
+            lblLoadedProgressBox.Visible = True
+            lblLoadedProgressBox.ForeColor = Color.LightGreen
+        End If
+
         AcceptButton = cmdNext
     End Sub
 
@@ -46,17 +76,17 @@ Public Class OldChildDataEntry
         'convert date to month
         MonthConvInt2Str(strDate, StrMonth)
         'create dirs
-        If My.Computer.FileSystem.DirectoryExists("C:\Childrens Centre\Child Data\Child" + ChildID + "\" + StrMonth) = True Then
+        If DirectoryExists("C:\Childrens Centre\Child Data\Child" + ChildID + "\" + StrMonth) = True Then
             MsgCount = MsgBox("Child's Data for This Month Already Exists. Overwrite?", MsgBoxStyle.YesNoCancel)
             If MsgCount = 6 Then 'yes
-                My.Computer.FileSystem.DeleteDirectory("C:\Childrens Centre\Child Data\Child" + ChildID + "\" + StrMonth, FileIO.DeleteDirectoryOption.DeleteAllContents)
-                My.Computer.FileSystem.CreateDirectory("C:\Childrens Centre\Child Data\Child" + ChildID + "\" + StrMonth)
+                DeleteDirectory("C:\Childrens Centre\Child Data\Child" + ChildID + "\" + StrMonth, FileIO.DeleteDirectoryOption.DeleteAllContents)
+                CreateDirectory("C:\Childrens Centre\Child Data\Child" + ChildID + "\" + StrMonth)
             Else
                 InitDataFields()
                 Exit Sub
             End If
         Else
-            My.Computer.FileSystem.CreateDirectory("C:\Childrens Centre\Child Data\" + "Child" + ChildID + "\" + StrMonth)
+            CreateDirectory("C:\Childrens Centre\Child Data\" + "Child" + ChildID + "\" + StrMonth)
         End If
         'determine which radio button has been checked
         RadButtonCheck()
@@ -64,7 +94,7 @@ Public Class OldChildDataEntry
         stream = File.Create("C:\Childrens Centre\Child Data\" + "Child" + ChildID + "\" + StrMonth + "\Progress.txt")
         stream.Close()
         'write to the file
-        My.Computer.FileSystem.WriteAllText("C:\Childrens Centre\Child Data\" + "Child" + ChildID + "\" + StrMonth + "\Progress.txt", RadChecked + vbCrLf + RawDate, False)
+        WriteAllText("C:\Childrens Centre\Child Data\" + "Child" + ChildID + "\" + StrMonth + "\Progress.txt", RadChecked + vbCrLf + RawDate, False)
         MsgCount = MsgBox("Add More Data?", MsgBoxStyle.YesNo)
         If MsgCount = 6 Then
             MsgCount = MsgBox("Same Child ID?", MsgBoxStyle.YesNo)
@@ -172,13 +202,13 @@ Public Class OldChildDataEntry
         End If
     End Sub
 
-    Private Sub ReadProgressTxt(ByRef LoadID)
+    Private Sub ReadProgressTxt(ByRef Folder)
         Dim fileReader As StreamReader
         Dim LineCount As Integer
 
         'point the streamreader to the right file
         fileReader =
-            My.Computer.FileSystem.OpenTextFileReader("C:\Childrens Centre\Child Data\" + "Child" + LoadID + "\Info.txt")
+            My.Computer.FileSystem.OpenTextFileReader(Folder + "Info.txt")
         'initialise the line counter
         LineCount = 1
         'While the streamreader isn't at the end of the file, read data into vars
