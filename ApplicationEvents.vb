@@ -11,7 +11,7 @@
 
             'Set the splash screen timeout.
 
-            Me.MinimumSplashScreenDisplayTime = 5000
+            Me.MinimumSplashScreenDisplayTime = 1500
             Return MyBase.OnInitialize(commandLineArgs)
 
         End Function

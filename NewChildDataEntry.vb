@@ -163,7 +163,7 @@ Public Class NewChildDataEntry
         End While
     End Sub
 
-    Function MonthConvInt2Str(ByRef SelCase As String, ByRef StrMonth As String)
+    Public Function MonthConvInt2Str(ByRef SelCase As String, ByRef StrMonth As String)
         Select Case SelCase
             Case 1
                 StrMonth = "January"
