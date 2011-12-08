@@ -24,7 +24,7 @@ Public Class MainForm
         Dim msgcount As Integer = 0
         msgcount = MsgBox("Are you sure you want to archive? (This will store data elsewhere and require manual configuration to load this data)", MsgBoxStyle.YesNo, "Confirm Archive")
         Dim ArchFold As String = "C:\Childrens Centre\Archive\", ChildFold As String = "C:\Childrens Centre\Child Data"
-        Dim CurMonth As String = NewChildDataEntry.MonthConvInt2Str(Today.Month, CurMonth)
+        Dim ArchYear As String = Today.Year.ToString
         If msgcount = 6 Then
             Dim ChildData = From Child In System.IO.Directory.EnumerateDirectories(ChildFold)
             Dim i As Integer = 1
