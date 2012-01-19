@@ -45,9 +45,9 @@ Partial Class OldChildDataEntry
         Me.GBProgress.Controls.Add(Me.radAhead)
         Me.GBProgress.Controls.Add(Me.radDelay)
         Me.GBProgress.Controls.Add(Me.radTarget)
-        Me.GBProgress.Location = New System.Drawing.Point(12, 62)
+        Me.GBProgress.Location = New System.Drawing.Point(12, 72)
         Me.GBProgress.Name = "GBProgress"
-        Me.GBProgress.Size = New System.Drawing.Size(195, 93)
+        Me.GBProgress.Size = New System.Drawing.Size(165, 93)
         Me.GBProgress.TabIndex = 10
         Me.GBProgress.TabStop = False
         Me.GBProgress.Text = "Progress"
@@ -100,7 +100,7 @@ Partial Class OldChildDataEntry
         Me.mskDate.Location = New System.Drawing.Point(107, 34)
         Me.mskDate.Mask = "00/00/0000"
         Me.mskDate.Name = "mskDate"
-        Me.mskDate.Size = New System.Drawing.Size(100, 20)
+        Me.mskDate.Size = New System.Drawing.Size(70, 20)
         Me.mskDate.TabIndex = 11
         Me.mskDate.ValidatingType = GetType(Date)
         '
@@ -115,7 +115,7 @@ Partial Class OldChildDataEntry
         '
         'cmdLogout
         '
-        Me.cmdLogout.Location = New System.Drawing.Point(327, 320)
+        Me.cmdLogout.Location = New System.Drawing.Point(291, 320)
         Me.cmdLogout.Name = "cmdLogout"
         Me.cmdLogout.Size = New System.Drawing.Size(137, 40)
         Me.cmdLogout.TabIndex = 29
@@ -124,7 +124,7 @@ Partial Class OldChildDataEntry
         '
         'cmdNext
         '
-        Me.cmdNext.Location = New System.Drawing.Point(171, 320)
+        Me.cmdNext.Location = New System.Drawing.Point(148, 320)
         Me.cmdNext.Name = "cmdNext"
         Me.cmdNext.Size = New System.Drawing.Size(137, 40)
         Me.cmdNext.TabIndex = 28
@@ -134,7 +134,7 @@ Partial Class OldChildDataEntry
         'lblLoadedSex
         '
         Me.lblLoadedSex.AutoSize = True
-        Me.lblLoadedSex.Location = New System.Drawing.Point(324, 84)
+        Me.lblLoadedSex.Location = New System.Drawing.Point(219, 112)
         Me.lblLoadedSex.Name = "lblLoadedSex"
         Me.lblLoadedSex.Size = New System.Drawing.Size(25, 13)
         Me.lblLoadedSex.TabIndex = 36
@@ -144,7 +144,7 @@ Partial Class OldChildDataEntry
         'lblDOB
         '
         Me.lblDOB.AutoSize = True
-        Me.lblDOB.Location = New System.Drawing.Point(324, 107)
+        Me.lblDOB.Location = New System.Drawing.Point(219, 152)
         Me.lblDOB.Name = "lblDOB"
         Me.lblDOB.Size = New System.Drawing.Size(66, 13)
         Me.lblDOB.TabIndex = 34
@@ -155,7 +155,7 @@ Partial Class OldChildDataEntry
         '
         Me.lblLoadedHeading.AutoSize = True
         Me.lblLoadedHeading.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblLoadedHeading.Location = New System.Drawing.Point(321, 19)
+        Me.lblLoadedHeading.Location = New System.Drawing.Point(216, 23)
         Me.lblLoadedHeading.Name = "lblLoadedHeading"
         Me.lblLoadedHeading.Size = New System.Drawing.Size(129, 31)
         Me.lblLoadedHeading.TabIndex = 32
@@ -165,7 +165,7 @@ Partial Class OldChildDataEntry
         'lblChildID
         '
         Me.lblChildID.AutoSize = True
-        Me.lblChildID.Location = New System.Drawing.Point(324, 62)
+        Me.lblChildID.Location = New System.Drawing.Point(219, 72)
         Me.lblChildID.Name = "lblChildID"
         Me.lblChildID.Size = New System.Drawing.Size(41, 13)
         Me.lblChildID.TabIndex = 37
