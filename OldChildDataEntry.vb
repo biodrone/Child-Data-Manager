@@ -5,7 +5,7 @@ Public Class OldChildDataEntry
     Dim StrMonth As String, DateDir As String, RadChecked As String, ChildID As String, LoadRad As String, LoadDate As String
     Dim ArchFold As String, ChFold As String
 
-    Private Sub OldChildDataEntry_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Me.Load
+    Public Sub OldChildDataEntry_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Me.Load
         'initialise variables
         Me.ToolTip1.IsBalloon = False
         Me.mskDate.Mask = "00/00/0000"
@@ -17,10 +17,10 @@ Public Class OldChildDataEntry
         lblLoadedProgressBox.Visible = True
         lblLoadedUpdateDate.Visible = True
         'check if the user already added a user and chose to add data for them
-        If NewChildDataEntry.lblChIdCarryForward.Text.Length < 1 Then
+        If ChildIDCarryForward.Length < 1 Then
             ChildID = InputBox("What Is The Child's ID?", "ID?")
         Else
-            ChildID = NewChildDataEntry.lblChIdCarryForward.Text
+            ChildID = ChildIDCarryForward
         End If
         ArchFold = "C:\Childrens Centre\Archive\" + "Child" + ChildID.ToString + "\"
         ChFold = "C:\Childrens Centre\Child Data\" + "Child" + ChildID.ToString + "\"
@@ -207,12 +207,11 @@ Public Class OldChildDataEntry
         Dim LineCount As Integer
 
         'point the streamreader to the right file
-        fileReader =
-            My.Computer.FileSystem.OpenTextFileReader(Folder + "Info.txt")
+        fileReader = My.Computer.FileSystem.OpenTextFileReader(Folder + "Info.txt")
         'initialise the line counter
         LineCount = 1
         'While the streamreader isn't at the end of the file, read data into vars
-        While fileReader.EndOfStream = False
+        While LineCount <= 3
             If LineCount = 1 Then
                 LoadDate = fileReader.ReadLine()
             ElseIf LineCount = 2 Then

@@ -17,7 +17,7 @@ Public Class NewChildDataEntry
         ToolTip1.Show("Sorry, Only Numbers 0-9 Are Allowed In Dates", mskdob, 500)
     End Sub
 
-    Private Sub cmdNext_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdNext.Click
+    Public Sub cmdNext_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdNext.Click
         Dim DOB As String, ID As String, Sex As String
         Dim MsgCount As Integer
         Dim FailCheck As Boolean
@@ -98,10 +98,10 @@ Public Class NewChildDataEntry
         'initialise all fields
         MsgCount = MsgBox("Do You Wish To Add Data For This Child?", MsgBoxStyle.OkCancel, "Add Data For This Child?")
         If MsgCount = 1 Then
-            lblChIdCarryForward.Text = ChildID
+            ChildIDCarryForward = ChildID
             OldChildDataEntry.Show()
         Else
-            lblChIdCarryForward.Text = ""
+            ChildIDCarryForward = ""
             MainForm.Show()
             Me.Close()
         End If
