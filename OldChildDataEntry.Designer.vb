@@ -37,6 +37,7 @@ Partial Class OldChildDataEntry
         Me.lblDOB = New System.Windows.Forms.Label()
         Me.lblLoadedHeading = New System.Windows.Forms.Label()
         Me.lblChildID = New System.Windows.Forms.Label()
+        Me.lblInfoHeader = New System.Windows.Forms.Label()
         Me.GBProgress.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -45,7 +46,7 @@ Partial Class OldChildDataEntry
         Me.GBProgress.Controls.Add(Me.radAhead)
         Me.GBProgress.Controls.Add(Me.radDelay)
         Me.GBProgress.Controls.Add(Me.radTarget)
-        Me.GBProgress.Location = New System.Drawing.Point(12, 72)
+        Me.GBProgress.Location = New System.Drawing.Point(263, 113)
         Me.GBProgress.Name = "GBProgress"
         Me.GBProgress.Size = New System.Drawing.Size(165, 93)
         Me.GBProgress.TabIndex = 10
@@ -88,16 +89,16 @@ Partial Class OldChildDataEntry
         'lblDate
         '
         Me.lblDate.AutoSize = True
-        Me.lblDate.Location = New System.Drawing.Point(9, 37)
+        Me.lblDate.Location = New System.Drawing.Point(260, 78)
         Me.lblDate.Name = "lblDate"
-        Me.lblDate.Size = New System.Drawing.Size(86, 13)
+        Me.lblDate.Size = New System.Drawing.Size(80, 13)
         Me.lblDate.TabIndex = 12
-        Me.lblDate.Text = "Date Completed:"
+        Me.lblDate.Text = "Date of Report:"
         '
         'mskDate
         '
         Me.mskDate.BeepOnError = True
-        Me.mskDate.Location = New System.Drawing.Point(107, 34)
+        Me.mskDate.Location = New System.Drawing.Point(358, 75)
         Me.mskDate.Mask = "00/00/0000"
         Me.mskDate.Name = "mskDate"
         Me.mskDate.Size = New System.Drawing.Size(70, 20)
@@ -134,7 +135,7 @@ Partial Class OldChildDataEntry
         'lblLoadedSex
         '
         Me.lblLoadedSex.AutoSize = True
-        Me.lblLoadedSex.Location = New System.Drawing.Point(219, 112)
+        Me.lblLoadedSex.Location = New System.Drawing.Point(16, 113)
         Me.lblLoadedSex.Name = "lblLoadedSex"
         Me.lblLoadedSex.Size = New System.Drawing.Size(25, 13)
         Me.lblLoadedSex.TabIndex = 36
@@ -144,7 +145,7 @@ Partial Class OldChildDataEntry
         'lblDOB
         '
         Me.lblDOB.AutoSize = True
-        Me.lblDOB.Location = New System.Drawing.Point(219, 152)
+        Me.lblDOB.Location = New System.Drawing.Point(16, 153)
         Me.lblDOB.Name = "lblDOB"
         Me.lblDOB.Size = New System.Drawing.Size(66, 13)
         Me.lblDOB.TabIndex = 34
@@ -155,7 +156,7 @@ Partial Class OldChildDataEntry
         '
         Me.lblLoadedHeading.AutoSize = True
         Me.lblLoadedHeading.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblLoadedHeading.Location = New System.Drawing.Point(216, 23)
+        Me.lblLoadedHeading.Location = New System.Drawing.Point(13, 24)
         Me.lblLoadedHeading.Name = "lblLoadedHeading"
         Me.lblLoadedHeading.Size = New System.Drawing.Size(129, 31)
         Me.lblLoadedHeading.TabIndex = 32
@@ -165,17 +166,29 @@ Partial Class OldChildDataEntry
         'lblChildID
         '
         Me.lblChildID.AutoSize = True
-        Me.lblChildID.Location = New System.Drawing.Point(219, 72)
+        Me.lblChildID.Location = New System.Drawing.Point(16, 73)
         Me.lblChildID.Name = "lblChildID"
         Me.lblChildID.Size = New System.Drawing.Size(41, 13)
         Me.lblChildID.TabIndex = 37
         Me.lblChildID.Text = "ChildID"
+        '
+        'lblInfoHeader
+        '
+        Me.lblInfoHeader.AutoSize = True
+        Me.lblInfoHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblInfoHeader.Location = New System.Drawing.Point(239, 24)
+        Me.lblInfoHeader.Name = "lblInfoHeader"
+        Me.lblInfoHeader.Size = New System.Drawing.Size(189, 31)
+        Me.lblInfoHeader.TabIndex = 38
+        Me.lblInfoHeader.Text = "Add New Data"
+        Me.lblInfoHeader.Visible = False
         '
         'OldChildDataEntry
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(480, 372)
+        Me.Controls.Add(Me.lblInfoHeader)
         Me.Controls.Add(Me.lblChildID)
         Me.Controls.Add(Me.lblLoadedSex)
         Me.Controls.Add(Me.lblDOB)
@@ -208,4 +221,5 @@ Partial Class OldChildDataEntry
     Friend WithEvents lblDOB As System.Windows.Forms.Label
     Friend WithEvents lblLoadedHeading As System.Windows.Forms.Label
     Friend WithEvents lblChildID As System.Windows.Forms.Label
+    Friend WithEvents lblInfoHeader As System.Windows.Forms.Label
 End Class

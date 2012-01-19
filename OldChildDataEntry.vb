@@ -37,6 +37,11 @@ Public Class OldChildDataEntry
         lblChildID.Visible = True
         lblChildID.Text = "Child: " + ChildID
         lblLoadedSex.Visible = True
+        If LoadSex = "F" Then
+            LoadSex = "Female"
+        Else
+            LoadSex = "Male"
+        End If
         lblLoadedSex.Text = "Sex: " + LoadSex
         lblDOB.Visible = True
         lblDOB.Text = "D.o.B: " + LoadDOB
