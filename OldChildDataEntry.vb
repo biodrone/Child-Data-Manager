@@ -17,7 +17,7 @@ Public Class OldChildDataEntry
         lblLoadedProgressBox.Visible = True
         lblLoadedUpdateDate.Visible = True
         'check if the user already added a user and chose to add data for them
-        If NewChildDataEntry.lblChIdCarryForward.Text.Length <> 1 Then
+        If NewChildDataEntry.lblChIdCarryForward.Text.Length < 1 Then
             ChildID = InputBox("What Is The Child's ID?", "ID?")
         Else
             ChildID = NewChildDataEntry.lblChIdCarryForward.Text

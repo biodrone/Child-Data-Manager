@@ -96,8 +96,7 @@ Public Class NewChildDataEntry
         'write all of the info to the info.txt file
         My.Computer.FileSystem.WriteAllText("C:\Childrens Centre\Child Data\Child" + ChildID + "\Info.txt", ChildID + vbCrLf + Sex + vbCrLf + RawDOB, False)
         'initialise all fields
-        InitDataEntry()
-        MsgCount = MsgBox("Do You Wish To Add Data For This Child?", MsgBoxStyle.OkCancel, "Add Data?")
+        MsgCount = MsgBox("Do You Wish To Add Data For This Child?", MsgBoxStyle.OkCancel, "Add Data For This Child?")
         If MsgCount = 1 Then
             lblChIdCarryForward.Text = ChildID
             OldChildDataEntry.Show()
@@ -106,6 +105,7 @@ Public Class NewChildDataEntry
             MainForm.Show()
             Me.Close()
         End If
+        InitDataEntry()
     End Sub
 
     Private Sub InitDataEntry()
