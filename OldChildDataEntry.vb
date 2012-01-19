@@ -2,7 +2,8 @@
 Imports System.Security.Cryptography
 Imports Microsoft.VisualBasic.FileIO.FileSystem
 Public Class OldChildDataEntry
-    Dim StrMonth As String, DateDir As String, RadChecked As String, ChildID As String, LoadRad As String, LoadDate As String
+    Dim StrMonth As String, DateDir As String, RadChecked As String, ChildID As String, LoadRad As String, LoadDOB As String
+    Dim LoadSex As String
     Dim ArchFold As String, ChFold As String
 
     Public Sub OldChildDataEntry_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -12,42 +13,47 @@ Public Class OldChildDataEntry
         mskDate.ValidatingType = GetType(System.DateTime)
         RadioGroupController()
         'set visibilities
-        lblLoadedChildID.Visible = True
+        lblChildID.Visible = True
         lblLoadedHeading.Visible = True
-        lblLoadedProgressBox.Visible = True
-        lblLoadedUpdateDate.Visible = True
-        'check if the user already added a user and chose to add data for them
-        If ChildIDCarryForward.Length < 1 Then
+        lblLoadedSex.Visible = True
+        lblDOB.Visible = True
+        'check if the user already added a child and chose to add data for them
+        If ChildIDCarryForward.ToString.Length < 1 Then
             ChildID = InputBox("What Is The Child's ID?", "ID?")
         Else
             ChildID = ChildIDCarryForward
         End If
+
         ArchFold = "C:\Childrens Centre\Archive\" + "Child" + ChildID.ToString + "\"
         ChFold = "C:\Childrens Centre\Child Data\" + "Child" + ChildID.ToString + "\"
-        If (DirectoryExists(ChFold)) Then
-            ReadProgressTxt(ChFold)
-        Else
-            ReadProgressTxt(ArchFold)
-        End If
 
+        If (DirectoryExists(ChFold)) Then
+            ReadInfoTxt(ChFold)
+        Else
+            ReadInfoTxt(ArchFold)
+        End If
 
         lblLoadedHeading.Visible = True
-        lblLoadedUpdateDate.Text = "On: " + LoadDate
-        lblLoadedUpdateDate.Visible = True
-        lblLoadedChildID.Text = "Child: " + ChildID + " Was:"
-        If LoadRad = "A" Then
-            lblLoadedProgressBox.Text = "AHEAD OF TARGET"
-            lblLoadedProgressBox.Visible = True
-            lblLoadedProgressBox.ForeColor = Color.DarkGreen
-        ElseIf LoadRad = "D" Then
-            lblLoadedProgressBox.Text = "AT RISK OF DELAY"
-            lblLoadedProgressBox.Visible = True
-            lblLoadedProgressBox.ForeColor = Color.Red
-        ElseIf LoadRad = "T" Then
-            lblLoadedProgressBox.Text = "ON TARGET"
-            lblLoadedProgressBox.Visible = True
-            lblLoadedProgressBox.ForeColor = Color.LightGreen
-        End If
+        lblChildID.Visible = True
+        lblChildID.Text = "Child: " + ChildID
+        lblLoadedSex.Visible = True
+        lblLoadedSex.Text = "Sex: " + LoadSex
+        lblDOB.Visible = True
+        lblDOB.Text = "D.o.B: " + LoadDOB
+
+        'If LoadRad = "A" Then
+        '    lblLoadedSex.Text = "AHEAD OF TARGET"
+        '    lblLoadedSex.Visible = True
+        '    lblLoadedSex.ForeColor = Color.DarkGreen
+        'ElseIf LoadRad = "D" Then
+        '    lblLoadedSex.Text = "AT RISK OF DELAY"
+
+        '    lblLoadedSex.ForeColor = Color.Red
+        'ElseIf LoadRad = "T" Then
+        '    lblLoadedSex.Text = "ON TARGET"
+        '    lblLoadedSex.Visible = True
+        '    lblLoadedSex.ForeColor = Color.LightGreen
+        'End If
 
         AcceptButton = cmdNext
     End Sub
@@ -168,41 +174,41 @@ Public Class OldChildDataEntry
     End Sub
     Private Sub cmdLogout_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdLogout.Click
         Me.Close()
-        Form1.Show()
+        Login.Show()
     End Sub
 
     Private Sub cmdGraph_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGraph.Click
         DGraph.Show()
     End Sub
 
-    Private Sub cmdLoad_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdLoad.Click
-        Dim LoadChID As String
+    'Private Sub cmdLoad_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdLoad.Click
+    '    Dim LoadChID As String
 
-        LoadChID = InputBox("What Child's Data Do You Wish To View?", "ID?")
-        LoadDate = ""
-        LoadRad = ""
-        ReadProgressTxt(LoadChID)
-        lblLoadedHeading.Visible = True
-        lblLoadedUpdateDate.Text = "On: " + LoadDate
-        lblLoadedUpdateDate.Visible = True
-        lblLoadedChildID.Text = "Child: " + LoadChID + " Was:"
-        'find out which rad button should be checked, then check it
-        If LoadRad = "A" Then
-            lblLoadedProgressBox.Text = "AHEAD OF TARGET"
-            lblLoadedProgressBox.Visible = True
-            lblLoadedProgressBox.ForeColor = Color.DarkGreen
-        ElseIf LoadRad = "D" Then
-            lblLoadedProgressBox.Text = "AT RISK OF DELAY"
-            lblLoadedProgressBox.Visible = True
-            lblLoadedProgressBox.ForeColor = Color.Red
-        ElseIf LoadRad = "T" Then
-            lblLoadedProgressBox.Text = "ON TARGET"
-            lblLoadedProgressBox.Visible = True
-            lblLoadedProgressBox.ForeColor = Color.LightGreen
-        End If
-    End Sub
+    '    LoadChID = InputBox("What Child's Data Do You Wish To View?", "ID?")
+    '    LoadDate = ""
+    '    LoadRad = ""
+    '    ReadInfoTxt(LoadChID)
+    '    lblLoadedHeading.Visible = True
+    '    lblLoadedUpdateDate.Text = "On: " + LoadDate
+    '    lblLoadedUpdateDate.Visible = True
+    '    lblLoadedChildID.Text = "Child: " + LoadChID + " Was:"
+    '    'find out which rad button should be checked, then check it
+    '    If LoadRad = "A" Then
+    '        lblLoadedProgressBox.Text = "AHEAD OF TARGET"
+    '        lblLoadedProgressBox.Visible = True
+    '        lblLoadedProgressBox.ForeColor = Color.DarkGreen
+    '    ElseIf LoadRad = "D" Then
+    '        lblLoadedProgressBox.Text = "AT RISK OF DELAY"
+    '        lblLoadedProgressBox.Visible = True
+    '        lblLoadedProgressBox.ForeColor = Color.Red
+    '    ElseIf LoadRad = "T" Then
+    '        lblLoadedProgressBox.Text = "ON TARGET"
+    '        lblLoadedProgressBox.Visible = True
+    '        lblLoadedProgressBox.ForeColor = Color.LightGreen
+    '    End If
+    'End Sub
 
-    Private Sub ReadProgressTxt(ByRef Folder)
+    Private Sub ReadInfoTxt(ByRef Folder)
         Dim fileReader As StreamReader
         Dim LineCount As Integer
 
@@ -212,11 +218,14 @@ Public Class OldChildDataEntry
         LineCount = 1
         'While the streamreader isn't at the end of the file, read data into vars
         While LineCount <= 3
-            If LineCount = 1 Then
-                LoadDate = fileReader.ReadLine()
-            ElseIf LineCount = 2 Then
-                LoadRad = fileReader.ReadLine()
-            End If
+            Select Case LineCount
+                Case 1
+                    ChildID = fileReader.ReadLine()
+                Case 2
+                    LoadSex = fileReader.ReadLine()
+                Case 3
+                    LoadDOB = fileReader.ReadLine()
+            End Select
             LineCount = LineCount + 1
         End While
     End Sub

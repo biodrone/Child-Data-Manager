@@ -33,11 +33,10 @@ Partial Class OldChildDataEntry
         Me.cmdGraph = New System.Windows.Forms.Button()
         Me.cmdLogout = New System.Windows.Forms.Button()
         Me.cmdNext = New System.Windows.Forms.Button()
-        Me.cmdLoad = New System.Windows.Forms.Button()
-        Me.lblLoadedProgressBox = New System.Windows.Forms.Label()
-        Me.lblLoadedUpdateDate = New System.Windows.Forms.Label()
+        Me.lblLoadedSex = New System.Windows.Forms.Label()
+        Me.lblDOB = New System.Windows.Forms.Label()
         Me.lblLoadedHeading = New System.Windows.Forms.Label()
-        Me.lblLoadedChildID = New System.Windows.Forms.Label()
+        Me.lblChildID = New System.Windows.Forms.Label()
         Me.GBProgress.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -116,7 +115,7 @@ Partial Class OldChildDataEntry
         '
         'cmdLogout
         '
-        Me.cmdLogout.Location = New System.Drawing.Point(503, 320)
+        Me.cmdLogout.Location = New System.Drawing.Point(327, 320)
         Me.cmdLogout.Name = "cmdLogout"
         Me.cmdLogout.Size = New System.Drawing.Size(137, 40)
         Me.cmdLogout.TabIndex = 29
@@ -132,64 +131,55 @@ Partial Class OldChildDataEntry
         Me.cmdNext.Text = "Next"
         Me.cmdNext.UseVisualStyleBackColor = True
         '
-        'cmdLoad
+        'lblLoadedSex
         '
-        Me.cmdLoad.Location = New System.Drawing.Point(337, 320)
-        Me.cmdLoad.Name = "cmdLoad"
-        Me.cmdLoad.Size = New System.Drawing.Size(137, 40)
-        Me.cmdLoad.TabIndex = 31
-        Me.cmdLoad.Text = "Load"
-        Me.cmdLoad.UseVisualStyleBackColor = True
+        Me.lblLoadedSex.AutoSize = True
+        Me.lblLoadedSex.Location = New System.Drawing.Point(324, 84)
+        Me.lblLoadedSex.Name = "lblLoadedSex"
+        Me.lblLoadedSex.Size = New System.Drawing.Size(25, 13)
+        Me.lblLoadedSex.TabIndex = 36
+        Me.lblLoadedSex.Text = "Sex"
+        Me.lblLoadedSex.Visible = False
         '
-        'lblLoadedProgressBox
+        'lblDOB
         '
-        Me.lblLoadedProgressBox.AutoSize = True
-        Me.lblLoadedProgressBox.Location = New System.Drawing.Point(324, 84)
-        Me.lblLoadedProgressBox.Name = "lblLoadedProgressBox"
-        Me.lblLoadedProgressBox.Size = New System.Drawing.Size(48, 13)
-        Me.lblLoadedProgressBox.TabIndex = 36
-        Me.lblLoadedProgressBox.Text = "Progress"
-        Me.lblLoadedProgressBox.Visible = False
-        '
-        'lblLoadedUpdateDate
-        '
-        Me.lblLoadedUpdateDate.AutoSize = True
-        Me.lblLoadedUpdateDate.Location = New System.Drawing.Point(324, 37)
-        Me.lblLoadedUpdateDate.Name = "lblLoadedUpdateDate"
-        Me.lblLoadedUpdateDate.Size = New System.Drawing.Size(80, 13)
-        Me.lblLoadedUpdateDate.TabIndex = 34
-        Me.lblLoadedUpdateDate.Text = "Date of Update"
-        Me.lblLoadedUpdateDate.Visible = False
+        Me.lblDOB.AutoSize = True
+        Me.lblDOB.Location = New System.Drawing.Point(324, 107)
+        Me.lblDOB.Name = "lblDOB"
+        Me.lblDOB.Size = New System.Drawing.Size(66, 13)
+        Me.lblDOB.TabIndex = 34
+        Me.lblDOB.Text = "Date of Birth"
+        Me.lblDOB.Visible = False
         '
         'lblLoadedHeading
         '
         Me.lblLoadedHeading.AutoSize = True
-        Me.lblLoadedHeading.Location = New System.Drawing.Point(324, 12)
+        Me.lblLoadedHeading.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblLoadedHeading.Location = New System.Drawing.Point(321, 19)
         Me.lblLoadedHeading.Name = "lblLoadedHeading"
-        Me.lblLoadedHeading.Size = New System.Drawing.Size(69, 13)
+        Me.lblLoadedHeading.Size = New System.Drawing.Size(129, 31)
         Me.lblLoadedHeading.TabIndex = 32
-        Me.lblLoadedHeading.Text = "Loaded Data"
+        Me.lblLoadedHeading.Text = "Child Info"
         Me.lblLoadedHeading.Visible = False
         '
-        'lblLoadedChildID
+        'lblChildID
         '
-        Me.lblLoadedChildID.AutoSize = True
-        Me.lblLoadedChildID.Location = New System.Drawing.Point(324, 62)
-        Me.lblLoadedChildID.Name = "lblLoadedChildID"
-        Me.lblLoadedChildID.Size = New System.Drawing.Size(41, 13)
-        Me.lblLoadedChildID.TabIndex = 37
-        Me.lblLoadedChildID.Text = "ChildID"
+        Me.lblChildID.AutoSize = True
+        Me.lblChildID.Location = New System.Drawing.Point(324, 62)
+        Me.lblChildID.Name = "lblChildID"
+        Me.lblChildID.Size = New System.Drawing.Size(41, 13)
+        Me.lblChildID.TabIndex = 37
+        Me.lblChildID.Text = "ChildID"
         '
         'OldChildDataEntry
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(653, 372)
-        Me.Controls.Add(Me.lblLoadedChildID)
-        Me.Controls.Add(Me.lblLoadedProgressBox)
-        Me.Controls.Add(Me.lblLoadedUpdateDate)
+        Me.ClientSize = New System.Drawing.Size(480, 372)
+        Me.Controls.Add(Me.lblChildID)
+        Me.Controls.Add(Me.lblLoadedSex)
+        Me.Controls.Add(Me.lblDOB)
         Me.Controls.Add(Me.lblLoadedHeading)
-        Me.Controls.Add(Me.cmdLoad)
         Me.Controls.Add(Me.cmdGraph)
         Me.Controls.Add(Me.cmdLogout)
         Me.Controls.Add(Me.cmdNext)
@@ -214,9 +204,8 @@ Partial Class OldChildDataEntry
     Friend WithEvents cmdGraph As System.Windows.Forms.Button
     Friend WithEvents cmdLogout As System.Windows.Forms.Button
     Friend WithEvents cmdNext As System.Windows.Forms.Button
-    Friend WithEvents cmdLoad As System.Windows.Forms.Button
-    Friend WithEvents lblLoadedProgressBox As System.Windows.Forms.Label
-    Friend WithEvents lblLoadedUpdateDate As System.Windows.Forms.Label
+    Friend WithEvents lblLoadedSex As System.Windows.Forms.Label
+    Friend WithEvents lblDOB As System.Windows.Forms.Label
     Friend WithEvents lblLoadedHeading As System.Windows.Forms.Label
-    Friend WithEvents lblLoadedChildID As System.Windows.Forms.Label
+    Friend WithEvents lblChildID As System.Windows.Forms.Label
 End Class

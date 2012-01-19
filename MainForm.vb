@@ -1,7 +1,7 @@
 ﻿Imports Microsoft.VisualBasic.FileIO.FileSystem
 Public Class MainForm
     Private Sub Logout(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdLogout.Click
-        Form1.Show()
+        Login.Show()
         Me.Close()
     End Sub
 

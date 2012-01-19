@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Form1
+Partial Class Login
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -72,7 +72,7 @@ Partial Class Form1
         'cmdFirstUser
         '
         Me.cmdFirstUser.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdFirstUser.Location = New System.Drawing.Point(12, 8)
+        Me.cmdFirstUser.Location = New System.Drawing.Point(12, 9)
         Me.cmdFirstUser.Name = "cmdFirstUser"
         Me.cmdFirstUser.Size = New System.Drawing.Size(326, 141)
         Me.cmdFirstUser.TabIndex = 9
@@ -91,18 +91,20 @@ Partial Class Form1
         '
         'txtUser
         '
+        Me.txtUser.AcceptsTab = True
         Me.txtUser.Location = New System.Drawing.Point(71, 58)
         Me.txtUser.Name = "txtUser"
         Me.txtUser.Size = New System.Drawing.Size(100, 20)
-        Me.txtUser.TabIndex = 11
+        Me.txtUser.TabIndex = 1
         '
         'txtPass
         '
+        Me.txtPass.AcceptsTab = True
         Me.txtPass.Location = New System.Drawing.Point(72, 84)
         Me.txtPass.Name = "txtPass"
         Me.txtPass.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtPass.Size = New System.Drawing.Size(100, 20)
-        Me.txtPass.TabIndex = 12
+        Me.txtPass.TabIndex = 2
         '
         'lblUser
         '
@@ -122,7 +124,7 @@ Partial Class Form1
         Me.lblPass.TabIndex = 14
         Me.lblPass.Text = "Password:"
         '
-        'Form1
+        'Login
         '
         Me.AcceptButton = Me.cmdLogIn
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -138,9 +140,10 @@ Partial Class Form1
         Me.Controls.Add(Me.cmdLogIn)
         Me.Controls.Add(Me.cmdAddUser)
         Me.Controls.Add(Me.lbl1)
-        Me.Name = "Form1"
+        Me.Name = "Login"
         Me.ShowIcon = False
-        Me.Text = "Login Area"
+        Me.Text = "Login Portal"
+        Me.TopMost = True
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
