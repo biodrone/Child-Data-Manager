@@ -23,8 +23,8 @@ Public Class MainForm
     Private Sub Archive(sender As System.Object, e As System.EventArgs) Handles cmdArchive.Click
         Dim msgcount As Integer = 0
         msgcount = MsgBox("Are you sure you want to archive? (This will store data elsewhere and require manual configuration to load this data)", MsgBoxStyle.YesNo, "Confirm Archive")
-        Dim ArchFold As String = "C:\Childrens Centre\Archive\", ChildFold As String = "C:\Childrens Centre\Child Data"
-        Dim ArchYear As String = Today.Year.ToString 'MAKE A YEAR FOLDER FOR EACH CHILD SO THAT YOU CAN COPY THE NEXT YEARS DATA INTO IT
+        Dim ArchFold As String = "C:\Childrens Centre\Archive\" + Year(Date.Today).ToString + "\"
+        Dim ChildFold As String = "C:\Childrens Centre\Child Data\"
         If msgcount = 6 Then
             Dim ChildData = From Child In System.IO.Directory.EnumerateDirectories(ChildFold)
             Dim i As Integer = 1
@@ -33,15 +33,14 @@ Public Class MainForm
                     CreateDirectory(ArchFold)
                 End If
                 For Each Child In ChildData
-                    Dim CopyFold As String = ArchFold + "Child" + i.ToString
+                    Dim CopyFold As String = ArchFold + Child.Remove(0, 31)
                     CreateDirectory(CopyFold)
-                    MoveDirectory(Child, CopyFold, FileIO.UIOption.AllDialogs)
-                    CreateDirectory(Child)
-                    Try
-                        MoveFile(CopyFold + "\Info.txt", Child + "\Info.txt")
-                    Catch ex As IO.IOException
-                        MsgBox("Child Information File Not Found", MsgBoxStyle.Critical)
-                    End Try
+                    MoveDirectory(Child, CopyFold)
+                    'Try
+                    '    MoveFile(CopyFold + "\Info.txt", Child + "\Info.txt")
+                    'Catch ex As IO.IOException
+                    '    MsgBox("Child Information File Not Found", MsgBoxStyle.Critical)
+                    'End Try
                     i = i + 1
                 Next
             Catch ex As IO.IOException
