@@ -7,7 +7,7 @@ Public Class MainForm
 
     Private Sub AddOld(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAddOld.Click
         OldChildDataEntry.Show()
-        Me.Close()
+        'Me.Close()
     End Sub
 
     Private Sub AddNew(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAddNew.Click
@@ -17,7 +17,7 @@ Public Class MainForm
 
     Private Sub Graph(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGraph.Click
         DGraph.Show()
-        Me.Close()
+        'Me.Close()
     End Sub
 
     Private Sub Archive(sender As System.Object, e As System.EventArgs) Handles cmdArchive.Click

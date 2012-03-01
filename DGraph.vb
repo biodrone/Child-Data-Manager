@@ -1,4 +1,5 @@
 ﻿Imports System.Drawing.Printing
+Imports Microsoft.VisualBasic.FileIO.FileSystem
 
 Public Class DGraph
     Dim ChildID As String
@@ -8,6 +9,12 @@ Public Class DGraph
         Dim intProg As Integer, intMonth As Integer
         ChildID = InputBox("What Child Do You Wish To View?", "Child Select")
         Dim ChildDir As String = "C:\Childrens Centre\Child Data\Child" + ChildID
+        If DirectoryExists(ChildDir) = False Then
+            MsgBox("Sorry, That Child ID Does Not Exist", MsgBoxStyle.Critical, "Error")
+            Exit Sub
+            Me.Hide()
+        End If
+        MainForm.Close()
         crtChildX.Text = "Child " + ChildID
         DBProgress.Clear()
         DBProgress.Columns.Add("Progress", GetType(Integer))

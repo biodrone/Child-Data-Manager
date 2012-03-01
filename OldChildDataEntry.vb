@@ -27,6 +27,13 @@ Public Class OldChildDataEntry
         ArchFold = "C:\Childrens Centre\Archive\" + "Child" + ChildID.ToString + "\"
         ChFold = "C:\Childrens Centre\Child Data\" + "Child" + ChildID.ToString + "\"
 
+        If DirectoryExists(ChFold) = False Then
+            MsgBox("Sorry, This Child Doesn't Exist!", MsgBoxStyle.Critical, "No Child Of This ID")
+            MainForm.Show()
+            'Exit Sub
+            Me.Close()
+        End If
+
         If (DirectoryExists(ChFold)) Then
             ReadInfoTxt(ChFold)
         Else
@@ -61,6 +68,7 @@ Public Class OldChildDataEntry
         'End If
 
         AcceptButton = cmdNext
+        MainForm.Hide()
     End Sub
 
     Private Sub mskDate_MaskInputRejected(ByVal sender As Object, ByVal e As MaskInputRejectedEventArgs) Handles mskDate.MaskInputRejected
