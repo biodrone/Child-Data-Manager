@@ -147,11 +147,9 @@ Public Class Login
                 MsgBox("Please Enter A Username & Password", MsgBoxStyle.Exclamation, "Authentication Fault")
                 lblUser.ForeColor = Color.Red
                 lblPass.ForeColor = Color.Red
-                Exit Function
             Else
                 MsgBox("Please Enter A Username", MsgBoxStyle.Exclamation, "Authentication Fault")
                 lblUser.ForeColor = Color.Red
-                Exit Function
             End If
             Return False
         Else
