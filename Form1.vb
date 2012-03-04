@@ -30,12 +30,9 @@ Public Class Login
     End Sub
 
     Public Sub cmdAddUser_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAddUser.Click
-        'initialise text boxes
-        UsernameBox = ""
-        PasswordBox = ""
         'check to see if the user is registered before they can add a new user
-        UsernameBox = InputBox("Username?", , " ")
-        PasswordBox = InputBox("Password?", , " ")
+        UsernameBox = txtUser.Text
+        PasswordBox = txtPass.Text
         'inisialise HashMatch and decrypt the password
         HashMatch = False
         HashMatch = MD5_Dec()

@@ -73,7 +73,7 @@ Partial Class Login
         'cmdFirstUser
         '
         Me.cmdFirstUser.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdFirstUser.Location = New System.Drawing.Point(12, 9)
+        Me.cmdFirstUser.Location = New System.Drawing.Point(12, 8)
         Me.cmdFirstUser.Name = "cmdFirstUser"
         Me.cmdFirstUser.Size = New System.Drawing.Size(326, 141)
         Me.cmdFirstUser.TabIndex = 9
