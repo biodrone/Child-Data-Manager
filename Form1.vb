@@ -49,10 +49,11 @@ Public Class Login
 
     Public Sub AddUser()
         Dim MsgCount As Integer
-        Dim PassFilePath As String, PasshashEnc As String, UserFoldPath As String
+        Dim PassFilePath As String, PasshashEnc As String, UserFoldPath As String, PassVeri As String
         'set all variables
         UsernameBox = UserPassForm.txtUser.Text
         PasswordBox = UserPassForm.txtPass.Text
+        PassVeri = UserPassForm.txtPassVeri.Text
         UserFoldPath = "C:\Childrens Centre\Users\" + UsernameBox
         PassFilePath = "C:\Childrens Centre\Users\" + UsernameBox + "\EncryptedPassword.txt"
         'check dir's and confirm overwrites
@@ -62,7 +63,7 @@ Public Class Login
                 MsgCount = MsgBox("Overwrite Password?", MsgBoxStyle.YesNo, "Overwrite?")
                 If MsgCount = 6 Then
                     Kill(PassFilePath)
-                    If UserPassForm.txtPass.Text = UserPassForm.txtPassVeri.Text Then
+                    If PasswordBox = PassVeri Then
                         My.Computer.FileSystem.CreateDirectory(UserFoldPath)
                         My.Computer.FileSystem.WriteAllText(PassFilePath, PasswordBox, False)
                         PasshashEnc = MD5_Enc(PassFilePath)
@@ -72,7 +73,7 @@ Public Class Login
                     End If
                 End If
             Else
-                If UserPassForm.txtPass.Text = UserPassForm.txtPassVeri.Text Then
+                If PasswordBox = PassVeri Then
                     My.Computer.FileSystem.CreateDirectory(UserFoldPath)
                     My.Computer.FileSystem.WriteAllText(PassFilePath, PasswordBox, False)
                     PasshashEnc = MD5_Enc(PassFilePath)
