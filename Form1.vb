@@ -34,23 +34,9 @@ Public Class Login
         UsernameBox = txtUser.Text
         PasswordBox = txtPass.Text
         'check for blank username or password fields
-        If UsernameBox = "" Then
-            If PasswordBox = "" Then
-                MsgBox("Please Enter A Username & Password", MsgBoxStyle.Exclamation, "Authentication Fault")
-                lblUser.ForeColor = Color.Red
-                lblPass.ForeColor = Color.Red
-                Exit Sub
-            Else
-                MsgBox("Please Enter A Username", MsgBoxStyle.Exclamation, "Authentication Fault")
-                lblUser.ForeColor = Color.Red
-                Exit Sub
-            End If
+        If CheckBlanks() = False Then
+            Exit Sub
         End If
-        'If PasswordBox = "" Then
-        '    MsgBox("Please Enter A Password", MsgBoxStyle.Exclamation, "Authentication Fault")
-        '    lblPass.ForeColor = Color.Red
-        '    Exit Sub
-        'End If
         'check if the user exists
         If My.Computer.FileSystem.DirectoryExists(UsersPath + UsernameBox) Then
             'inisialise HashMatch and decrypt the password
@@ -62,9 +48,11 @@ Public Class Login
         End If
         'if validation succeeds, show the userpassform, if not then msgbox
         If HashMatch = True Then
+            lblPass.ForeColor = Color.Black
+            lblUser.ForeColor = Color.Black
             UserPassForm.Show()
         Else
-            MsgBox("Sorry, Could Not Authenticate. Perhaps Your Password is Incorrect?", MsgBoxStyle.Exclamation)
+            MsgBox("Sorry, Could Not Authenticate You." + vbCrLf + "Perhaps Your Password is Incorrect?", MsgBoxStyle.Exclamation)
         End If
     End Sub
 
@@ -128,15 +116,8 @@ Public Class Login
         UsernameBox = ""
         PasswordBox = ""
         UsernameBox = txtUser.Text
-        'make sure that a username has been entered
-        If UsernameBox = "" Then
-            MsgBox("Please Enter A Username", MsgBoxStyle.Critical)
-            Exit Sub
-        End If
-        'make sure that a password has been entered
         PasswordBox = txtPass.Text
-        If PasswordBox = "" Then
-            MsgBox("Please Enter A Password", MsgBoxStyle.Critical)
+        If CheckBlanks() = False Then
             Exit Sub
         End If
         'checks if user already exists and then decrypt
@@ -157,8 +138,26 @@ Public Class Login
         're-initialise
         txtPass.Text = ""
         txtUser.Text = ""
+        lblPass.ForeColor = Color.Black
+        lblUser.ForeColor = Color.Black
     End Sub
-
+    Public Function CheckBlanks()
+        If UsernameBox = "" Then
+            If PasswordBox = "" Then
+                MsgBox("Please Enter A Username & Password", MsgBoxStyle.Exclamation, "Authentication Fault")
+                lblUser.ForeColor = Color.Red
+                lblPass.ForeColor = Color.Red
+                Exit Function
+            Else
+                MsgBox("Please Enter A Username", MsgBoxStyle.Exclamation, "Authentication Fault")
+                lblUser.ForeColor = Color.Red
+                Exit Function
+            End If
+            Return False
+        Else
+            Return True
+        End If
+    End Function
     Public Function ReadPassFile(ByVal FileName As String) As String
         Dim StoredHash As FileStream
         StoredHash = File.Open(FileName, FileMode.Open, FileAccess.Read)
