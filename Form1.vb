@@ -10,13 +10,13 @@ Public Class Login
     Dim UserFail As Boolean = True, HashMatch As Boolean
 
     Public Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Dim ChildCentLoc As String = "C:\Childrens Centre", UsersLoc As String = ChildCentLoc + "\Users"
-        Dim AdminUser As String = UsersLoc + "\admin"
+        Dim ChildCentLoc As String = "C:\Childrens Centre"
+        Dim AdminUser As String = UsersPath + "\admin"
         AcceptButton = cmdLogIn
         userpasssave = ""
         txtPass.Text = ""
         If My.Computer.FileSystem.DirectoryExists(AdminUser) = False Then
-            My.Computer.FileSystem.CreateDirectory("C:\Childrens Centre\Users\admin")
+            My.Computer.FileSystem.CreateDirectory(AdminUser)
             cmdLogIn.Visible = False
             cmdExit.Visible = False
             cmdAddUser.Visible = False
@@ -54,8 +54,8 @@ Public Class Login
         UsernameBox = UserPassForm.txtUser.Text
         PasswordBox = UserPassForm.txtPass.Text
         PassVeri = UserPassForm.txtPassVeri.Text
-        UserFoldPath = "C:\Childrens Centre\Users\" + UsernameBox
-        PassFilePath = "C:\Childrens Centre\Users\" + UsernameBox + "\EncryptedPassword.txt"
+        UserFoldPath = UsersPath + UsernameBox
+        PassFilePath = UsersPath + UsernameBox + "\EncryptedPassword.txt"
         'check dir's and confirm overwrites
         If My.Computer.FileSystem.DirectoryExists(UserFoldPath) = False Then
             If My.Computer.FileSystem.FileExists(PassFilePath) = True Then
@@ -119,7 +119,7 @@ Public Class Login
             Exit Sub
         End If
         'checks if user already exists and then decrypt
-        If My.Computer.FileSystem.DirectoryExists("C:\Childrens Centre\Users\" + UsernameBox) Then
+        If My.Computer.FileSystem.DirectoryExists(UsersPath + UsernameBox) Then
             HashMatch = MD5_Dec()
             If HashMatch = True Then
                 MsgBox("Congratulations! You Have Logged In!", MsgBoxStyle.Information)
@@ -164,7 +164,7 @@ Public Class Login
 
     Public Function MD5_Dec() As String 'decrypts MD5 hashes and checks them against the stored passwords
         Dim OldHash As String, TempPassVeri As String, NewHash As String, UserFoldPath As String
-        UserFoldPath = "C:\Childrens Centre\Users\" + UsernameBox
+        UserFoldPath = UsersPath + UsernameBox
         OldHash = My.Computer.FileSystem.ReadAllText(UserFoldPath + "\EncryptedPassword.txt")
         'create a temp file to store the users entered password to match it against the ine already on file
         TempPassVeri = My.Computer.FileSystem.GetTempFileName()
