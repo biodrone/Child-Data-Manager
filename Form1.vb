@@ -33,14 +33,38 @@ Public Class Login
         'check to see if the user is registered before they can add a new user
         UsernameBox = txtUser.Text
         PasswordBox = txtPass.Text
-        'inisialise HashMatch and decrypt the password
-        HashMatch = False
-        HashMatch = MD5_Dec()
+        'check for blank username or password fields
+        If UsernameBox = "" Then
+            If PasswordBox = "" Then
+                MsgBox("Please Enter A Username & Password", MsgBoxStyle.Exclamation, "Authentication Fault")
+                lblUser.ForeColor = Color.Red
+                lblPass.ForeColor = Color.Red
+                Exit Sub
+            Else
+                MsgBox("Please Enter A Username", MsgBoxStyle.Exclamation, "Authentication Fault")
+                lblUser.ForeColor = Color.Red
+                Exit Sub
+            End If
+        End If
+        'If PasswordBox = "" Then
+        '    MsgBox("Please Enter A Password", MsgBoxStyle.Exclamation, "Authentication Fault")
+        '    lblPass.ForeColor = Color.Red
+        '    Exit Sub
+        'End If
+        'check if the user exists
+        If My.Computer.FileSystem.DirectoryExists(UsersPath + UsernameBox) Then
+            'inisialise HashMatch and decrypt the password
+            HashMatch = False
+            HashMatch = MD5_Dec()
+        Else
+            MsgBox("Sorry, User Does Not Exist", MsgBoxStyle.Exclamation)
+            Exit Sub
+        End If
         'if validation succeeds, show the userpassform, if not then msgbox
         If HashMatch = True Then
             UserPassForm.Show()
         Else
-            MsgBox("Sorry, You Do Not Have Privileges To Do This!", MsgBoxStyle.Exclamation)
+            MsgBox("Sorry, Could Not Authenticate. Perhaps Your Password is Incorrect?", MsgBoxStyle.Exclamation)
         End If
     End Sub
 
@@ -127,7 +151,7 @@ Public Class Login
                 Exit Sub
             End If
         Else
-            MsgBox("Sorry, User Does Not Exist")
+            MsgBox("Sorry, User Does Not Exist", MsgBoxStyle.Exclamation)
             Exit Sub
         End If
         're-initialise
