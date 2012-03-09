@@ -114,6 +114,7 @@ Public Class OldChildDataEntry
         stream.Close()
         'write to the file
         WriteAllText("C:\Childrens Centre\Child Data\" + "Child" + ChildID + "\" + StrMonth + "\Progress.txt", RadChecked + vbCrLf + RawDate, False)
+        ChildIDCarryForward = ""
         MsgCount = MsgBox("Add More Data?", MsgBoxStyle.YesNo)
         If MsgCount = 6 Then
             MsgCount = MsgBox("Same Child ID?", MsgBoxStyle.YesNo)
@@ -186,40 +187,15 @@ Public Class OldChildDataEntry
         mskDate.Text = ""
     End Sub
     Private Sub cmdLogout_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdLogout.Click
+        ChildIDCarryForward = ""
         Me.Close()
         Login.Show()
     End Sub
 
     Private Sub cmdGraph_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGraph.Click
+        ChildIDCarryForward = ChildID
         DGraph.Show()
     End Sub
-
-    'Private Sub cmdLoad_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdLoad.Click
-    '    Dim LoadChID As String
-
-    '    LoadChID = InputBox("What Child's Data Do You Wish To View?", "ID?")
-    '    LoadDate = ""
-    '    LoadRad = ""
-    '    ReadInfoTxt(LoadChID)
-    '    lblLoadedHeading.Visible = True
-    '    lblLoadedUpdateDate.Text = "On: " + LoadDate
-    '    lblLoadedUpdateDate.Visible = True
-    '    lblLoadedChildID.Text = "Child: " + LoadChID + " Was:"
-    '    'find out which rad button should be checked, then check it
-    '    If LoadRad = "A" Then
-    '        lblLoadedProgressBox.Text = "AHEAD OF TARGET"
-    '        lblLoadedProgressBox.Visible = True
-    '        lblLoadedProgressBox.ForeColor = Color.DarkGreen
-    '    ElseIf LoadRad = "D" Then
-    '        lblLoadedProgressBox.Text = "AT RISK OF DELAY"
-    '        lblLoadedProgressBox.Visible = True
-    '        lblLoadedProgressBox.ForeColor = Color.Red
-    '    ElseIf LoadRad = "T" Then
-    '        lblLoadedProgressBox.Text = "ON TARGET"
-    '        lblLoadedProgressBox.Visible = True
-    '        lblLoadedProgressBox.ForeColor = Color.LightGreen
-    '    End If
-    'End Sub
 
     Private Sub ReadInfoTxt(ByRef Folder)
         Dim fileReader As StreamReader
@@ -241,5 +217,10 @@ Public Class OldChildDataEntry
             End Select
             LineCount = LineCount + 1
         End While
+    End Sub
+
+    Private Sub cmdBack_Click(sender As System.Object, e As System.EventArgs) Handles cmdBack.Click
+        MainForm.Show()
+        Me.Close()
     End Sub
 End Class

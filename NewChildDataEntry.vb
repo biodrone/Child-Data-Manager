@@ -32,7 +32,7 @@ Public Class NewChildDataEntry
         ID = mskChildID.Text
         Sex = txtSex.Text
         DOB = mskdob.Text
-        While FailCheck = True
+        While FailCheck = True 'if a field is blank, FailCheck is set to False, breaking the while loop
             'check ID
             If ID.Length = 0 Then
                 MsgBox("Please Enter a Child ID", MsgBoxStyle.Information)
@@ -60,8 +60,7 @@ Public Class NewChildDataEntry
             'if anything failed, exit
             If FailCheck = False Then
                 Exit Sub
-            Else
-                'kill the while loop
+            Else 'if nothing failed, break the while loop and move on
                 FailCheck = False
             End If
         End While

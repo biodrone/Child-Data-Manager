@@ -7,14 +7,21 @@ Public Class DGraph
 
     Private Sub DGraph_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Dim intProg As Integer, intMonth As Integer
-        ChildID = InputBox("What Child Do You Wish To View?", "Child Select")
-        Dim ChildDir As String = "C:\Childrens Centre\Child Data\Child" + ChildID
+        If ChildIDCarryForward = "" Then
+            ChildID = InputBox("What Child Do You Wish To View?", "Child Select")
+        Else
+            ChildID = ChildIDCarryForward
+        End If
+
+        Dim ChildDir As String = ChildDataLoc + "\Child" + ChildID
         If DirectoryExists(ChildDir) = False Then
             MsgBox("Sorry, That Child ID Does Not Exist", MsgBoxStyle.Critical, "Error")
             Exit Sub
-            Me.Hide()
+            Me.Close()
+        Else
+            MainForm.Close()
         End If
-        MainForm.Close()
+
         crtChildX.Text = "Child " + ChildID
         DBProgress.Clear()
         DBProgress.Columns.Add("Progress", GetType(Integer))

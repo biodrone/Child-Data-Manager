@@ -38,6 +38,7 @@ Partial Class OldChildDataEntry
         Me.lblLoadedHeading = New System.Windows.Forms.Label()
         Me.lblChildID = New System.Windows.Forms.Label()
         Me.lblInfoHeader = New System.Windows.Forms.Label()
+        Me.cmdBack = New System.Windows.Forms.Button()
         Me.GBProgress.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -107,7 +108,7 @@ Partial Class OldChildDataEntry
         '
         'cmdGraph
         '
-        Me.cmdGraph.Location = New System.Drawing.Point(5, 320)
+        Me.cmdGraph.Location = New System.Drawing.Point(291, 320)
         Me.cmdGraph.Name = "cmdGraph"
         Me.cmdGraph.Size = New System.Drawing.Size(137, 40)
         Me.cmdGraph.TabIndex = 30
@@ -116,7 +117,7 @@ Partial Class OldChildDataEntry
         '
         'cmdLogout
         '
-        Me.cmdLogout.Location = New System.Drawing.Point(291, 320)
+        Me.cmdLogout.Location = New System.Drawing.Point(434, 320)
         Me.cmdLogout.Name = "cmdLogout"
         Me.cmdLogout.Size = New System.Drawing.Size(137, 40)
         Me.cmdLogout.TabIndex = 29
@@ -183,11 +184,21 @@ Partial Class OldChildDataEntry
         Me.lblInfoHeader.Text = "Add New Data"
         Me.lblInfoHeader.Visible = False
         '
+        'cmdBack
+        '
+        Me.cmdBack.Location = New System.Drawing.Point(5, 320)
+        Me.cmdBack.Name = "cmdBack"
+        Me.cmdBack.Size = New System.Drawing.Size(137, 40)
+        Me.cmdBack.TabIndex = 39
+        Me.cmdBack.Text = "Back"
+        Me.cmdBack.UseVisualStyleBackColor = True
+        '
         'OldChildDataEntry
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(480, 372)
+        Me.ClientSize = New System.Drawing.Size(580, 369)
+        Me.Controls.Add(Me.cmdBack)
         Me.Controls.Add(Me.lblInfoHeader)
         Me.Controls.Add(Me.lblChildID)
         Me.Controls.Add(Me.lblLoadedSex)
@@ -222,4 +233,5 @@ Partial Class OldChildDataEntry
     Friend WithEvents lblLoadedHeading As System.Windows.Forms.Label
     Friend WithEvents lblChildID As System.Windows.Forms.Label
     Friend WithEvents lblInfoHeader As System.Windows.Forms.Label
+    Friend WithEvents cmdBack As System.Windows.Forms.Button
 End Class
