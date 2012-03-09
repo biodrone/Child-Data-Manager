@@ -32,7 +32,6 @@ Partial Class Login
         Me.txtPass = New System.Windows.Forms.TextBox()
         Me.lblUser = New System.Windows.Forms.Label()
         Me.lblPass = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'lbl1
@@ -125,15 +124,6 @@ Partial Class Login
         Me.lblPass.TabIndex = 14
         Me.lblPass.Text = "Password:"
         '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(118, 127)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 15
-        Me.Button1.Text = "Bypass"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
         'Login
         '
         Me.AcceptButton = Me.cmdLogIn
@@ -141,7 +131,6 @@ Partial Class Login
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.cmdExit
         Me.ClientSize = New System.Drawing.Size(354, 166)
-        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.cmdFirstUser)
         Me.Controls.Add(Me.lblPass)
         Me.Controls.Add(Me.lblUser)
@@ -169,6 +158,5 @@ Partial Class Login
     Friend WithEvents txtPass As System.Windows.Forms.TextBox
     Friend WithEvents lblUser As System.Windows.Forms.Label
     Friend WithEvents lblPass As System.Windows.Forms.Label
-    Friend WithEvents Button1 As System.Windows.Forms.Button
 
 End Class
