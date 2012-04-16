@@ -39,6 +39,11 @@ Public Class NewChildDataEntry
                 lblChildID.ForeColor = Color.Red
                 FailCheck = False
             End If
+            If IsNumeric(ID) = False Then
+                MsgBox("Please Enter a Valid Child ID", MsgBoxStyle.Information)
+                lblChildID.ForeColor = Color.Red
+                FailCheck = False
+            End If
             'check sex
             If Sex <> "M" Then
                 If Sex <> "F" Then
@@ -193,13 +198,11 @@ Public Class NewChildDataEntry
     End Function
 
     Private Sub cmdLogout_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdLogout.Click
-        Me.Close()
+        Close()
         Login.Show()
     End Sub
 
     Private Sub cmdGraph_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGraph.Click
         DGraph.Show()
     End Sub
-
-    
 End Class
