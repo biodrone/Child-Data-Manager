@@ -211,7 +211,7 @@ Partial Class OldChildDataEntry
         Me.Controls.Add(Me.mskDate)
         Me.Controls.Add(Me.GBProgress)
         Me.Name = "OldChildDataEntry"
-        Me.Text = "OldChildDataEntry"
+        Me.Text = "Add A Report"
         Me.GBProgress.ResumeLayout(False)
         Me.GBProgress.PerformLayout()
         Me.ResumeLayout(False)
