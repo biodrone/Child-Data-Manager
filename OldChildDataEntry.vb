@@ -220,7 +220,9 @@ Public Class OldChildDataEntry
     End Sub
 
     Private Sub cmdBack_Click(sender As System.Object, e As System.EventArgs) Handles cmdBack.Click
-        MainForm.Show()
+        ChildID = ""
+        ChildIDCarryForward = ""
         Me.Close()
+        MainForm.Show()
     End Sub
 End Class

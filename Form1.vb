@@ -184,7 +184,7 @@ Public Class Login
         Dim OldHash As String, TempPassVeri As String, NewHash As String, UserFoldPath As String
         UserFoldPath = UsersPath + UsernameBox
         OldHash = My.Computer.FileSystem.ReadAllText(UserFoldPath + "\EncryptedPassword.txt")
-        'create a temp file to store the users entered password to match it against the ine already on file
+        'create a temp file to store the users entered password to match it against the one already on file
         TempPassVeri = My.Computer.FileSystem.GetTempFileName()
         My.Computer.FileSystem.WriteAllText(TempPassVeri, PasswordBox, False)
         NewHash = MD5_Enc(TempPassVeri)
