@@ -54,7 +54,7 @@ Public Class OldChildDataEntry
         lblDOB.Text = "D.o.B: " + LoadDOB
 
         AcceptButton = cmdNext
-        MainForm.Hide()
+        MainForm.Close()
     End Sub
 
     Private Sub mskDate_MaskInputRejected(ByVal sender As Object, ByVal e As MaskInputRejectedEventArgs) Handles mskDate.MaskInputRejected
@@ -76,7 +76,7 @@ Public Class OldChildDataEntry
         Dim stream As FileStream
 
         'check for a blank date
-        If mskDate.Text.Length = 0 Then
+        If mskDate.Text = "  /  /" Then
             MsgBox("Please Enter A Date")
             Exit Sub
         End If
