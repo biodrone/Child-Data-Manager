@@ -53,20 +53,6 @@ Public Class OldChildDataEntry
         lblDOB.Visible = True
         lblDOB.Text = "D.o.B: " + LoadDOB
 
-        'If LoadRad = "A" Then
-        '    lblLoadedSex.Text = "AHEAD OF TARGET"
-        '    lblLoadedSex.Visible = True
-        '    lblLoadedSex.ForeColor = Color.DarkGreen
-        'ElseIf LoadRad = "D" Then
-        '    lblLoadedSex.Text = "AT RISK OF DELAY"
-
-        '    lblLoadedSex.ForeColor = Color.Red
-        'ElseIf LoadRad = "T" Then
-        '    lblLoadedSex.Text = "ON TARGET"
-        '    lblLoadedSex.Visible = True
-        '    lblLoadedSex.ForeColor = Color.LightGreen
-        'End If
-
         AcceptButton = cmdNext
         MainForm.Hide()
     End Sub
@@ -89,6 +75,11 @@ Public Class OldChildDataEntry
         Dim MsgCount As Integer
         Dim stream As FileStream
 
+        'check for a blank date
+        If mskDate.Text.Length = 0 Then
+            MsgBox("Please Enter A Date")
+            Exit Sub
+        End If
         RawDate = mskDate.Text
         strDate = RawDate
         DateStripper(strDate)
@@ -124,6 +115,7 @@ Public Class OldChildDataEntry
                 ChildID = InputBox("New Child ID?", "New ID?")
             End If
         Else
+            Me.Close()
             MainForm.Show()
         End If
     End Sub
