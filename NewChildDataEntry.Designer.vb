@@ -27,7 +27,6 @@ Partial Class NewChildDataEntry
         Me.mskChildID = New System.Windows.Forms.MaskedTextBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.cmdNext = New System.Windows.Forms.Button()
-        Me.cmdLoad = New System.Windows.Forms.Button()
         Me.lblLoadedHeading = New System.Windows.Forms.Label()
         Me.lblLoadedChild = New System.Windows.Forms.Label()
         Me.lblLoadedDate = New System.Windows.Forms.Label()
@@ -43,7 +42,6 @@ Partial Class NewChildDataEntry
         Me.lblLoadedSex = New System.Windows.Forms.Label()
         Me.lblSex = New System.Windows.Forms.Label()
         Me.txtSex = New System.Windows.Forms.TextBox()
-        Me.cmdGraph = New System.Windows.Forms.Button()
         Me.lblChIdCarryForward = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
@@ -70,17 +68,8 @@ Partial Class NewChildDataEntry
         Me.cmdNext.Name = "cmdNext"
         Me.cmdNext.Size = New System.Drawing.Size(137, 40)
         Me.cmdNext.TabIndex = 10
-        Me.cmdNext.Text = "Next"
+        Me.cmdNext.Text = "Save"
         Me.cmdNext.UseVisualStyleBackColor = True
-        '
-        'cmdLoad
-        '
-        Me.cmdLoad.Location = New System.Drawing.Point(155, 179)
-        Me.cmdLoad.Name = "cmdLoad"
-        Me.cmdLoad.Size = New System.Drawing.Size(137, 40)
-        Me.cmdLoad.TabIndex = 11
-        Me.cmdLoad.Text = "Load"
-        Me.cmdLoad.UseVisualStyleBackColor = True
         '
         'lblLoadedHeading
         '
@@ -217,15 +206,6 @@ Partial Class NewChildDataEntry
         Me.txtSex.Size = New System.Drawing.Size(100, 20)
         Me.txtSex.TabIndex = 26
         '
-        'cmdGraph
-        '
-        Me.cmdGraph.Location = New System.Drawing.Point(12, 179)
-        Me.cmdGraph.Name = "cmdGraph"
-        Me.cmdGraph.Size = New System.Drawing.Size(137, 40)
-        Me.cmdGraph.TabIndex = 27
-        Me.cmdGraph.Text = "Graph"
-        Me.cmdGraph.UseVisualStyleBackColor = True
-        '
         'lblChIdCarryForward
         '
         Me.lblChIdCarryForward.AutoSize = True
@@ -242,7 +222,6 @@ Partial Class NewChildDataEntry
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(594, 232)
         Me.Controls.Add(Me.lblChIdCarryForward)
-        Me.Controls.Add(Me.cmdGraph)
         Me.Controls.Add(Me.txtSex)
         Me.Controls.Add(Me.lblSex)
         Me.Controls.Add(Me.lblLoadedSex)
@@ -258,7 +237,6 @@ Partial Class NewChildDataEntry
         Me.Controls.Add(Me.lblLoadedDate)
         Me.Controls.Add(Me.lblLoadedChild)
         Me.Controls.Add(Me.lblLoadedHeading)
-        Me.Controls.Add(Me.cmdLoad)
         Me.Controls.Add(Me.cmdNext)
         Me.Controls.Add(Me.mskChildID)
         Me.Controls.Add(Me.lblChildID)
@@ -272,7 +250,6 @@ Partial Class NewChildDataEntry
     Friend WithEvents mskChildID As System.Windows.Forms.MaskedTextBox
     Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
     Friend WithEvents cmdNext As System.Windows.Forms.Button
-    Friend WithEvents cmdLoad As System.Windows.Forms.Button
     Friend WithEvents lblLoadedHeading As System.Windows.Forms.Label
     Friend WithEvents lblLoadedChild As System.Windows.Forms.Label
     Friend WithEvents lblLoadedDate As System.Windows.Forms.Label
@@ -288,6 +265,5 @@ Partial Class NewChildDataEntry
     Friend WithEvents lblLoadedSex As System.Windows.Forms.Label
     Friend WithEvents lblSex As System.Windows.Forms.Label
     Friend WithEvents txtSex As System.Windows.Forms.TextBox
-    Friend WithEvents cmdGraph As System.Windows.Forms.Button
     Friend WithEvents lblChIdCarryForward As System.Windows.Forms.Label
 End Class

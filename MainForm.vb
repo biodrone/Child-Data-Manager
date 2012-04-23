@@ -7,7 +7,7 @@ Public Class MainForm
 
     Private Sub AddOld(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAddOld.Click
         OldChildDataEntry.Show()
-        'Me.Close()
+        Me.Close()
     End Sub
 
     Private Sub AddNew(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAddNew.Click
@@ -17,7 +17,7 @@ Public Class MainForm
 
     Private Sub Graph(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGraph.Click
         DGraph.Show()
-        'Me.Close()
+        Me.Close()
     End Sub
 
     Private Sub Archive(sender As System.Object, e As System.EventArgs) Handles cmdArchive.Click
@@ -36,17 +36,18 @@ Public Class MainForm
                     Dim CopyFold As String = ArchFold + Child.Remove(0, 31)
                     CreateDirectory(CopyFold)
                     MoveDirectory(Child, CopyFold)
-                    'Try
-                    '    MoveFile(CopyFold + "\Info.txt", Child + "\Info.txt")
-                    'Catch ex As IO.IOException
-                    '    MsgBox("Child Information File Not Found", MsgBoxStyle.Critical)
-                    'End Try
                     i = i + 1
                 Next
             Catch ex As IO.IOException
                 MsgBox("A filesystem error occurred, please contact your administrator", MsgBoxStyle.Critical, "Error!")
             End Try
-            'NEXT, CREATE A BUTTON THAT DELETES EACH CHILD'S ACCOUNT AT YEARS END TO MAKE WAY FOR THE NEW ROUND OF KIDS
         End If
+    End Sub
+
+    Private Sub cmdHelp_Click(sender As System.Object, e As System.EventArgs) Handles cmdHelp.Click
+        Dim doc As String
+
+        doc = "C:\Help.docx"
+        Process.Start("WinWord", doc)
     End Sub
 End Class

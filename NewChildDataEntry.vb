@@ -123,7 +123,7 @@ Public Class NewChildDataEntry
         lblSex.ForeColor = Color.Black
     End Sub
 
-    Private Sub cmdLoad_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdLoad.Click
+    Private Sub cmdLoad_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         LoadChildData()
     End Sub
 
@@ -200,9 +200,5 @@ Public Class NewChildDataEntry
     Private Sub cmdLogout_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdLogout.Click
         Close()
         Login.Show()
-    End Sub
-
-    Private Sub cmdGraph_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGraph.Click
-        DGraph.Show()
     End Sub
 End Class

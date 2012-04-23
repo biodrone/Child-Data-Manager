@@ -134,4 +134,9 @@ Public Class DGraph
                 crtChildX.Series(0).Color = Color.Orange
         End Select
     End Sub
+
+    Private Sub cmdCancel_Click(sender As System.Object, e As System.EventArgs) Handles cmdCancel.Click
+        Me.Close()
+        MainForm.Show()
+    End Sub
 End Class
