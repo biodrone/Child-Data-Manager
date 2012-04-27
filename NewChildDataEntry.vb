@@ -7,7 +7,6 @@ Public Class NewChildDataEntry
     Private Sub NewChildDataEntry_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Me.Load
         Me.ToolTip1.IsBalloon = False
         Me.mskdob.Mask = "00/00/0000"
-        lblLoadedHeading.Hide()
         AcceptButton = cmdNext
     End Sub
 
@@ -121,28 +120,6 @@ Public Class NewChildDataEntry
         lblChildID.ForeColor = Color.Black
         Label1.ForeColor = Color.Black
         lblSex.ForeColor = Color.Black
-    End Sub
-
-    Private Sub cmdLoad_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        LoadChildData()
-    End Sub
-
-    Public Sub LoadChildData()
-        Dim LoadID As String, LoadDOB As String, LoadSex As String
-
-        LoadID = InputBox("What Is The ID Of The Child You Would Like To See?", "ID?")
-        LoadSex = ""
-        LoadDOB = ""
-        'load all data
-        ReadInfoTxt(LoadID, LoadSex, LoadDOB)
-        'set all of the Loaded Data txtbxs to visible = true and put in the leading text
-        lblLoadedHeading.Visible = True
-        lblLoadedChildID.Text = "This Data is for Child: " + LoadID
-        lblLoadedChildID.Visible = True
-        lblLoadedSex.Text = "The Sex of the Child is:" + LoadSex
-        lblLoadedSex.Visible = True
-        lblDOB.Text = "The Child's D.o.B is: " + LoadDOB
-        lblDOB.Visible = True
     End Sub
 
     Private Sub ReadInfoTxt(ByRef LoadID, ByRef LoadSex, ByRef LoadDOB)
