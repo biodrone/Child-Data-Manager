@@ -102,11 +102,12 @@ Public Class NewChildDataEntry
         MsgCount = MsgBox("Do You Wish To Add Data For This Child?", MsgBoxStyle.OkCancel, "Add Data For This Child?")
         If MsgCount = 1 Then
             ChildIDCarryForward = ChildID
+            Me.Close()
             OldChildDataEntry.Show()
         Else
             ChildIDCarryForward = ""
-            MainForm.Show()
             Me.Close()
+            MainForm.Show()
         End If
         InitDataEntry()
     End Sub
