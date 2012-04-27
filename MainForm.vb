@@ -46,8 +46,9 @@ Public Class MainForm
 
     Private Sub cmdHelp_Click(sender As System.Object, e As System.EventArgs) Handles cmdHelp.Click
         Dim doc As String
-
+        'set location of the help document
         doc = "C:\Help.docx"
+        'start Word with this document
         Process.Start("WinWord", doc)
     End Sub
 End Class
