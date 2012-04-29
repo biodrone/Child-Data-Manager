@@ -1,9 +1,9 @@
 ﻿Imports System.IO
 Imports System.Security.Cryptography
 Imports Microsoft.VisualBasic.FileIO.FileSystem
+
 Public Class OldChildDataEntry
-    Dim StrMonth As String, DateDir As String, RadChecked As String, ChildID As String, LoadRad As String, LoadDOB As String
-    Dim LoadSex As String
+    Dim StrMonth As String, DateDir As String, RadChecked As String, ChildID As String, LoadDOB As String, LoadSex As String
     Dim ArchFold As String, ChFold As String
 
     Public Sub OldChildDataEntry_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Me.Load
