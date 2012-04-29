@@ -109,13 +109,14 @@ Public Class OldChildDataEntry
         stream.Close()
         'write to the file
         WriteAllText("C:\Childrens Centre\Child Data\" + "Child" + ChildID + "\" + StrMonth + "\Progress.txt", RadChecked + vbCrLf + RawDate, False)
-        ChildIDCarryForward = ""
+
         MsgCount = MsgBox("Add More Data?", MsgBoxStyle.YesNo)
         If MsgCount = 6 Then
             MsgCount = MsgBox("Same Child ID?", MsgBoxStyle.YesNo)
             If MsgCount = 6 Then
-                InitDataFields()
+                mskDate.Text = ""
             Else
+                InitDataFields()
                 ChildID = InputBox("New Child ID?", "New ID?")
             End If
         Else
@@ -136,7 +137,9 @@ Public Class OldChildDataEntry
     End Function
 
     Function RadButtonCheck()
+        'initialise RadCheck
         RadChecked = ""
+        'check which radio button has been selected
         Select Case True
             Case radAhead.Checked
                 RadChecked = "A"
@@ -145,6 +148,7 @@ Public Class OldChildDataEntry
             Case radTarget.Checked
                 RadChecked = "T"
         End Select
+        'return this information
         Return RadChecked
     End Function
 
@@ -181,6 +185,7 @@ Public Class OldChildDataEntry
 
     Private Sub InitDataFields()
         mskDate.Text = ""
+        ChildIDCarryForward = ""
     End Sub
     Private Sub cmdLogout_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdLogout.Click
         ChildIDCarryForward = ""
@@ -216,6 +221,7 @@ Public Class OldChildDataEntry
     End Sub
 
     Private Sub cmdBack_Click(sender As System.Object, e As System.EventArgs) Handles cmdBack.Click
+        'initialise variables so that no data is left over on other run-throughs
         ChildID = ""
         ChildIDCarryForward = ""
         Me.Close()
