@@ -25,13 +25,12 @@ Public Class MainForm
     Private Sub Archive(sender As System.Object, e As System.EventArgs) Handles cmdArchive.Click
         Dim MsgCount As Integer
         Dim ArchFold As String = "C:\Childrens Centre\Archive\" + Year(Date.Today).ToString + "\"
-        Dim ChildFold As String = "C:\Childrens Centre\Child Data\"
 
         'confirm the archiving
         MsgCount = MsgBox("Are you sure you want to archive? (This will store data elsewhere and require manual configuration to load this data)", MsgBoxStyle.YesNo, "Confirm Archive")
         'if yes was clicked
         If MsgCount = 6 Then
-            Dim ChildData = From Child In System.IO.Directory.EnumerateDirectories(ChildFold)
+            Dim ChildData = From Child In System.IO.Directory.EnumerateDirectories(ChildDataLoc)
             Dim i As Integer = 1
 
             Try
