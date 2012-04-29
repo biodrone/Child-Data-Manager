@@ -1,7 +1,8 @@
 ﻿Imports System.IO
 Imports System.Security.Cryptography
+
 Public Class NewChildDataEntry
-    Dim ChildID As String, MonthDir As String, DateDir As String, RawDOB As String, StrMonth As String
+    Dim ChildID As String, DateDir As String, RawDOB As String, StrMonth As String
     Dim stream As FileStream
 
     Private Sub NewChildDataEntry_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -120,28 +121,6 @@ Public Class NewChildDataEntry
         lblChildID.ForeColor = Color.Black
         Label1.ForeColor = Color.Black
         lblSex.ForeColor = Color.Black
-    End Sub
-
-    Private Sub ReadInfoTxt(ByRef LoadID, ByRef LoadSex, ByRef LoadDOB)
-        Dim fileReader As System.IO.StreamReader
-        Dim LineCount As Integer
-
-        'point the streamreader to the right file
-        fileReader =
-            My.Computer.FileSystem.OpenTextFileReader("C:\Childrens Centre\Child Data\" + "Child" + LoadID + "\Info.txt")
-        'initialise the line counter
-        LineCount = 1
-        'While the streamreader isn't at the end of the file, the variable = the line
-        While fileReader.EndOfStream = False
-            If LineCount = 1 Then
-                LoadID = fileReader.ReadLine()
-            ElseIf LineCount = 2 Then
-                LoadSex = fileReader.ReadLine()
-            ElseIf LineCount = 3 Then
-                LoadDOB = fileReader.ReadLine()
-            End If
-            LineCount = LineCount + 1
-        End While
     End Sub
 
     Public Function MonthConvInt2Str(ByRef SelCase As String, ByRef StrMonth As String)

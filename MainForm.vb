@@ -24,7 +24,6 @@ Public Class MainForm
 
     Private Sub Archive(sender As System.Object, e As System.EventArgs) Handles cmdArchive.Click
         Dim MsgCount As Integer
-        Dim ArchFold As String = "C:\Childrens Centre\Archive\" + Year(Date.Today).ToString + "\"
 
         'confirm the archiving
         MsgCount = MsgBox("Are you sure you want to archive? (This will store data elsewhere and require manual configuration to load this data)", MsgBoxStyle.YesNo, "Confirm Archive")
