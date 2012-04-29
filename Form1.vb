@@ -10,14 +10,19 @@ Public Class Login
         Dim AdminUser As String = UsersPath + "\admin"
 
         AcceptButton = cmdLogIn
+        'initialise username and password boxes
+        txtUser.Text = ""
         txtPass.Text = ""
+        'check for any existing users on the system
         If My.Computer.FileSystem.DirectoryExists(AdminUser) = False Then
             My.Computer.FileSystem.CreateDirectory(AdminUser)
+            'if there are no users, show the first user creation button
             cmdLogIn.Visible = False
             cmdExit.Visible = False
             cmdAddUser.Visible = False
             cmdFirstUser.Visible = True
         Else
+            'if there are users created, show all buttons needed for login
             cmdLogIn.Visible = True
             cmdExit.Visible = True
             cmdAddUser.Visible = True
@@ -55,10 +60,11 @@ Public Class Login
     Public Sub AddUser()
         Dim MsgCount As Integer
         Dim PassFilePath As String, PasshashEnc As String, UserFoldPath As String, PassVeri As String
-        'set all variables
+        'set variables to the input boxes from the form
         UsernameBox = UserPassForm.txtUser.Text
         PasswordBox = UserPassForm.txtPass.Text
         PassVeri = UserPassForm.txtPassVeri.Text
+        'set folder paths for file read/write
         UserFoldPath = UsersPath + UsernameBox
         PassFilePath = UsersPath + UsernameBox + "\EncryptedPassword.txt"
         'check dir's and confirm overwrites
@@ -66,9 +72,11 @@ Public Class Login
             If My.Computer.FileSystem.FileExists(PassFilePath) = True Then
                 'checks if the user wants to overwrite their password
                 MsgCount = MsgBox("Overwrite Password?", MsgBoxStyle.YesNo, "Overwrite?")
+                'checks for a yes
                 If MsgCount = 6 Then
+                    'delete password file
                     Kill(PassFilePath)
-                    If PasswordBox = PassVeri Then
+                    If PasswordBox = PassVeri Then 'checks that the passwords are the same
                         My.Computer.FileSystem.CreateDirectory(UserFoldPath)
                         My.Computer.FileSystem.WriteAllText(PassFilePath, PasswordBox, False)
                         PasshashEnc = MD5_Enc(PassFilePath)
@@ -90,7 +98,6 @@ Public Class Login
         Else
             MsgBox("This User Already Exists", MsgBoxStyle.Information)
         End If
-        'easy way to create another user
         MsgCount = MsgBox("Create Another User?", MsgBoxStyle.YesNoCancel)
         If MsgCount = 7 Then
             Me.Show()
@@ -99,7 +106,7 @@ Public Class Login
         ElseIf MsgCount = 2 Then
             Me.Show()
         End If
-        'reset visibilities
+        'set visibilities for users present on the system
         cmdLogIn.Visible = True
         cmdExit.Visible = True
         cmdAddUser.Visible = True
@@ -108,11 +115,12 @@ Public Class Login
 
     Public Sub cmdLogIn_Click() Handles cmdLogIn.Click
         Dim MsgCount As Integer
-        'initialise and set vars
+        'initialise and set vars to textboxes
         UsernameBox = ""
         PasswordBox = ""
         UsernameBox = txtUser.Text
         PasswordBox = txtPass.Text
+        'check for any blank textboxes
         If CheckBlanks() = False Then
             Exit Sub
         End If
@@ -131,13 +139,15 @@ Public Class Login
             MsgBox("Sorry, User Does Not Exist", MsgBoxStyle.Exclamation)
             Exit Sub
         End If
-        're-initialise
+        're-initialise textboxes and colours in case they were changed in the sub
         txtPass.Text = ""
         txtUser.Text = ""
         lblPass.ForeColor = Color.Black
         lblUser.ForeColor = Color.Black
     End Sub
+
     Public Function CheckBlanks()
+        'chekcs for any blank textboxes in the form
         If UsernameBox = "" Then
             If PasswordBox = "" Then
                 MsgBox("Please Enter A Username & Password", MsgBoxStyle.Exclamation, "Authentication Fault")
@@ -152,11 +162,6 @@ Public Class Login
             Return True
         End If
     End Function
-    Public Function ReadPassFile(ByVal FileName As String) As String
-        Dim StoredHash As FileStream
-        StoredHash = File.Open(FileName, FileMode.Open, FileAccess.Read)
-        Return StoredHash.ToString
-    End Function
 
     Public Function MD5_Enc(ByVal FileName As String) As String 'MD5 hasher
         Dim md5 As New MD5CryptoServiceProvider
@@ -164,27 +169,32 @@ Public Class Login
         Dim hash() As Byte
 
         Try
+            'open the file with the saved password
             passpath = File.Open(FileName, FileMode.Open, FileAccess.ReadWrite)
+            'compute the hash
             hash = md5.ComputeHash(passpath)
             passpath.Close()
             md5.Clear()
+            'remove the dashes from the hash and return it
             Return BitConverter.ToString(hash).Replace("-", "").ToUpper
         Catch
             MsgBox("An Error Occurred!", MsgBoxStyle.Critical)
             Return Nothing
         End Try
-
     End Function
 
     Public Function MD5_Dec() As String 'decrypts MD5 hashes and checks them against the stored passwords
         Dim OldHash As String, TempPassVeri As String, NewHash As String, UserFoldPath As String
         UserFoldPath = UsersPath + UsernameBox
         OldHash = My.Computer.FileSystem.ReadAllText(UserFoldPath + "\EncryptedPassword.txt")
-        'create a temp file to store the users entered password to match it against the one already on file
+        'create a temp file to store the users login password to match it against the one already on file
         TempPassVeri = My.Computer.FileSystem.GetTempFileName()
+        'write the login password to the temp file
         My.Computer.FileSystem.WriteAllText(TempPassVeri, PasswordBox, False)
         NewHash = MD5_Enc(TempPassVeri)
+        'delete the temp file
         Kill(TempPassVeri)
+        'check the hashes against eachother
         If NewHash = OldHash Then
             Return True
         Else
@@ -192,12 +202,15 @@ Public Class Login
         End If
     End Function
 
+    'only appears if there are no users on the system
     Private Sub CreateFirstUser(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdFirstUser.Click
+        'open the user creation screen
         UserPassForm.Show()
     End Sub
 
     Private Sub cmdExit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdExit.Click
-        Close()
+        'exit the system
+        Me.Close()
     End Sub
 End Class
 
