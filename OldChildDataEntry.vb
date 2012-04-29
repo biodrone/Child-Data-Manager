@@ -7,12 +7,16 @@ Public Class OldChildDataEntry
     Dim ArchFold As String, ChFold As String
 
     Public Sub OldChildDataEntry_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Me.Load
+        Dim MsgCount As Integer
+
+        AcceptButton = cmdNext
         'initialise variables
         Me.ToolTip1.IsBalloon = False
         Me.mskDate.Mask = "00/00/0000"
         mskDate.ValidatingType = GetType(System.DateTime)
+        'add radio buttons to the group controller
         RadioGroupController()
-        'set visibilities
+        'set visibilities to true
         lblChildID.Visible = True
         lblLoadedHeading.Visible = True
         lblLoadedSex.Visible = True
@@ -24,22 +28,23 @@ Public Class OldChildDataEntry
             ChildID = ChildIDCarryForward
         End If
 
+        'set the folders
         ArchFold = "C:\Childrens Centre\Archive\" + "Child" + ChildID.ToString + "\"
         ChFold = "C:\Childrens Centre\Child Data\" + "Child" + ChildID.ToString + "\"
 
         If DirectoryExists(ChFold) = False Then
+            If DirectoryExists(ArchFold) = True Then
+                MsgCount = MsgBox("Child Detected in Archive Folder. Use This Data?", MsgBoxStyle.YesNo)
+                If MsgCount = 6 Then
+                    ReadInfoTxt(ArchFold)
+                End If
+            End If
             MsgBox("Sorry, This Child Doesn't Exist!", MsgBoxStyle.Critical, "No Child Of This ID")
             MainForm.Show()
-            'Exit Sub
             Me.Close()
         End If
 
-        If (DirectoryExists(ChFold)) Then
-            ReadInfoTxt(ChFold)
-        Else
-            ReadInfoTxt(ArchFold)
-        End If
-
+        'set visibilities to true and set all labels to display the child's information
         lblLoadedHeading.Visible = True
         lblChildID.Visible = True
         lblChildID.Text = "Child: " + ChildID
@@ -53,7 +58,6 @@ Public Class OldChildDataEntry
         lblDOB.Visible = True
         lblDOB.Text = "D.o.B: " + LoadDOB
 
-        AcceptButton = cmdNext
         MainForm.Close()
     End Sub
 
