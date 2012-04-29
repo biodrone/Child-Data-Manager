@@ -7,6 +7,7 @@ Public Class DGraph
 
     Private Sub DGraph_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Dim intProg As Integer, intMonth As Integer
+
         If ChildIDCarryForward = "" Then
             ChildID = InputBox("What Child Do You Wish To View?", "Child Select")
         Else
@@ -21,11 +22,13 @@ Public Class DGraph
         Else
             MainForm.Close()
         End If
-
+        'name the chart
         crtChildX.Text = "Child " + ChildID
+        'set up the data table
         DBProgress.Clear()
         DBProgress.Columns.Add("Progress", GetType(Integer))
         DBProgress.Columns.Add("Month", GetType(Integer))
+
         Dim Months = From FolderChID In System.IO.Directory.EnumerateDirectories(ChildDir)
         'begin adding data into the DBProgress data table
         For Each FolderChID In Months
@@ -79,7 +82,7 @@ Public Class DGraph
             .AxisX.Title = "Month (As Numeral)"
             .AxisY.Title = "Progress"
         End With
-        'do the data binding and set other peoperties
+        'do the data binding and set other properties
         With crtChildX.Series(0)
             .Points.DataBind(DBProgress.CreateDataReader, "Month", "Progress", Nothing)
             .ChartType = DataVisualization.Charting.SeriesChartType.StackedColumn
@@ -91,19 +94,26 @@ Public Class DGraph
         AddtocomboColour()
     End Sub
 
-    Private Sub cmdPrint_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdPrint.Click
+    Private Sub Print(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdPrint.Click
         Dim formprinting As New PowerPacks.Printing.PrintForm
+        'make the combo box and button invisible so that they don't print
         cmdPrint.Visible = False
         comboColour.Visible = False
+        'print the document
         formprinting.DocumentName = "Child's Graph"
         formprinting.Form = Me
         formprinting.PrintAction = PrintAction.PrintToPrinter
         formprinting.Print()
+        'make combo box and button visible again
+        cmdPrint.Visible = True
+        comboColour.Visible = True
+
         MainForm.Show()
         Me.Close()
     End Sub
 
     Public Sub AddtocomboColour()
+        'add colour selections to the colour change combo box
         comboColour.Items.Add("Blue")
         comboColour.Items.Add("Red")
         comboColour.Items.Add("Green")
@@ -115,6 +125,7 @@ Public Class DGraph
     End Sub
 
     Private Sub comboColour_SelectionChangeCommitted(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles comboColour.SelectionChangeCommitted
+        'checks when the colour combo box is changed and changes the colour
         Select Case comboColour.SelectedItem.ToString
             Case "Blue"
                 crtChildX.Series(0).Color = Color.Blue
