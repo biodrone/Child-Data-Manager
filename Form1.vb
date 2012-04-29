@@ -30,7 +30,7 @@ Public Class Login
         End If
     End Sub
 
-    Public Sub cmdAddUser_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAddUser.Click
+    Public Sub AddUser_Button(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAddUser.Click
         'check to see if the user is registered before they can add a new user
         UsernameBox = txtUser.Text
         PasswordBox = txtPass.Text
@@ -99,6 +99,7 @@ Public Class Login
             MsgBox("This User Already Exists", MsgBoxStyle.Information)
         End If
         MsgCount = MsgBox("Create Another User?", MsgBoxStyle.YesNoCancel)
+
         If MsgCount = 7 Then
             Me.Show()
         ElseIf MsgCount = 6 Then
@@ -115,6 +116,7 @@ Public Class Login
 
     Public Sub cmdLogIn_Click() Handles cmdLogIn.Click
         Dim MsgCount As Integer
+
         'initialise and set vars to textboxes
         UsernameBox = ""
         PasswordBox = ""
@@ -185,6 +187,7 @@ Public Class Login
 
     Public Function MD5_Dec() As String 'decrypts MD5 hashes and checks them against the stored passwords
         Dim OldHash As String, TempPassVeri As String, NewHash As String, UserFoldPath As String
+
         UserFoldPath = UsersPath + UsernameBox
         OldHash = My.Computer.FileSystem.ReadAllText(UserFoldPath + "\EncryptedPassword.txt")
         'create a temp file to store the users login password to match it against the one already on file
