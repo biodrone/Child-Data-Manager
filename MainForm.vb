@@ -1,5 +1,7 @@
 ﻿Imports Microsoft.VisualBasic.FileIO.FileSystem
+
 Public Class MainForm
+
     Private Sub Logout(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdLogout.Click
         Login.Show()
         Me.Close()
@@ -21,17 +23,23 @@ Public Class MainForm
     End Sub
 
     Private Sub Archive(sender As System.Object, e As System.EventArgs) Handles cmdArchive.Click
-        Dim msgcount As Integer = 0
-        msgcount = MsgBox("Are you sure you want to archive? (This will store data elsewhere and require manual configuration to load this data)", MsgBoxStyle.YesNo, "Confirm Archive")
+        Dim MsgCount As Integer
         Dim ArchFold As String = "C:\Childrens Centre\Archive\" + Year(Date.Today).ToString + "\"
         Dim ChildFold As String = "C:\Childrens Centre\Child Data\"
-        If msgcount = 6 Then
+
+        'confirm the archiving
+        MsgCount = MsgBox("Are you sure you want to archive? (This will store data elsewhere and require manual configuration to load this data)", MsgBoxStyle.YesNo, "Confirm Archive")
+        'if yes was clicked
+        If MsgCount = 6 Then
             Dim ChildData = From Child In System.IO.Directory.EnumerateDirectories(ChildFold)
             Dim i As Integer = 1
+
             Try
+                'create archive folder if it doesn't exist
                 If DirectoryExists(ArchFold) = False Then
                     CreateDirectory(ArchFold)
                 End If
+                'enumerate directories and move them to the archive folder
                 For Each Child In ChildData
                     Dim CopyFold As String = ArchFold + Child.Remove(0, 31)
                     CreateDirectory(CopyFold)
