@@ -21,7 +21,7 @@ Public Class NewChildDataEntry
         Dim MsgCount As Integer
         Dim FailCheck As Boolean
 
-        'initialise label colours
+        'initialise label colours to black
         lblChildID.ForeColor = Color.Black
         Label1.ForeColor = Color.Black
         lblSex.ForeColor = Color.Black
@@ -68,7 +68,7 @@ Public Class NewChildDataEntry
                 FailCheck = False
             End If
         End While
-        'initialise vars
+        'initialise vars and set vars to textboxes
         StrMonth = ""
         ChildID = ""
         RawDOB = mskdob.Text
@@ -82,25 +82,24 @@ Public Class NewChildDataEntry
         End If
         'Convert the raw date into a month
         MonthConvInt2Str(DateDir, StrMonth)
-        'check if the child id dir already exists. If not, create it
+        'check if the child id dir already exists; if not, create it
         If My.Computer.FileSystem.DirectoryExists("C:\Childrens Centre\Child Data\Child" + ChildID) = False Then
             My.Computer.FileSystem.CreateDirectory("C:\Childrens Centre\Child Data\Child" + ChildID)
         Else 'if it exists, confirm overwrite
             MsgCount = MsgBox("This Child Already Exists. Overwrite?", MsgBoxStyle.YesNoCancel)
+            'if yes was clicked
             If MsgCount = 6 Then 'yes
                 My.Computer.FileSystem.DeleteDirectory("C:\Childrens Centre\Child Data\Child" + ChildID, FileIO.DeleteDirectoryOption.DeleteAllContents)
                 My.Computer.FileSystem.CreateDirectory("C:\Childrens Centre\Child Data\Child" + ChildID)
             End If
         End If
-        'My.Computer.FileSystem.CreateDirectory("C:\Childrens Centre\Child Data\" + "Child" + ChildID + "\" + MonthDir)
-        'stream = File.Create("C:\Childrens Centre\Child Data\Child" + ChildID + "\" + MonthDir + "\Progress.txt")
+        'create the child's info file
         stream = File.Create("C:\Childrens Centre\Child Data\Child" + ChildID + "\Info.txt")
         stream.Close()
         'write all of the info to the info.txt file
         My.Computer.FileSystem.WriteAllText("C:\Childrens Centre\Child Data\Child" + ChildID + "\Info.txt", ChildID + vbCrLf + Sex + vbCrLf + RawDOB, False)
-        'initialise all fields
-        MsgCount = MsgBox("Do You Wish To Add Data For This Child?", MsgBoxStyle.OkCancel, "Add Data For This Child?")
-        If MsgCount = 1 Then
+        MsgCount = MsgBox("Do You Wish To Add Data For This Child?", MsgBoxStyle.YesNoCancel, "Add Data For This Child?")
+        If MsgCount = 6 Then
             ChildIDCarryForward = ChildID
             Me.Close()
             OldChildDataEntry.Show()
@@ -113,11 +112,11 @@ Public Class NewChildDataEntry
     End Sub
 
     Private Sub InitDataEntry()
-        'initialise textboxes and radio buttons
+        'initialise textboxes
         mskChildID.Text = ""
         mskdob.Text = ""
         txtSex.Text = ""
-        'initialise lbl colours
+        'initialise label colours to black
         lblChildID.ForeColor = Color.Black
         Label1.ForeColor = Color.Black
         lblSex.ForeColor = Color.Black
@@ -132,7 +131,7 @@ Public Class NewChildDataEntry
             My.Computer.FileSystem.OpenTextFileReader("C:\Childrens Centre\Child Data\" + "Child" + LoadID + "\Info.txt")
         'initialise the line counter
         LineCount = 1
-        'While the streamreader isn't at the end of the file, the variable = the line, changed by the counter
+        'While the streamreader isn't at the end of the file, the variable = the line
         While fileReader.EndOfStream = False
             If LineCount = 1 Then
                 LoadID = fileReader.ReadLine()
