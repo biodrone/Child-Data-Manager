@@ -2,18 +2,14 @@
 Imports System.Security.Cryptography
 
 Public Class Login
-    Dim arrsave As String, UsernameBox As String, PasswordBox As String, userpasssave As String
-    Dim filereader As String, userpassreset As String, strUser As String, strPass As String, currentN As String
-    Dim n As Integer, l As Integer, intusers As Integer, passhash As Integer, Attempts As Integer = 0
-    Dim PasswordEnc As String, currentField As String, currentFieldDec As String, UnEncPass As String = ""
-    Dim PassOverBool As Boolean, AllowPassword As Boolean = False, AddUsrValidation As Boolean = False
-    Dim UserFail As Boolean = True, HashMatch As Boolean
+    Dim UsernameBox As String, PasswordBox As String
+    Dim HashMatch As Boolean
 
     Public Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Dim ChildCentLoc As String = "C:\Childrens Centre"
         Dim AdminUser As String = UsersPath + "\admin"
+
         AcceptButton = cmdLogIn
-        userpasssave = ""
         txtPass.Text = ""
         If My.Computer.FileSystem.DirectoryExists(AdminUser) = False Then
             My.Computer.FileSystem.CreateDirectory(AdminUser)
