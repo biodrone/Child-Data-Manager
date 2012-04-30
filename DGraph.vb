@@ -1,19 +1,24 @@
-﻿Imports System.Drawing.Printing
+﻿'import namespaces
+Imports System.Drawing.Printing
 Imports Microsoft.VisualBasic.FileIO.FileSystem
 
 Public Class DGraph
+    'define global variables
     Dim ChildID As String
     Dim DBProgress As New DataTable
 
+    'set form load sub
     Private Sub DGraph_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Dim intProg As Integer, intMonth As Integer
 
+        'check if the user has added a new child before this
         If ChildIDCarryForward = "" Then
             ChildID = InputBox("What Child Do You Wish To View?", "Child Select")
         Else
             ChildID = ChildIDCarryForward
         End If
 
+        'check if the child exists
         Dim ChildDir As String = ChildDataLoc + "\Child" + ChildID
         If DirectoryExists(ChildDir) = False Then
             MsgBox("Sorry, That Child ID Does Not Exist", MsgBoxStyle.Critical, "Error")
@@ -70,6 +75,7 @@ Public Class DGraph
                 Case "December"
                     intMonth = 12
             End Select
+            'add the data to the table
             DBProgress.Rows.Add(intProg, intMonth)
         Next
         'set axis properties
@@ -146,6 +152,7 @@ Public Class DGraph
         End Select
     End Sub
 
+    'sub to handle cancel button
     Private Sub cmdCancel_Click(sender As System.Object, e As System.EventArgs) Handles cmdCancel.Click
         Me.Close()
         MainForm.Show()

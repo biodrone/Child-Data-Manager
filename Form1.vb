@@ -1,10 +1,13 @@
-﻿Imports System.IO
+﻿'import namespaces
+Imports System.IO
 Imports System.Security.Cryptography
 
 Public Class Login
+    'define variables
     Dim UsernameBox As String, PasswordBox As String
     Dim HashMatch As Boolean
 
+    'subroutine to load the form
     Public Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Dim ChildCentLoc As String = "C:\Childrens Centre"
         Dim AdminUser As String = UsersPath + "\admin"

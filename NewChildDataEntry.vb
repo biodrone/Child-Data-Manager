@@ -1,10 +1,13 @@
-﻿Imports System.IO
+﻿'import namespaces
+Imports System.IO
 Imports System.Security.Cryptography
 
 Public Class NewChildDataEntry
+    'define global variables
     Dim ChildID As String, DateDir As String, RawDOB As String, StrMonth As String
     Dim stream As FileStream
 
+    'set the form load sub
     Private Sub NewChildDataEntry_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Me.Load
         Me.ToolTip1.IsBalloon = False
         Me.mskdob.Mask = "00/00/0000"

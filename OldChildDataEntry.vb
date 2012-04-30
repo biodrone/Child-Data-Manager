@@ -1,11 +1,14 @@
-﻿Imports System.IO
+﻿'import namespaces
+Imports System.IO
 Imports System.Security.Cryptography
 Imports Microsoft.VisualBasic.FileIO.FileSystem
 
 Public Class OldChildDataEntry
+    'define global variables
     Dim StrMonth As String, DateDir As String, RadChecked As String, ChildID As String, LoadDOB As String, LoadSex As String
     Dim ArchFold As String, ChFold As String
 
+    'set form load sub
     Public Sub OldChildDataEntry_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim MsgCount As Integer
 

@@ -1,27 +1,33 @@
-﻿Imports Microsoft.VisualBasic.FileIO.FileSystem
+﻿'import namespaces
+Imports Microsoft.VisualBasic.FileIO.FileSystem
 
 Public Class MainForm
 
+    'sub for the log out button
     Private Sub Logout(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdLogout.Click
         Login.Show()
         Me.Close()
     End Sub
 
+    'sub for adding a report
     Private Sub AddOld(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAddOld.Click
         OldChildDataEntry.Show()
         Me.Close()
     End Sub
 
+    'sub for adding a new child
     Private Sub AddNew(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAddNew.Click
         NewChildDataEntry.Show()
         Me.Close()
     End Sub
 
+    'sub to launch graph
     Private Sub Graph(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGraph.Click
         DGraph.Show()
         Me.Close()
     End Sub
 
+    'sub to archive data
     Private Sub Archive(sender As System.Object, e As System.EventArgs) Handles cmdArchive.Click
         Dim MsgCount As Integer
 
@@ -50,6 +56,7 @@ Public Class MainForm
         End If
     End Sub
 
+    'sub to launch the help document
     Private Sub cmdHelp_Click(sender As System.Object, e As System.EventArgs) Handles cmdHelp.Click
         Dim doc As String
         'set location of the help document
