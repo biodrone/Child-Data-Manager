@@ -24,7 +24,7 @@ Public Class NewChildDataEntry
 
         'initialise label colours to black
         lblChildID.ForeColor = Color.Black
-        Label1.ForeColor = Color.Black
+        lblDOB.ForeColor = Color.Black
         lblSex.ForeColor = Color.Black
         'presence check on all form fields
         FailCheck = True
@@ -59,7 +59,7 @@ Public Class NewChildDataEntry
             'check DOB
             If DOB.Contains("  /") Then
                 MsgBox("Please Enter a D.o.B", MsgBoxStyle.Information)
-                Label1.ForeColor = Color.Red
+                lblDOB.ForeColor = Color.Red
                 FailCheck = False
             End If
             'if anything failed, exit
@@ -119,7 +119,7 @@ Public Class NewChildDataEntry
         txtSex.Text = ""
         'initialise label colours to black
         lblChildID.ForeColor = Color.Black
-        Label1.ForeColor = Color.Black
+        lblDOB.ForeColor = Color.Black
         lblSex.ForeColor = Color.Black
     End Sub
 

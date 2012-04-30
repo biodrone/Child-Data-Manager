@@ -31,7 +31,7 @@ Partial Class NewChildDataEntry
         Me.lblLoadedDate = New System.Windows.Forms.Label()
         Me.lblLoadedProgress = New System.Windows.Forms.Label()
         Me.cmdLogout = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblDOB = New System.Windows.Forms.Label()
         Me.mskdob = New System.Windows.Forms.MaskedTextBox()
         Me.lblChildIDHide = New System.Windows.Forms.Label()
         Me.lblSex = New System.Windows.Forms.Label()
@@ -98,14 +98,14 @@ Partial Class NewChildDataEntry
         Me.cmdLogout.Text = "Log Out"
         Me.cmdLogout.UseVisualStyleBackColor = True
         '
-        'Label1
+        'lblDOB
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(15, 67)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(37, 13)
-        Me.Label1.TabIndex = 17
-        Me.Label1.Text = "D.o.B:"
+        Me.lblDOB.AutoSize = True
+        Me.lblDOB.Location = New System.Drawing.Point(15, 67)
+        Me.lblDOB.Name = "lblDOB"
+        Me.lblDOB.Size = New System.Drawing.Size(37, 13)
+        Me.lblDOB.TabIndex = 17
+        Me.lblDOB.Text = "D.o.B:"
         '
         'mskdob
         '
@@ -160,7 +160,7 @@ Partial Class NewChildDataEntry
         Me.Controls.Add(Me.lblSex)
         Me.Controls.Add(Me.lblChildIDHide)
         Me.Controls.Add(Me.mskdob)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.lblDOB)
         Me.Controls.Add(Me.cmdLogout)
         Me.Controls.Add(Me.lblLoadedProgress)
         Me.Controls.Add(Me.lblLoadedDate)
@@ -182,7 +182,7 @@ Partial Class NewChildDataEntry
     Friend WithEvents lblLoadedDate As System.Windows.Forms.Label
     Friend WithEvents lblLoadedProgress As System.Windows.Forms.Label
     Friend WithEvents cmdLogout As System.Windows.Forms.Button
-    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents lblDOB As System.Windows.Forms.Label
     Friend WithEvents mskdob As System.Windows.Forms.MaskedTextBox
     Friend WithEvents lblChildIDHide As System.Windows.Forms.Label
     Friend WithEvents lblSex As System.Windows.Forms.Label
