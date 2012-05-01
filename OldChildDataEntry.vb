@@ -88,6 +88,12 @@ Public Class OldChildDataEntry
             Exit Sub
         End If
         RawDate = mskDate.Text
+        'check for a future date
+        If RawDate.Remove(0, 6) > Date.Now.Year Then
+            MsgBox("Please Enter a valid D.o.B", MsgBoxStyle.Information, "You Have Entered a Future Date")
+            lblDOB.ForeColor = Color.Red
+        End If
+
         strDate = RawDate
         DateStripper(strDate)
         'convert date to month
@@ -120,7 +126,8 @@ Public Class OldChildDataEntry
                 mskDate.Text = ""
             Else
                 InitDataFields()
-                ChildID = InputBox("New Child ID?", "New ID?")
+                ChildIDCarryForward = InputBox("New Child ID?", "New ID?")
+                OldChildDataEntry_Load(sender, e)
             End If
         Else
             Me.Close()

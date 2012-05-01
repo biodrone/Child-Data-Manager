@@ -65,6 +65,12 @@ Public Class NewChildDataEntry
                 lblDOB.ForeColor = Color.Red
                 FailCheck = False
             End If
+            'check for future date
+            If DOB.Remove(0, 6) > Date.Now.Year Then
+                MsgBox("Please Enter a valid D.o.B", MsgBoxStyle.Information, "You Have Entered a Future Date")
+                lblDOB.ForeColor = Color.Red
+                FailCheck = False
+            End If
             'if anything failed, exit
             If FailCheck = False Then
                 Exit Sub
