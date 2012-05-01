@@ -197,6 +197,7 @@ Partial Class OldChildDataEntry
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.ClientSize = New System.Drawing.Size(580, 369)
         Me.Controls.Add(Me.cmdBack)
         Me.Controls.Add(Me.lblInfoHeader)

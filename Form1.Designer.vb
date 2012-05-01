@@ -72,7 +72,7 @@ Partial Class Login
         'cmdFirstUser
         '
         Me.cmdFirstUser.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdFirstUser.Location = New System.Drawing.Point(12, 8)
+        Me.cmdFirstUser.Location = New System.Drawing.Point(13, 8)
         Me.cmdFirstUser.Name = "cmdFirstUser"
         Me.cmdFirstUser.Size = New System.Drawing.Size(326, 141)
         Me.cmdFirstUser.TabIndex = 9
@@ -129,6 +129,7 @@ Partial Class Login
         Me.AcceptButton = Me.cmdLogIn
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.CancelButton = Me.cmdExit
         Me.ClientSize = New System.Drawing.Size(354, 166)
         Me.Controls.Add(Me.cmdFirstUser)
