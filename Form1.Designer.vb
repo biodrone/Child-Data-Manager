@@ -131,7 +131,7 @@ Partial Class Login
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.CancelButton = Me.cmdExit
-        Me.ClientSize = New System.Drawing.Size(354, 166)
+        Me.ClientSize = New System.Drawing.Size(353, 157)
         Me.Controls.Add(Me.cmdFirstUser)
         Me.Controls.Add(Me.lblPass)
         Me.Controls.Add(Me.lblUser)
