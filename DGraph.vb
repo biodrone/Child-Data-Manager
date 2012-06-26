@@ -11,12 +11,12 @@ Public Class DGraph
     Private Sub DGraph_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Dim intProg As Integer, intMonth As Integer
 
-        'check if the user has added a new child before this
-        If ChildIDCarryForward = "" Then
-            ChildID = InputBox("What Child Do You Wish To View?", "Child Select")
-        Else
-            ChildID = ChildIDCarryForward
-        End If
+        ''check if the user has added a new child before this
+        'If ChildIDCarryForward = "" Then
+        '    ChildID = InputBox("What Child Do You Wish To View?", "Child Select")
+        'Else
+        '    ChildID = ChildIDCarryForward
+        'End If
 
         'check if the child exists
         Dim ChildDir As String = ChildDataLoc + "\Child" + ChildID

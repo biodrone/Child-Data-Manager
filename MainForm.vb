@@ -23,6 +23,10 @@ Public Class MainForm
 
     'sub to launch graph
     Private Sub Graph(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdGraph.Click
+        ChildSel.Show()
+        'Do Until ChildSel. = False
+
+        'Loop
         DGraph.Show()
         Me.Close()
     End Sub
